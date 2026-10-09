@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#0f2942", "on-tertiary-container": "#818fa6", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#314863", "surface-variant": "#d3e4fe", "outline": "#74777e", "error-container": "#ffdad6", "surface": "#f8f9ff", "tertiary": "#041325", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#6bd8cb", "surface-container-high": "#dce9ff", "tertiary-container": "#1a283b", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#3a485c", "on-surface-variant": "#43474d", "on-secondary-container": "#006f66", "on-surface": "#0b1c30", "on-tertiary-fixed": "#0d1c2f", "error": "#ba1a1a", "on-background": "#0b1c30", "primary": "#001428", "tertiary-fixed": "#d5e3fd", "background": "#f8f9ff", "secondary": "#006a61", "on-error-container": "#93000a", "primary-fixed-dim": "#b0c9e8", "secondary-container": "#86f2e4", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "primary-fixed": "#d1e4ff", "tertiary-fixed-dim": "#b9c7e0", "on-secondary": "#ffffff", "outline-variant": "#c3c6ce", "inverse-primary": "#b0c9e8", "secondary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-tint": "#49607c", "on-primary": "#ffffff", "on-primary-container": "#7991af", "on-secondary-fixed-variant": "#005049", "on-error": "#ffffff", "inverse-surface": "#213145", "on-primary-fixed": "#011d35", "on-secondary-fixed": "#00201d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1280px", "space-sm": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "form-column-width": "540px", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-3xl": "4rem", "split-sidebar-width": "420px", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/40 shadow-[0_1px_8px_rgba(15,41,66,0.04)]"><div class="h-16 max-w-container-max mx-auto px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><img alt="VeciRed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W5DOBTQ5PZsEvZbzDPgi12nKfLWYgKSpCm8nzCUuEgN4EmQLICiVdOwvLmSAJTuH2J-HliBgkGUiCGIuTSl2tuiMaJpVeqwY7p8j6cAvcWS9LC3AvNoEkt_YQ4y8gIBISdhc-QD7XWl5mwAznH3BnzFHnsO38KP4-k7Lsp3Om5H1KaUtv7W_vR7bJShC2dsAZht9zHYbmcUujbJwcb4cr1EeqltdOfx6AyeEybwaJmmKDIHdw8SnNjBbw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VeciRed</span></div><div class="hidden lg:flex items-center gap-space-2xs bg-surface-container-low border border-outline-variant/60 rounded-full px-space-sm py-1"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span class="font-label-sm text-label-sm text-secondary uppercase">Tu Barrio:</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Los Laureles / Envigado</span></div></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-bold border-b-2 border-primary"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="como-funciona" href="#">Cómo funciona</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias-de-servicios" href="#">Categorías de servicios</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="garantia-de-confianza" href="#">Garantía de confianza</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="iniciar-sesion" href="#">¿Ya tienes cuenta? <span class="font-semibold text-primary underline decoration-outline-variant">Iniciar Sesión</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Dynamic Onboarding / Publication Canvas -->
+<div class="max-w-container-max mx-auto px-space-lg py-space-xl w-full">
+<!-- Breadcrumbs Navigation -->
+<nav aria-label="Ruta de navegación" class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm mb-space-md">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+        Inicio
+      </a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Panel del Técnico</a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Mis Servicios</a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="text-primary font-semibold">Publicar Nuevo Servicio u Oficio</span>
+</nav>
+<!-- Page Header with High Trust Meta -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md pb-space-lg mb-space-xl">
+<div class="space-y-space-2xs max-w-3xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            Sello Vecino Verificado Activo
+          </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">engineering</span>
+            Técnico Certificado: Roberto D.
+          </span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded text-secondary font-label-sm text-label-sm bg-secondary-container/40">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            Disponibilidad en vivo
+          </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">
+          Publicar Nuevo Servicio u Oficio
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Configura las condiciones, tarifa y cobertura barrial para comenzar a recibir solicitudes directas de vecinos en tu zona inmediata con protección integral.
+        </p>
+</div>
+<!-- Quick Action Pill for Drafts -->
+<div class="flex items-center gap-space-xs self-start lg:self-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-secondary">cloud_done</span>
+          Guardado automático: hace 2 min
+        </span>
+</div>
+</div>
+<!-- Main Two-Column Workflow Architecture -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- LEFT COLUMN: Comprehensive Publication Form (65% approx 8 of 12 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- CARD 1: Detalles Principales del Servicio -->
+<section class="bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_1px_3px_0_rgba(15,41,66,0.04),0_1px_2px_-1px_rgba(15,41,66,0.04)] transition-all">
+<div class="flex items-center justify-between pb-space-md mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">plumbing</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block font-bold">Paso 01 / Definición</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Detalles Principales del Servicio</h2>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-1 rounded bg-surface-container-low text-primary font-semibold">Obligatorio</span>
+</div>
+<div class="space-y-space-lg">
+<!-- Service Title -->
+<div class="space-y-space-2xs">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center justify-between" for="service-title">
+<span>Título comercial del servicio</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Máx. 80 car.</span>
+</label>
+<div class="relative">
+<input class="w-full h-12 px-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container shadow-inner" id="service-title" placeholder="Ej: Mantenimiento Preventivo de Calentadores a Gas" type="text" value="Instalación y Reparación de Grifería Monomando y Tradicional"/>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+                Usa un título claro y específico para aparecer con prioridad en las búsquedas barriales.
+              </p>
+</div>
+<!-- Category & Specialization Dropdown -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-space-2xs">
+<label class="font-label-lg text-label-lg text-on-surface" for="category-select">Categoría Principal</label>
+<div class="relative">
+<select class="w-full h-12 px-space-md bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container pr-10 cursor-pointer" id="category-select">
+<option selected="">Gasfitería / Plomería y Redes</option>
+<option>Electricidad y Tableros Certificados</option>
+<option>Cerrajería Residencial 24/7</option>
+<option>Pintura e Impermeabilización</option>
+<option>Climatización y Aire Acondicionado</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div class="space-y-space-2xs">
+<label class="font-label-lg text-label-lg text-on-surface">Nivel de Complejidad</label>
+<div class="flex items-center h-12 bg-surface-container-low p-1 rounded-lg">
+<button class="flex-1 h-full rounded text-center font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" type="button">Menor</button>
+<button class="flex-1 h-full rounded bg-surface-container-lowest text-center font-label-md text-label-md text-primary font-bold shadow-sm" type="button">Estándar</button>
+<button class="flex-1 h-full rounded text-center font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" type="button">Avanzada</button>
+</div>
+</div>
+</div>
+<!-- Subcategories / Specialties Chips -->
+<div class="space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface block">Subcategorías y etiquetas de coincidencia</label>
+<div class="flex flex-wrap gap-2" id="chip-container">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+                  Reparación de grifería
+                </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                  Instalación de lavaplatos
+                </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                  Detección de filtraciones
+                </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                  Cambio de empaquetaduras
+                </button>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-secondary hover:bg-secondary-container/20 font-label-sm text-label-sm" type="button">
+                  + Agregar otra
+                </button>
+</div>
+</div>
+<!-- Service Description with counter -->
+<div class="space-y-space-2xs">
+<div class="flex justify-between items-center">
+<label class="font-label-lg text-label-lg text-on-surface" for="service-desc">Descripción detallada del alcance</label>
+<span class="font-label-sm text-label-sm text-secondary font-mono">284 / 800 caracteres</span>
+</div>
+<textarea class="w-full p-space-md bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container shadow-inner resize-y" id="service-desc" rows="4">Servicio integral de instalación, mantención y reemplazo de llaves monomando, griferías empotradas y flexibles. Diagnóstico in-situ, prueba de presión hidráulica y garantía escrita por 60 días respaldada por VeciRed.</textarea>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Describe herramientas utilizadas, tipos de repuestos y tu método de diagnóstico seguro.</span>
+</div>
+<!-- What's included builder checklist -->
+<div class="bg-surface-container-low rounded-xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">task_alt</span>
+                  ¿Qué incluye exactamente este servicio contratado?
+                </span>
+<button class="font-label-sm text-label-sm text-secondary font-semibold hover:underline" type="button">+ Agregar ítem</button>
+</div>
+<ul class="space-y-space-2xs font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+<span>Visita diagnóstica en el domicilio del cliente</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-pointer hover:text-error">close</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+<span>Mano de obra especializada y herramientas profesionales completas</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-pointer hover:text-error">close</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+<span>Prueba estanca de no fuga y sellado con teflón de alta densidad</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-pointer hover:text-error">close</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+<span>Retiro responsable de empaques o repuestos defectuosos antiguos</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px] cursor-pointer hover:text-error">close</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CARD 2: Estructura de Precios y Modalidad de Cobro -->
+<section class="bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_1px_3px_0_rgba(15,41,66,0.04),0_1px_2px_-1px_rgba(15,41,66,0.04)]">
+<div class="flex items-center justify-between pb-space-md mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block font-bold">Paso 02 / Tarificación</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Estructura de Precios y Modalidad de Cobro</h2>
+</div>
+</div>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+              VeciPay Protegido
+            </div>
+</div>
+<div class="space-y-space-lg">
+<!-- Billing Model Toggle Segment -->
+<div class="space-y-space-xs">
+<label class="font-label-lg text-label-lg text-on-surface">Modalidad de cobro al vecino</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<!-- Radio Option 1 -->
+<label class="relative flex items-start gap-space-sm p-space-md rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input class="mt-1 accent-primary w-4 h-4" name="pricing-mode" type="radio"/>
+<div class="space-y-1">
+<span class="font-label-lg text-label-lg text-primary block">Precio Fijo Cerrado</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Valor único sin variaciones. Ideal para tareas específicas como cambio estándar de grifo.</span>
+</div>
+</label>
+<!-- Radio Option 2 (Selected) -->
+<label class="relative flex items-start gap-space-sm p-space-md rounded-xl bg-primary/5 cursor-pointer">
+<input checked="" class="mt-1 accent-primary w-4 h-4" name="pricing-mode" type="radio"/>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary block font-bold">Precio Desde (Tarifa Base)</span>
+<span class="bg-secondary text-on-secondary font-label-sm text-label-sm px-1.5 py-0.5 rounded text-[10px]">Recomendado</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Cobro mínimo por visita y diagnóstico, ajustable según repuestos requeridos.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Price input and parameters -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="space-y-space-2xs">
+<label class="font-label-md text-label-md text-on-surface" for="base-price">Tarifa Inicial / Diagnóstico Base</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-headline-sm text-headline-sm text-on-surface-variant">$</span>
+<input class="w-full h-12 pl-8 pr-16 bg-surface-container-lowest rounded-lg font-headline-sm text-headline-sm text-primary font-bold focus:outline-none focus:ring-2 focus:ring-primary-container" id="base-price" type="text" value="35.000"/>
+<span class="absolute right-3 font-label-sm text-label-sm text-on-surface-variant">COP</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block text-xs">Sin costos ocultos</span>
+</div>
+<div class="space-y-space-2xs">
+<label class="font-label-md text-label-md text-on-surface" for="service-duration">Duración Estimada</label>
+<div class="relative">
+<select class="w-full h-12 px-space-md bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container pr-10" id="service-duration">
+<option>Menos de 1 hora</option>
+<option selected="">1 a 2 horas aproximadamente</option>
+<option>Media jornada (3-4 horas)</option>
+<option>Jornada completa</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-[20px]">schedule</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block text-xs">Tiempo típico de ejecución</span>
+</div>
+<div class="space-y-space-2xs">
+<label class="font-label-md text-label-md text-on-surface" for="warranty-select">Garantía Ofrecida</label>
+<div class="relative">
+<select class="w-full h-12 px-space-md bg-surface-container-lowest rounded-lg font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-primary-container pr-10" id="warranty-select">
+<option>30 días estándar</option>
+<option selected="">Garantía vecinal de 60 días (Estándar VeciRed)</option>
+<option>90 días extendida</option>
+<option>180 días premium</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-secondary pointer-events-none text-[20px]">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary block text-xs">Aumenta tu ratio de cierre un 40%</span>
+</div>
+</div>
+<!-- Deductible option checkbox -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-start gap-space-sm">
+<input checked="" class="mt-1 accent-primary w-5 h-5 rounded cursor-pointer" id="deductible-check" type="checkbox"/>
+<div>
+<label class="font-label-lg text-label-lg text-primary font-bold cursor-pointer" for="deductible-check">
+                  Descontar diagnóstico si el vecino aprueba el trabajo
+                </label>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Esta tarifa base de $35.000 COP se abonará como crédito a favor del monto final pactado. Esta práctica genera la más alta tasa de conversión en VeciRed.
+                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CARD 3: Zona de Cobertura y Desplazamiento Barrial -->
+<section class="bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_1px_3px_0_rgba(15,41,66,0.04),0_1px_2px_-1px_rgba(15,41,66,0.04)]">
+<div class="flex items-center justify-between pb-space-md mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">near_me</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block font-bold">Paso 03 / Geocobertura</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Zona de Cobertura y Desplazamiento Barrial</h2>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary bg-secondary/10 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+              Llegada veloz
+            </span>
+</div>
+<div class="space-y-space-lg">
+<!-- Center Base Indicator -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md bg-surface-container-low rounded-xl gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">home_pin</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Punto Base de Partida</span>
+<span class="font-label-lg text-label-lg text-primary font-bold">Los Laureles / Envigado (Sector Parque Principal)</span>
+</div>
+</div>
+<button class="text-secondary font-label-md text-label-md hover:underline text-left sm:text-right" type="button">
+                Cambiar punto de origen
+              </button>
+</div>
+<!-- Interactive Radius Slider Control -->
+<div class="space-y-space-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-lg text-label-lg text-on-surface" for="radius-range">Radio máximo de atención y traslado rápido</label>
+<span class="font-headline-sm text-headline-sm text-primary font-bold bg-surface-container px-space-sm py-0.5 rounded" id="radius-val">
+                  3.0 km
+                </span>
+</div>
+<input class="w-full accent-primary h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer" id="radius-range" max="8" min="1" step="0.5" type="range" value="3"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant px-1">
+<span>1 km (Caminando)</span>
+<span class="text-secondary font-bold">3 km (Ideal bicicleta/moto: 15 min)</span>
+<span>5 km</span>
+<span>8 km (Límite metropolitano)</span>
+</div>
+</div>
+<!-- Map Visualizer Zone with data-location -->
+<div class="relative rounded-xl overflow-hidden shadow-inner h-64 w-full bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Interactive top-down satellite neighborhood map centered on Los Laureles and Envigado, displaying high-contrast circular blue overlay coverage perimeter with glowing teal indicator points denoting neighbor density and service hubs." data-location="Los Laureles, Envigado, Colombia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACuDSXWRCgV-LAGOiynFI-ZY7KjsrZOt3OaHS6rbBLI3m6GrxpJ7gcnUbIXzQQRtWmOmiCZptQpgIEYL4eHU4kGOUjeeEyNF3mh593YjiqXVCZ5NUFW_xu91MSG0RBuhlDlPlyuju8qVY-lYNeAOBXZwa0PDmmuGFAxWILMhA34Eh4YIEux-2FzHkd5tzijxic8PtV1_-gXx7EsE5rglsRCR4i8APIqjy07k0B43l9OPISlzSpTwXU')"></div>
+<!-- Map Dynamic HUD Overlay -->
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md p-space-sm rounded-lg shadow-md flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Cobertura Activa: ~18.400 Hogares</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-primary text-on-primary px-space-md py-1.5 rounded-lg shadow-lg flex items-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">electric_moped</span>
+                ⚡ Tiempo promedio de respuesta estimado: ~12 minutos
+              </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm text-center">
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="block font-headline-sm text-headline-sm text-primary">~14 min</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tiempo Máximo de Llegada</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="block font-headline-sm text-headline-sm text-secondary">0 COP</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Costo de Viático en Radio</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="block font-headline-sm text-headline-sm text-primary">Alta</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Densidad de Solicitudes</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CARD 4: Disponibilidad y Condiciones de Atención -->
+<section class="bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_1px_3px_0_rgba(15,41,66,0.04),0_1px_2px_-1px_rgba(15,41,66,0.04)]">
+<div class="flex items-center justify-between pb-space-md mb-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">tune</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block font-bold">Paso 04 / Condiciones</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Disponibilidad y Condiciones de Atención</h2>
+</div>
+</div>
+</div>
+<div class="space-y-space-md">
+<!-- Switch 1: Urgencias -->
+<div class="flex items-start justify-between p-space-md rounded-xl bg-surface-container-low gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary font-bold">Disponible para Atenciones de Urgencia (Mismo Día)</span>
+<span class="bg-secondary text-on-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Alta Demanda</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Recibirás notificaciones sonoras prioritarias por la app y WhatsApp cuando un vecino reporte una filtración grave o anegamiento imprevisto.
+                </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Switch 2: Fines de semana -->
+<div class="flex items-start justify-between p-space-md rounded-xl bg-surface-container-low gap-space-md">
+<div class="space-y-1">
+<span class="font-label-lg text-label-lg text-primary font-bold block">Atención Fines de Semana (Sábados y Domingos)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Recargo pactado estándar del 15% configurable para emergencias sabatinas y festivos comunales.
+                </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Switch 3: Pagos Custodiados VeciPay (Locked) -->
+<div class="flex items-start justify-between p-space-md rounded-xl bg-primary/5 gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary font-bold">Acepta Pagos Custodiados VeciPay</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Tus fondos quedan 100% garantizados en depósito en garantía y se liberan automáticamente en tu cuenta bancaria al firmar el acta digital de entrega sin discusiones en efectivo.
+                </p>
+</div>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+                Activo
+              </div>
+</div>
+</div>
+</section>
+<!-- Form Actions Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md pb-space-2xl">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 order-3 sm:order-1" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            Cancelar y volver a Mis Servicios
+          </a>
+<div class="flex flex-col sm:flex-row items-center gap-space-sm w-full sm:w-auto order-1 sm:order-2">
+<button class="w-full sm:w-auto px-space-lg h-12 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg transition-colors" type="button">
+              Guardar como Borrador
+            </button>
+<button class="w-full sm:w-auto px-space-xl h-12 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg shadow-md flex items-center justify-center gap-2 transition-all active:scale-[0.99]" type="button">
+<span>Publicar Servicio en mi Zona</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sticky Trust & Live Preview Column (35% approx 4 of 12 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-xl sticky top-24">
+<!-- Preview Widget Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_10px_15px_-3px_rgba(15,41,66,0.07),0_4px_6px_-4px_rgba(15,41,66,0.03)] space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              Vista Previa en Vivo
+            </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Búsqueda Vecinal</span>
+</div>
+<!-- Neighbor directory simulated card -->
+<div class="rounded-xl p-space-md bg-surface-container-low space-y-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm" data-alt="Professional close-up portrait photo of Roberto D., a trustworthy licensed plumber wearing a clean navy-blue technical polo shirt with warm smiling expression in daylight Envigado Colombian neighborhood backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYArmUB8RSEJi85R5O7qTAd2ij9WsurrAW3VmWGZLSyoBNP3K6D7oB1vP6rkwenBOYhB8PkY0DUCzJhqCgEFoDqmAOCmf6qUxPXcPRC9xQafgslwL_qUZFAY9tdsnbEJTHvBXR1TcoJ2c_NCn9h4xSp75V76B9Tucqubp9vhZjHlHWWz-ULSM4rBOIIY8-IPgGnoTvb7AoiGf3plSQfgiHO9c8UaQyLqV2vJLoZUieepTZnu973FhJ"/>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px]" title="Verificado">
+                  ✓
+                </span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1">
+<h4 class="font-label-lg text-label-lg text-primary font-bold truncate">Roberto D.</h4>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Fontanero Profesional • Gasfitería</p>
+<div class="flex items-center gap-1 mt-0.5">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold ml-0.5">4.9</span>
+</div>
+<span class="text-on-surface-variant font-body-sm text-body-sm">(138 reseñas verificadas)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-2xs">
+<p class="font-label-md text-label-md text-primary font-semibold">
+                Instalación y Reparación de Grifería Monomando
+              </p>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Desde</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">$35.000 COP</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/30 px-1.5 py-0.5 rounded">Diagnóstico inicial</span>
+</div>
+</div>
+<!-- Highlights tags -->
+<div class="flex flex-wrap gap-1.5 pt-space-2xs font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">speed</span>
+                ⚡ Llega en ~15 min
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+                Garantía 60 días
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                VeciPay Seguro
+              </span>
+</div>
+<button class="w-full mt-space-xs py-2 bg-primary text-on-primary rounded font-label-md text-label-md text-center pointer-events-none opacity-90" type="button">
+              Solicitar Técnico Local
+            </button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">
+            Así verán tu servicio los vecinos de Los Laureles cuando busquen reparaciones inmediatas.
+          </p>
+</div>
+<!-- Trust Stats & Benefits Card -->
+<div class="bg-primary-container text-on-primary rounded-xl p-space-lg space-y-space-md shadow-lg">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">workspace_premium</span>
+<h3 class="font-headline-sm text-headline-sm text-on-primary">Ventajas de Publicar con Sello Verificado</h3>
+</div>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-surface-container-high">
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px] flex-shrink-0">trending_up</span>
+<div>
+<strong class="text-on-primary font-semibold">3.2x más contrataciones directas</strong> frente a perfiles sin verificación domiciliaria.
+              </div>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px] flex-shrink-0">health_and_safety</span>
+<div>
+<strong class="text-on-primary font-semibold">Seguro VeciProtege hasta $2.500.000 COP</strong> contra daños accidentales involuntarios en el predio del cliente.
+              </div>
+</li>
+<li class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px] flex-shrink-0">account_balance_wallet</span>
+<div>
+<strong class="text-on-primary font-semibold">Cobro garantizado sin comisión abusiva</strong>: solo 5% por transacción y transferencias bancarias en 24h.
+              </div>
+</li>
+</ul>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/10 space-y-1">
+<div class="flex items-center justify-between text-on-primary font-label-sm text-label-sm">
+<span>Índice de Confianza Barrial</span>
+<span class="text-secondary-fixed font-bold">98 / 100</span>
+</div>
+<!-- Trust Metric Progress Bar -->
+<div class="w-full bg-surface-container-highest/30 h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</div>
+<!-- Help Desk Callout -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">support_agent</span>
+<span class="font-body-sm text-body-sm text-on-surface">¿Dudas sobre cómo tarifar tu servicio?</span>
+</div>
+<a class="font-label-md text-label-md text-secondary font-bold hover:underline whitespace-nowrap" href="#">
+            Hablar con Soporte
+          </a>
+</div>
+</aside>
+</div>
+</div>
+<!-- Interactive Slider Script -->
+<script>
+    (function() {
+      const radiusSlider = document.getElementById('radius-range');
+      const radiusVal = document.getElementById('radius-val');
+      if (radiusSlider && radiusVal) {
+        radiusSlider.addEventListener('input', function(e) {
+          radiusVal.textContent = parseFloat(e.target.value).toFixed(1) + ' km';
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#0f2942", "on-tertiary-container": "#818fa6", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#314863", "surface-variant": "#d3e4fe", "outline": "#74777e", "error-container": "#ffdad6", "surface": "#f8f9ff", "tertiary": "#041325", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#6bd8cb", "surface-container-high": "#dce9ff", "tertiary-container": "#1a283b", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#3a485c", "on-surface-variant": "#43474d", "on-secondary-container": "#006f66", "on-surface": "#0b1c30", "on-tertiary-fixed": "#0d1c2f", "error": "#ba1a1a", "on-background": "#0b1c30", "primary": "#001428", "tertiary-fixed": "#d5e3fd", "background": "#f8f9ff", "secondary": "#006a61", "on-error-container": "#93000a", "primary-fixed-dim": "#b0c9e8", "secondary-container": "#86f2e4", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "primary-fixed": "#d1e4ff", "tertiary-fixed-dim": "#b9c7e0", "on-secondary": "#ffffff", "outline-variant": "#c3c6ce", "inverse-primary": "#b0c9e8", "secondary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-tint": "#49607c", "on-primary": "#ffffff", "on-primary-container": "#7991af", "on-secondary-fixed-variant": "#005049", "on-error": "#ffffff", "inverse-surface": "#213145", "on-primary-fixed": "#011d35", "on-secondary-fixed": "#00201d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1280px", "space-sm": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "form-column-width": "540px", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-3xl": "4rem", "split-sidebar-width": "420px", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/40 shadow-[0_1px_8px_rgba(15,41,66,0.04)]"><div class="h-16 max-w-container-max mx-auto px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><img alt="VeciRed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W5DOBTQ5PZsEvZbzDPgi12nKfLWYgKSpCm8nzCUuEgN4EmQLICiVdOwvLmSAJTuH2J-HliBgkGUiCGIuTSl2tuiMaJpVeqwY7p8j6cAvcWS9LC3AvNoEkt_YQ4y8gIBISdhc-QD7XWl5mwAznH3BnzFHnsO38KP4-k7Lsp3Om5H1KaUtv7W_vR7bJShC2dsAZht9zHYbmcUujbJwcb4cr1EeqltdOfx6AyeEybwaJmmKDIHdw8SnNjBbw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VeciRed</span></div><div class="hidden lg:flex items-center gap-space-2xs bg-surface-container-low border border-outline-variant/60 rounded-full px-space-sm py-1"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span class="font-label-sm text-label-sm text-secondary uppercase">Tu Barrio:</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Los Laureles / Envigado</span></div></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-bold border-b-2 border-primary"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="como-funciona" href="#">Cómo funciona</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias-de-servicios" href="#">Categorías de servicios</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="garantia-de-confianza" href="#">Garantía de confianza</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="iniciar-sesion" href="#">¿Ya tienes cuenta? <span class="font-semibold text-primary underline decoration-outline-variant">Iniciar Sesión</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Top Context Header & Neighborhood Scope -->
+<section class="w-full bg-surface-container-low/70 py-space-xl">
+<div class="max-w-container-max mx-auto px-space-lg">
+<!-- Breadcrumb & Radius Pill -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<nav aria-label="Breadcrumbs" class="flex items-center gap-space-2xs text-body-sm font-body-sm text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-pointer">VeciRed</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Directorio de Servicios</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<span class="text-primary font-semibold">Profesionales en tu Zona</span>
+</nav>
+<!-- Dynamic Neighborhood Indicator -->
+<div class="inline-flex items-center gap-space-xs bg-surface-container-lowest px-space-sm py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">location_on</span>
+<span class="text-label-sm font-label-sm text-on-surface">
+            Barrio: <strong class="text-primary">Los Laureles / Envigado</strong>
+</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold ml-1">(Radio actual: 3.5 km)</span>
+<button class="text-label-sm font-label-sm text-secondary hover:text-on-secondary-container underline ml-1 cursor-pointer transition-colors" type="button">
+            Cambiar
+          </button>
+</div>
+</div>
+<!-- Main Headline & Subtitle -->
+<div class="max-w-3xl mb-space-xl">
+<h1 class="text-headline-xl font-headline-xl text-primary tracking-tight mb-space-2xs">
+          Directorio de Técnicos y Oficios de Confianza
+        </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+          Encuentra y contacta directamente a profesionales verificados que viven y trabajan a pocos minutos de tu hogar. Sin intermediarios opacos, con garantía de custodia vecinal.
+        </p>
+</div>
+<!-- Prominent Universal Search Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-md">
+<form class="grid grid-cols-1 md:grid-cols-12 gap-space-xs items-center" onsubmit="event.preventDefault();">
+<!-- Keyword input -->
+<div class="md:col-span-5 flex items-center gap-space-xs px-space-sm py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-outline text-[20px]">search</span>
+<input class="w-full bg-transparent text-on-surface placeholder:text-outline text-body-md font-body-md focus:outline-none" placeholder="Buscar por oficio, problema o nombre (ej. fuga de agua, electricista, chapa)..." type="text" value="Plomería y Gasfitería"/>
+</div>
+<!-- Category Selector Dropdown -->
+<div class="md:col-span-3 flex items-center gap-space-xs px-space-sm py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-outline text-[20px]">home_repair_service</span>
+<div class="w-full flex flex-col">
+<label class="text-[10px] uppercase font-label-sm text-on-surface-variant tracking-wider leading-none">Categoría</label>
+<select class="w-full bg-transparent text-on-surface text-body-sm font-label-md focus:outline-none cursor-pointer">
+<option selected="">Plomería y Gasfitería (12)</option>
+<option>Electricidad Residencial (8)</option>
+<option>Cerrajería de Emergencia (5)</option>
+<option>Pintura &amp; Acabados (7)</option>
+<option>Jardinería &amp; Paisajismo (4)</option>
+<option>Refrigeración &amp; Línea Blanca (6)</option>
+</select>
+</div>
+</div>
+<!-- Availability Quick Dropdown -->
+<div class="md:col-span-2 flex items-center gap-space-xs px-space-sm py-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-outline text-[20px]">schedule</span>
+<div class="w-full flex flex-col">
+<label class="text-[10px] uppercase font-label-sm text-on-surface-variant tracking-wider leading-none">Disponibilidad</label>
+<select class="w-full bg-transparent text-on-surface text-body-sm font-label-md focus:outline-none cursor-pointer">
+<option selected="">Cualquiera</option>
+<option>Hoy mismo (Urgente)</option>
+<option>Próximas 24 horas</option>
+<option>Fin de semana</option>
+</select>
+</div>
+</div>
+<!-- Submit CTA -->
+<div class="md:col-span-2">
+<button class="w-full h-12 bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-space-xs transition-colors shadow-sm cursor-pointer" type="submit">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span>Buscar</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Main Directory Body (Sidebar + Technician Grid) -->
+<section class="w-full py-space-xl">
+<div class="max-w-container-max mx-auto px-space-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Left Filter Sidebar (~300px on desktop) -->
+<aside class="lg:col-span-3 space-y-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<!-- Filter Header -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Filtros</h3>
+</div>
+<button class="text-label-sm font-label-sm text-secondary hover:text-on-secondary-container underline cursor-pointer" type="button">
+                Limpiar todo
+              </button>
+</div>
+<!-- Distance Radius Slider -->
+<div class="py-space-md border-b border-surface-container">
+<div class="flex items-center justify-between mb-space-2xs">
+<label class="text-label-md font-label-md text-on-surface">Radio de Cobertura</label>
+<span class="bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">
+                  Hasta 3.5 km
+                </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-sm">
+                Mostrando técnicos en tu barrio y comunas limítrofes.
+              </p>
+<!-- Slider component UI -->
+<div class="relative w-full pt-1 pb-2">
+<input class="w-full accent-secondary bg-surface-container-highest rounded-lg h-2 cursor-pointer" max="5" min="1" step="0.5" type="range" value="3.5"/>
+<div class="flex justify-between text-[11px] font-label-sm text-outline mt-1 font-semibold">
+<span>1 km</span>
+<span>2 km</span>
+<span class="text-secondary font-bold">3.5 km</span>
+<span>5 km</span>
+</div>
+</div>
+</div>
+<!-- Sello de Confianza / Trust Verification Toggle -->
+<div class="py-space-md border-b border-surface-container">
+<label class="flex items-start gap-space-xs cursor-pointer group">
+<input checked="" class="mt-1 w-4 h-4 rounded text-secondary accent-secondary cursor-pointer" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="text-label-md font-label-md text-on-surface group-hover:text-primary transition-colors">
+                      Solo Vecinos Verificados
+                    </span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+                    Identidad, residencia local y antecedentes judiciales validados por VeciRed.
+                  </p>
+</div>
+</label>
+</div>
+<!-- Minimum Rating Filter -->
+<div class="py-space-md border-b border-surface-container">
+<label class="text-label-md font-label-md text-on-surface block mb-space-xs">Calificación Mínima</label>
+<div class="space-y-space-xs">
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-2">
+<input checked="" class="accent-primary" name="rating-filter" type="radio"/>
+<span class="flex items-center text-body-sm font-body-sm text-on-surface">
+<span class="text-secondary font-bold mr-1">★ 4.5</span> o superior
+                    </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline bg-surface-container px-2 py-0.5 rounded-full">18</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-2">
+<input class="accent-primary" name="rating-filter" type="radio"/>
+<span class="flex items-center text-body-sm font-body-sm text-on-surface">
+<span class="text-secondary font-bold mr-1">★ 4.0</span> o superior
+                    </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline bg-surface-container px-2 py-0.5 rounded-full">34</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-2">
+<input class="accent-primary" name="rating-filter" type="radio"/>
+<span class="text-body-sm font-body-sm text-on-surface">Cualquier puntaje</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline bg-surface-container px-2 py-0.5 rounded-full">42</span>
+</label>
+</div>
+</div>
+<!-- Price Tier Filter -->
+<div class="py-space-md border-b border-surface-container">
+<label class="text-label-md font-label-md text-on-surface block mb-space-xs">Rango de Tarifa Visita</label>
+<div class="space-y-2">
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input class="accent-primary" name="price-filter" type="radio"/>
+<span>$ Económico (Hasta $35.000 COP)</span>
+</label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input checked="" class="accent-primary" name="price-filter" type="radio"/>
+<span>$$ Estándar ($35.000 - $60.000 COP)</span>
+</label>
+<label class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface cursor-pointer">
+<input class="accent-primary" name="price-filter" type="radio"/>
+<span>$$$ Especialistas certificados (&gt; $60.000)</span>
+</label>
+</div>
+</div>
+<!-- Service Urgency & Extra guarantees -->
+<div class="py-space-md space-y-space-xs">
+<label class="flex items-start gap-space-xs cursor-pointer">
+<input class="mt-1 w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface">
+                  Atención de Emergencia (24/7)
+                </span>
+</label>
+<label class="flex items-start gap-space-xs cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-sm font-body-sm text-on-surface">
+                  Presupuesto o diagnóstico sin costo
+                </span>
+</label>
+</div>
+<!-- Apply CTA Button -->
+<div class="pt-space-sm">
+<button class="w-full h-11 bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer" type="button">
+<span>Aplicar Filtros</span>
+<span class="bg-surface-container-lowest/20 px-2 py-0.5 rounded text-[11px] font-bold">24</span>
+</button>
+</div>
+</div>
+<!-- Neighbor Direct Guarantee Micro-card -->
+<div class="bg-surface-container-low rounded-xl p-space-md">
+<div class="flex items-center gap-2 text-secondary mb-1">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="font-label-md text-label-md text-secondary font-bold">Seguridad Vecinal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              VeciRed corrobora que cada profesional posea comprobante domiciliario verificado en un radio menor a 5 km.
+            </p>
+</div>
+</aside>
+<!-- Main Directory Cards Grid (9 columns on desktop) -->
+<main class="lg:col-span-9 space-y-space-lg">
+<!-- Filter Summary & Sort Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<p class="text-body-md font-body-md text-on-surface font-semibold">
+                Mostrando <span class="text-primary font-bold">24 profesionales</span> en Los Laureles y alrededores
+              </p>
+<!-- Active Tag Chips -->
+<div class="flex flex-wrap items-center gap-1.5 mt-2">
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant text-label-sm font-label-sm px-2.5 py-1 rounded-full">
+                  Radio: ≤ 3.5 km
+                  <button class="hover:text-primary cursor-pointer leading-none" type="button">✕</button>
+</span>
+<span class="inline-flex items-center gap-1 bg-secondary-container/40 text-on-secondary-container text-label-sm font-label-sm px-2.5 py-1 rounded-full font-semibold">
+                  Vecinos Verificados
+                  <button class="hover:text-primary cursor-pointer leading-none" type="button">✕</button>
+</span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant text-label-sm font-label-sm px-2.5 py-1 rounded-full">
+                  Plomería y Gasfitería
+                  <button class="hover:text-primary cursor-pointer leading-none" type="button">✕</button>
+</span>
+</div>
+</div>
+<!-- Sort Dropdown -->
+<div class="flex items-center gap-2 self-start md:self-auto">
+<label class="text-body-sm font-body-sm text-on-surface-variant whitespace-nowrap">Ordenar por:</label>
+<select class="bg-surface-container-low text-on-surface font-label-md text-body-sm rounded-lg px-space-sm py-2 focus:outline-none cursor-pointer">
+<option>Proximidad (más cercanos)</option>
+<option>Mejor Calificados</option>
+<option>Tarifa: Menor a Mayor</option>
+<option>Más contratos completados</option>
+</select>
+</div>
+</div>
+<!-- Technician Cards Grid (3 Columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg">
+<!-- Card 1: Roberto D. (Plomero Master) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<!-- Top Image & Quick Badges -->
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a reliable middle-aged male technician wearing a dark navy polo shirt with plumbing tools organized in a bright neighborhood workshop behind him, natural lighting, trustworthy friendly smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLrpOfNtDxIr-rRNU_S0udu5D7gzuO-pi0Nbt4wMZvgYjgmwgBV5WJTMhl9mGQjHGt1QhoKiQJTelw1I0r710P2iSuJ7kECkeBMKKqe2MUFQOkN-3xHNW1iJnPWTKrhN-L9OJfk33n_yqfys9H_FYT23Q2c7wMITTi4FFH9EtX_t07O2Zve15YL6LVfYi8YhHVgLVpGJB-uQPGnhCLWQ-TzBr_4m5WJQTX-Yhj0uP_560X0bimV8xM"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>0.8 km • B. Jardines</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificado</span>
+</div>
+</div>
+<!-- Technician Details -->
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Roberto D.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      4.9 <span class="text-outline font-normal text-[12px]">(89)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Maestro Gasfíter Matriculado
+                  </p>
+<!-- Tags -->
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Gasfitería</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Calefones</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Fugas</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-secondary font-semibold px-2 py-0.5 rounded">Cert. SEC</span>
+</div>
+<!-- Rates & Availability -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Tarifa base:</span>
+<strong class="text-primary font-semibold">$40.000 COP</strong>
+</div>
+<div class="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Disponible hoy en la tarde</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Action CTA Buttons -->
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Lucía M. (Electricista) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a Hispanic woman certified electrician in a navy work vest with tools visible in background, confident smile, clean well-lit electrical service workshop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAcChc2QzcOE_mnpYEKaiN0D245YXuz7cFUundX2m1mbsRzXY3jAEEcAtQOs2647lMmmL6uK4iS1PhekMgbjPCrmA3Q4cfP4njyEY4gBc363gOPRi3iHMrEfV9dyymnyoTh9oKns7L6uXxfhmguwRo_ppSPDJFI3lp-B0NSxsgbC-MnB3l9mpRqqnLlQph2QQeMUWV_fn6xN7MKqBL0r5KX4sYRe83FyOtInU6D5ro45SYIqS0T-tn"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>1.2 km • Laureles Nogal</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificada</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Lucía M.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      5.0 <span class="text-outline font-normal text-[12px]">(64)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Ingeniera Técnica Electricista
+                  </p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Electricidad</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Tableros RETIE</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Cortos</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-secondary font-semibold px-2 py-0.5 rounded">Garantía 90d</span>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Tarifa base:</span>
+<strong class="text-primary font-semibold">$45.000 COP</strong>
+</div>
+<div class="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Disponible ahora (Urgencias)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Carlos V. (Cerrajería de Alta Seguridad) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of an experienced male master locksmith holding professional lock picks and precision key machine in a tidy local hardware shop, warm ambient light, friendly professional aura." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrHQTwupdxneS31R7Yf3mX_HI7dYfr2trUHqx6IVi2PbKviCvf5CaL5FixmlAiV9MGMTeTJg-4gt5y4vD_3NK3GSLcYzMGwQMkbrqqCJAUhjxwNLL6QYZpbMZKD-4Yancg_0xupE4PqQdAqXoHzhcSAGJlEqqxZXz4sMveeeqrXoBfDxXlLoUQImZ6tT8IWSHf9Xn-DZXak3bxrPcPro8riibNaqXiNiBxB-eVaP07C_G9n9BSVnyi"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>1.5 km • San Marcos</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificado</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Carlos V.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      4.9 <span class="text-outline font-normal text-[12px]">(112)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Cerrajería de Alta Seguridad
+                  </p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Cerrajería</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Digitales</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Aperturas</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-secondary font-semibold px-2 py-0.5 rounded">Líder Barrial</span>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Tarifa base:</span>
+<strong class="text-primary font-semibold">$35.000 COP</strong>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Disponible en 2 horas</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+<!-- Card 4: Andrés P. (Pintor y Acabados) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a clean, skilled house painter specialist wearing painters overalls, holding a high quality brush next to a freshly painted modern interior wall in warm neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKgbZSnrpgybrQisELeRfeIFmXuZZjYXkta4yDjwayuIowC49iIOllOdBazuWyleyt9Bgx_Wb6xTASygWUyXcpE5ZchifLU8hjDGsgSZt75Zb2roVPRDh1p55j9Eg99kkkOjcnWffDIGL1nM4EHYvhG9DLxWWS_GBM7x2Z2bDWVyjNEGyqx0tBeyQSGp3WbcoB4VhU88Ydndq9FNmpZTO-ayYHOnlAQ3kOAvgu6So9mMvigo8DJnwk"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>2.1 km • Poblado Norte</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificado</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Andrés P.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      4.8 <span class="text-outline font-normal text-[12px]">(52)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Pintor y Maestro de Acabados
+                  </p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Pintura Interior</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Impermeabilización</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Empaste</span>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Tarifa estimada:</span>
+<strong class="text-primary font-semibold">$30.000 COP / m²</strong>
+</div>
+<div class="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Agenda abierta esta semana</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+<!-- Card 5: Mateo S. (Electrodomésticos) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional technician inspecting the electronic motherboard of an appliance in a modern workshop with specialized diagnostic equipment, clean professional workwear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqaFP-XGke4ao9My5ukkkSphDr2sDzQrJxHhN19iMGIW-TMRxsL3pifl2tbZ8hlu71miQFYt7GPoboRn86btqCWzUoNqgHfg1F6y6LPmd_FDU5ofMzVC4A7YhUbb_t-EyAkLcAuERfcKVdjKswO4wuot9Il0zOS9cb9zLwCAAOc68Do5WzsaDu1FKMpvbEsCeHhVf_15AJdBXQnJqANnSy0bw91mydtLaqCTFbc1syElBxyk0Rjm5d"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>2.7 km • La Magnolia</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificado</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Mateo S.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      4.9 <span class="text-outline font-normal text-[12px]">(78)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Refrigeración y Electrodomésticos
+                  </p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Neveras</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Lavadoras</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-secondary font-semibold px-2 py-0.5 rounded">Repuestos Originales</span>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Diagnóstico:</span>
+<strong class="text-primary font-semibold">$35.000 COP (Deducible)</strong>
+</div>
+<div class="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Disponible mañana 8:00 AM</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+<!-- Card 6: Valentina R. (Paisajismo & Jardinería) -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a cheerful female landscape gardener with gardening gloves and shears in an upscale residential garden with lush greenery, sunlight, natural aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH9DXwu1o9LDr3YE02w8Ka_0mFT66SpEAveelBLEwI9iEnznJ1bMHohbR-7MorfLtVvhsX6weG6wZGM6rWTwJiBTHzHpF5skGvi2NyhT1rpEqIM7gIdBScEi8WVXEFvHWAlN2L4dqluxz0o9x195JHDj-cH2gu1P8vQeVoLbUdpHbytmXksrYUqEhT7RZhdcCPiacTEJzRNLiRrM5NxacWz5EBLzMEEfGM4xp6wmZ40nIrejwzPeRY"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">near_me</span>
+<span>3.1 km • Otraparte</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary text-on-secondary text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verificada</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center justify-between mb-1">
+<h4 class="text-headline-sm font-headline-sm text-primary font-bold">Valentina R.</h4>
+<span class="text-body-sm font-body-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                      4.8 <span class="text-outline font-normal text-[12px]">(41)</span>
+</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant font-medium mb-3">
+                    Paisajismo y Jardinería Residencial
+                  </p>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Poda Especializada</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Riego Tecnificado</span>
+<span class="text-[11px] font-label-sm bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded">Diseño Verde</span>
+</div>
+<div class="bg-surface-container-low/70 rounded-lg p-space-xs space-y-1 mb-space-xs">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Jornada desde:</span>
+<strong class="text-primary font-semibold">$65.000 COP</strong>
+</div>
+<div class="flex items-center gap-1.5 text-secondary text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Disponible jueves y viernes</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center gap-2">
+<button class="flex-1 h-11 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md rounded-lg flex items-center justify-center transition-colors cursor-pointer" type="button">
+                  Ver Perfil y Cotizar
+                </button>
+<button class="w-11 h-11 bg-surface-container hover:bg-surface-container-high text-primary rounded-lg flex items-center justify-center cursor-pointer transition-colors" title="Chat rápido" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Pagination Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md mt-space-xl">
+<span class="text-body-sm font-body-sm text-on-surface-variant">
+              Mostrando <strong class="text-on-surface">6</strong> de <strong class="text-on-surface">24</strong> técnicos en Los Laureles
+            </span>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg text-outline opacity-40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold" type="button">
+                1
+              </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" type="button">
+                2
+              </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" type="button">
+                3
+              </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" type="button">
+                4
+              </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-primary font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</section>
+<!-- Bottom Trust & Escrow Guarantee Banner -->
+<section class="w-full bg-primary py-space-xl">
+<div class="max-w-container-max mx-auto px-space-lg">
+<div class="bg-primary-container rounded-2xl p-space-lg md:p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg text-on-primary">
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary text-[32px]">verified_user</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-headline-lg font-headline-lg text-on-primary tracking-tight">Garantía VeciProtege</h3>
+<span class="bg-secondary text-on-secondary font-label-sm text-[11px] px-2 py-0.5 rounded font-bold uppercase">100% Segura</span>
+</div>
+<p class="text-body-md font-body-md text-primary-fixed max-w-2xl">
+              Contrata con absoluta tranquilidad: Tus pagos permanecen en cuenta de custodia y se liberan únicamente cuando el técnico concluya el trabajo a tu entera satisfacción y conformidad.
+            </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-xs shrink-0 w-full md:w-auto">
+<button class="h-12 px-space-lg bg-surface-container-lowest hover:bg-surface-container text-primary font-label-lg text-label-lg rounded-lg transition-colors cursor-pointer" type="button">
+            Conoce cómo funciona
+          </button>
+<button class="h-12 px-space-lg bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg transition-colors cursor-pointer" type="button">
+            Publicar requerimiento gratis
+          </button>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>

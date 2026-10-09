@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#0f2942", "on-tertiary-container": "#818fa6", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#314863", "surface-variant": "#d3e4fe", "outline": "#74777e", "error-container": "#ffdad6", "surface": "#f8f9ff", "tertiary": "#041325", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#6bd8cb", "surface-container-high": "#dce9ff", "tertiary-container": "#1a283b", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#3a485c", "on-surface-variant": "#43474d", "on-secondary-container": "#006f66", "on-surface": "#0b1c30", "on-tertiary-fixed": "#0d1c2f", "error": "#ba1a1a", "on-background": "#0b1c30", "primary": "#001428", "tertiary-fixed": "#d5e3fd", "background": "#f8f9ff", "secondary": "#006a61", "on-error-container": "#93000a", "primary-fixed-dim": "#b0c9e8", "secondary-container": "#86f2e4", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "primary-fixed": "#d1e4ff", "tertiary-fixed-dim": "#b9c7e0", "on-secondary": "#ffffff", "outline-variant": "#c3c6ce", "inverse-primary": "#b0c9e8", "secondary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-tint": "#49607c", "on-primary": "#ffffff", "on-primary-container": "#7991af", "on-secondary-fixed-variant": "#005049", "on-error": "#ffffff", "inverse-surface": "#213145", "on-primary-fixed": "#011d35", "on-secondary-fixed": "#00201d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1280px", "space-sm": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "form-column-width": "540px", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-3xl": "4rem", "split-sidebar-width": "420px", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/40 shadow-[0_1px_8px_rgba(15,41,66,0.04)]"><div class="h-16 max-w-container-max mx-auto px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><img alt="VeciRed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W5DOBTQ5PZsEvZbzDPgi12nKfLWYgKSpCm8nzCUuEgN4EmQLICiVdOwvLmSAJTuH2J-HliBgkGUiCGIuTSl2tuiMaJpVeqwY7p8j6cAvcWS9LC3AvNoEkt_YQ4y8gIBISdhc-QD7XWl5mwAznH3BnzFHnsO38KP4-k7Lsp3Om5H1KaUtv7W_vR7bJShC2dsAZht9zHYbmcUujbJwcb4cr1EeqltdOfx6AyeEybwaJmmKDIHdw8SnNjBbw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VeciRed</span></div><div class="hidden lg:flex items-center gap-space-2xs bg-surface-container-low border border-outline-variant/60 rounded-full px-space-sm py-1"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span class="font-label-sm text-label-sm text-secondary uppercase">Tu Barrio:</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Los Laureles / Envigado</span></div></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-bold border-b-2 border-primary"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="como-funciona" href="#">Cómo funciona</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias-de-servicios" href="#">Categorías de servicios</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="garantia-de-confianza" href="#">Garantía de confianza</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="iniciar-sesion" href="#">¿Ya tienes cuenta? <span class="font-semibold text-primary underline decoration-outline-variant">Iniciar Sesión</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Top Breadcrumb & Request Context Bar -->
+<section class="w-full bg-surface-container-lowest shadow-sm">
+<div class="max-w-container-max mx-auto px-space-lg py-space-md">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs text-body-sm text-on-surface-variant mb-space-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span> Inicio
+        </a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Mis Solicitudes</a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="font-semibold text-on-surface">Solicitud #VECI-8492</span>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="font-semibold text-secondary">Propuestas Recibidas</span>
+</nav>
+<!-- Request Details Header -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-space-xs">
+<div class="flex-1 min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-2xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 3 propuestas activas
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">plumbing</span> Gasfitería / Plomería
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-low text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">distance</span> Radio: 3 km - Los Laureles / Envigado
+            </span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Publicada hace 2 horas
+            </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight truncate">
+            Reparación de grifo que gotea en cocina / lavaplatos
+          </h1>
+</div>
+<!-- Header Actions -->
+<div class="flex flex-wrap items-center gap-space-xs shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+            Ver solicitud original
+          </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-low text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+            Pausar
+          </button>
+<a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-sm" href="#comparativa">
+<span class="material-symbols-outlined text-[18px]">compare_arrows</span>
+            Comparar en detalle
+          </a>
+</div>
+</div>
+<!-- Quick Filter Tabs -->
+<div class="flex items-center gap-space-sm mt-space-md pt-space-xs overflow-x-auto">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 shadow-sm shrink-0" id="tab-all" type="button">
+<span class="material-symbols-outlined text-[16px]">grid_view</span> Todas las propuestas (3)
+        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-md text-label-md flex items-center gap-1.5 transition-colors shrink-0" id="tab-near" type="button">
+<span class="material-symbols-outlined text-[16px]">near_me</span> Más cercano
+        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-md text-label-md flex items-center gap-1.5 transition-colors shrink-0" id="tab-rating" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span> Mejor calificado
+        </button>
+<button class="px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-md text-label-md flex items-center gap-1.5 transition-colors shrink-0" id="tab-price" type="button">
+<span class="material-symbols-outlined text-[16px]">payments</span> Menor precio
+        </button>
+<span class="ml-auto hidden md:flex items-center gap-1 text-label-sm font-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]">shield</span> VeciPay Protección activa en todas las cotizaciones
+        </span>
+</div>
+</div>
+</section>
+<!-- Main Section: Candidate Cards Grid -->
+<section class="max-w-container-max mx-auto px-space-lg py-space-xl w-full">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Especialistas locales listos para acudir</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Revisa perfiles, cercanía geográfica en tu barrio y antecedentes verificados por VeciRed.</p>
+</div>
+<div class="hidden sm:flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-full shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Garantía Comunitaria 30-90 días</span>
+</div>
+</div>
+<!-- 3-Column Proposal Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg items-stretch">
+<!-- Card 1: Roberto D. -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<!-- Header info with photo -->
+<div class="flex items-start gap-space-sm mb-space-md">
+<div class="relative shrink-0">
+<img alt="Roberto D. Gasfiter" class="w-16 h-16 rounded-xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1WHVmi6HXJkdtAgwJUk1NIlhsIKDZ01TNOxgy9KY6aJIS1KIcJMbJPlC2ibkM9j8WRIgK2upT1gk8Wc7puiFRX5nHCNTsxARYoC1aqxVTr_g9teJIBM0YTzqdLfnv4L8nH64Og8gGZ2_ahfzPQuoewGFXDRtzO4R8k6KsGCGboxxAo4cW7Mt8JFkzWCJWvoAZrXjSO1Y2u4bLrU3gDkgborlA4CnDDvbVe_Ca__RLmHL-TRWzRWnIxQBLo"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary rounded-full p-0.5 shadow">
+<span class="material-symbols-outlined text-[14px] block">verified</span>
+</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Roberto D.</h3>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold">
+<span class="material-symbols-outlined text-amber-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Fontanero Profesional (12+ años exp)</p>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">thumb_up</span> 89 reseñas de vecinos
+              </p>
+</div>
+</div>
+<!-- Proximity & Verification Badges -->
+<div class="bg-surface-container-low rounded-lg p-space-sm mb-space-sm space-y-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="flex items-center gap-1 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary text-[18px]">near_me</span> 1.2 km de distancia
+              </span>
+<span class="text-on-surface-variant">~15 min de llegada</span>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-secondary text-label-sm font-label-sm font-semibold shadow-2xs">
+<span class="material-symbols-outlined text-[13px]">verified_user</span> Sello Vecino Verificado
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-primary-fixed-variant text-label-sm font-label-sm font-semibold shadow-2xs">
+<span class="material-symbols-outlined text-[13px]">gavel</span> Antecedentes OK
+              </span>
+</div>
+</div>
+<!-- Availability & Proposal preview -->
+<div class="mb-space-md">
+<div class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface font-bold mb-space-xs bg-surface-container px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[15px] text-primary">calendar_clock</span>
+              Visita: 15/10/2026 - Mañana (09:00 - 11:00)
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-container-low/60 p-space-sm rounded-lg italic">
+              "Hola María, tengo repuestos certificados para griferías monomando y sellos de silicona industrial. Puedo pasar en la mañana y dejarlo listo con prueba de presión."
+            </p>
+</div>
+</div>
+<!-- Price & Actions -->
+<div class="pt-space-sm bg-surface-container-lowest">
+<div class="mb-space-sm">
+<span class="font-body-sm text-body-sm text-outline block">Tarifa Cotizada</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">$45.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">COP</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Repuesto menor &amp; empaquetadura incluido</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="w-full py-2.5 px-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all text-center shadow-sm" type="button">
+              Seleccionar
+            </button>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md hover:bg-surface-container transition-colors text-center flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span> Chat / Perfil
+            </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Juan C. (Featured / Recommended) -->
+<article class="relative bg-surface-container-lowest rounded-xl p-space-lg shadow-xl flex flex-col justify-between transform lg:-translate-y-2">
+<!-- Floating Recommendation Banner -->
+<div class="bg-primary text-on-primary py-1.5 px-space-md rounded-lg flex items-center justify-center gap-1.5 mb-space-md shadow-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold tracking-wider uppercase text-secondary-fixed">Más Cercano &amp; Recomendado - Top Vecino</span>
+</div>
+<div>
+<!-- Header info with photo -->
+<div class="flex items-start gap-space-sm mb-space-md">
+<div class="relative shrink-0">
+<img alt="Juan C. Maestro Gasfiter" class="w-20 h-20 rounded-xl object-cover shadow-md" src="https://lh3.googleusercontent.com/aida/AEtjO1XUWgT-DqfbPGcSkTJTsTZKe6M6Y5a5R1stsiW9TA2-d-OR-kUtyTuKsI7sDo5mbGCM_rYNhMPststj_aN5vJr-8hRSAzrbk7Z4jT9LEEzRvSmHsmnrHbJ0K9ykFBm5RNqPbNduPvOApJoIbKQpYwbwom0Ti2pkp56isJ7hqBzLe8c6O0ysqr8YRiQM4cDDTqDwM6mEKJpf0_yPQZFvqzBGROSUSs7gV6Ukr6APvATfHHl2F07-1dE064A"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary rounded-full p-1 shadow">
+<span class="material-symbols-outlined text-[16px] block">verified</span>
+</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate font-bold">Juan C.</h3>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-900 font-label-md text-label-md font-bold shadow-2xs">
+<span class="material-symbols-outlined text-amber-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span> 5.0
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant font-medium">Maestro Gasfíter Certificado SENA</p>
+<p class="font-body-sm text-body-sm text-secondary font-semibold flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">workspace_premium</span> 64 trabajos impecables en Los Laureles
+              </p>
+</div>
+</div>
+<!-- Proximity & Verification Badges -->
+<div class="bg-surface-container-high/60 rounded-lg p-space-sm mb-space-sm space-y-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span> 0.8 km de distancia
+              </span>
+<span class="font-semibold text-secondary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span> ~8 min en moto
+              </span>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm font-bold">
+<span class="material-symbols-outlined text-[13px]">military_tech</span> Sello Oro VeciRed
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm font-semibold shadow-2xs">
+<span class="material-symbols-outlined text-[13px]">shield_with_heart</span> Garantía 90 días
+              </span>
+</div>
+</div>
+<!-- Availability & Proposal preview -->
+<div class="mb-space-md">
+<div class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-secondary font-bold mb-space-xs bg-secondary-container/40 px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[16px] text-secondary">alarm_on</span>
+              Llega en 10-15 min - Disponible hoy mismo
+            </div>
+<p class="font-body-md text-body-md text-on-surface bg-surface-container-low p-space-sm rounded-lg font-normal shadow-2xs">
+              "¡Buenas tardes vecina! Estoy a la vuelta en Calle 33 con Cra 76 terminando un trabajo. Traigo kit completo de llaves y empaques nuevos de alta duración. Garantía total."
+            </p>
+</div>
+</div>
+<!-- Price & Actions -->
+<div class="pt-space-sm bg-surface-container-lowest">
+<div class="mb-space-sm flex items-end justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-outline block">Tarifa Fija Cerrada</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">$50.000</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">COP</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Sin cobros sorpresa ni letra chica</span>
+</div>
+<span class="px-2 py-1 rounded bg-secondary/10 text-secondary text-label-sm font-label-sm font-bold">
+              Mejor Opción
+            </span>
+</div>
+<div class="space-y-space-2xs">
+<button class="w-full py-3 px-4 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary transition-all text-center flex items-center justify-center gap-2 shadow-md hover:shadow-lg" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">check_circle</span>
+              Seleccionar Trabajador (Recomendado)
+            </button>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors text-center flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">chat</span> Chatear con Juan
+            </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Luisa M. -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<!-- Header info with photo -->
+<div class="flex items-start gap-space-sm mb-space-md">
+<div class="relative shrink-0">
+<img alt="Luisa M. Especialista en Reparaciones" class="w-16 h-16 rounded-xl object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1VM3m0LFMZF4f5oEGm-esaoDJyfnYOs8FHnpdBmytqNsBTsO_y5MorZLX5ATH0FmqmoW23rkSA_VAYQLUuquJpXKWjTL7Amt4wK4ycqGHegPJG-iWrgiCQHmMHSNZrrfIn2nUWOk88VaAL4AAhINmBkRLzn2HiYhV-M6iGjeoY0YHLWo2Gv0sqSd00uSwg5ltqlt8ff6V0YZKi7FggFxM5DC0ryinyiiEGcLWr9z-0X0uR2nFIldZUf8wk"/>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary rounded-full p-0.5 shadow">
+<span class="material-symbols-outlined text-[14px] block">verified</span>
+</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Luisa M.</h3>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold">
+<span class="material-symbols-outlined text-amber-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.6
+                </span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Servicios del Hogar &amp; Fontanería Integral</p>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">thumb_up</span> 32 trabajos completados
+              </p>
+</div>
+</div>
+<!-- Proximity & Verification Badges -->
+<div class="bg-surface-container-low rounded-lg p-space-sm mb-space-sm space-y-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="flex items-center gap-1 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary text-[18px]">location_on</span> 2.5 km de distancia
+              </span>
+<span class="text-on-surface-variant">Envigado Centro</span>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-secondary text-label-sm font-label-sm font-semibold shadow-2xs">
+<span class="material-symbols-outlined text-[13px]">verified_user</span> Vecina Verificada
+              </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-lowest text-outline text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[13px]">receipt_long</span> Factura disponible
+              </span>
+</div>
+</div>
+<!-- Availability & Proposal preview -->
+<div class="mb-space-md">
+<div class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface font-bold mb-space-xs bg-surface-container px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+              Visita: 15/10/2026 - Tarde (14:00 - 17:00)
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-container-low/60 p-space-sm rounded-lg italic">
+              "Hola, puedo revisar la fuga en la tarde y evaluar si requiere cambio de cartucho cerámico o flexible. Ajustamos tarifa en sitio según repuesto."
+            </p>
+</div>
+</div>
+<!-- Price & Actions -->
+<div class="pt-space-sm bg-surface-container-lowest">
+<div class="mb-space-sm">
+<span class="font-body-sm text-body-sm text-outline block">Tarifa Estimada</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-primary font-bold">$35k - $60k</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">COP</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">A convenir / Presupuesto Negociable</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container-high text-primary font-label-md text-label-md hover:bg-surface-container transition-colors text-center" type="button">
+              Seleccionar
+            </button>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container-low text-primary font-label-md text-label-md hover:bg-surface-container transition-colors text-center flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span> Chatear
+            </button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Middle Section: Immediate Comparison Matrix -->
+<section class="max-w-container-max mx-auto px-space-lg py-space-md w-full scroll-mt-20" id="comparativa">
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-[22px]">table_chart</span>
+<h3 class="font-headline-lg text-headline-lg text-primary tracking-tight">Comparativa Rápida de Propuestas</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Contrasta lado a lado los factores clave antes de confirmar la reserva con fondos en custodia.</p>
+</div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-secondary bg-secondary-container/30 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[16px]">lock</span> Tu dinero no se libera hasta que el trabajo quede aprobado
+        </div>
+</div>
+<!-- Matrix Table Desktop -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface font-label-md text-label-md">
+<th class="py-3 px-4 rounded-l-lg w-1/4">Criterio de Evaluación</th>
+<th class="py-3 px-4 w-1/4">Roberto D.</th>
+<th class="py-3 px-4 w-1/4 bg-surface-container text-primary font-bold">
+                Juan C. <span class="text-secondary font-bold">(Top)</span>
+</th>
+<th class="py-3 px-4 rounded-r-lg w-1/4">Luisa M.</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y-0">
+<!-- Distancia exacta -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-4 font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">near_me</span> Distancia exacta
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">1.2 km de distancia</td>
+<td class="py-3 px-4 bg-surface-container/30 font-bold text-secondary">
+                0.8 km ⭐ El más cercano
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">2.5 km de distancia</td>
+</tr>
+<!-- Tarifa propuesta -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-4 font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">payments</span> Tarifa propuesta
+              </td>
+<td class="py-3 px-4 font-bold text-on-surface">$45.000 COP</td>
+<td class="py-3 px-4 bg-surface-container/30 font-bold text-primary">
+                $50.000 COP <span class="font-normal text-body-sm text-secondary block">(Tarifa Fija Cerrada)</span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">A convenir ($35k - $60k)</td>
+</tr>
+<!-- Vecinos en común / Reseñas locales -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-4 font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">groups</span> Vecinos &amp; Reseñas
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">14 vecinos en Los Laureles</td>
+<td class="py-3 px-4 bg-surface-container/30 font-semibold text-on-surface">
+                28 vecinos en Los Laureles
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">6 vecinos en Envigado</td>
+</tr>
+<!-- Disponibilidad / Arribo -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-4 font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">schedule</span> Disponibilidad
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">Mañana 09:00 AM</td>
+<td class="py-3 px-4 bg-surface-container/30 font-bold text-secondary">
+                Inmediato (&lt;15 min hoy)
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">Mañana en la tarde</td>
+</tr>
+<!-- Garantía y respaldo -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-3 px-4 font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">security</span> Garantía VeciRed
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">30 días de garantía</td>
+<td class="py-3 px-4 bg-surface-container/30 font-bold text-secondary">
+                90 días + Sello Oro
+              </td>
+<td class="py-3 px-4 text-on-surface-variant">Garantía estándar 15 días</td>
+</tr>
+<!-- Action buttons in table -->
+<tr class="bg-surface-container-low/50">
+<td class="py-4 px-4 font-label-md text-label-md text-on-surface-variant">Acción Directa</td>
+<td class="py-4 px-4">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-label-sm text-label-sm hover:bg-primary-container transition-colors" type="button">
+                  Elegir Roberto
+                </button>
+</td>
+<td class="py-4 px-4 bg-surface-container/70">
+<button class="px-4 py-2 rounded bg-primary-container text-on-primary font-label-sm text-label-sm hover:bg-primary transition-colors font-bold shadow-sm" type="button">
+                  Elegir Juan (Top)
+                </button>
+</td>
+<td class="py-4 px-4">
+<button class="px-3 py-1.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm hover:bg-surface-container transition-colors" type="button">
+                  Elegir Luisa
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Proximity Map & Escrow Protection -->
+<section class="max-w-container-max mx-auto px-space-lg py-space-xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Left Box: Interactive Hyperlocal Mini-Map (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">map</span>
+                Técnicos ubicados en tu mismo cuadrante
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Tu Hogar: <span class="font-semibold text-on-surface">Cra 74 #32-15, Los Laureles</span> (Radio 3 km activo)
+              </p>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Aumentar zoom" class="w-8 h-8 rounded bg-surface-container-low flex items-center justify-center text-primary hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+<button aria-label="Disminuir zoom" class="w-8 h-8 rounded bg-surface-container-low flex items-center justify-center text-primary hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+</div>
+</div>
+<!-- Map Visualization Container -->
+<div class="relative w-full h-72 rounded-lg overflow-hidden shadow-inner bg-surface-container-high">
+<div class="w-full h-full bg-cover bg-center" data-location="Los Laureles, Medellin, Colombia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDP5eidYbNjQaExNxC2lZK2ZQrmwArvj-oeA6iB3NXd6QtxlYpIyAw1-TG9Q-BG2PwoCtk3s5_xe7rEJhGM8RxBX93iOcYVcPZDcgNHhpB6i9rBV930pEQnOX0BJDpU70Xo2_L2dX9B-oN1xfsp_57C8Dq_mOA8flfyuIC69_V0xkXftz9GBSxabQxKIbpQufbk3upubMdvfzxXiIuL-ZSLq2eWRVcmP5u6jhsutW8qqh1wk1O_ZwpJ');"></div>
+<!-- Map Overlay Graphic & Radar Ring -->
+<div class="absolute inset-0 bg-primary/5 pointer-events-none flex items-center justify-center">
+<div class="w-48 h-48 rounded-full border-2 border-dashed border-secondary/40 animate-pulse pointer-events-none flex items-center justify-center">
+<div class="w-24 h-24 rounded-full bg-secondary/10 flex items-center justify-center">
+<!-- User Home Pin -->
+<div class="relative flex flex-col items-center">
+<span class="bg-primary text-on-primary p-1.5 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-[18px] block">home</span>
+</span>
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-1.5 py-0.5 rounded shadow mt-1 whitespace-nowrap">Tu Hogar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pin Juan C. (0.8km) -->
+<div class="absolute top-1/3 left-2/3 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="flex flex-col items-center">
+<span class="bg-secondary text-on-secondary p-1 rounded-full shadow-lg animate-bounce">
+<span class="material-symbols-outlined text-[16px] block">handyman</span>
+</span>
+<div class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded shadow font-bold flex items-center gap-1 mt-0.5">
+<span>Juan C.</span>
+<span class="text-secondary font-extrabold">(0.8 km)</span>
+</div>
+</div>
+</div>
+<!-- Pin Roberto D. (1.2km) -->
+<div class="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="flex flex-col items-center">
+<span class="bg-primary text-on-primary p-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-[16px] block">plumbing</span>
+</span>
+<div class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded shadow mt-0.5">
+                  Roberto D. (1.2 km)
+                </div>
+</div>
+</div>
+<!-- Pin Luisa M. (2.5km) -->
+<div class="absolute bottom-6 right-1/4 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="flex flex-col items-center">
+<span class="bg-primary text-on-primary p-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-[16px] block">home_repair_service</span>
+</span>
+<div class="bg-surface-container-lowest text-primary font-label-sm text-label-sm px-2 py-0.5 rounded shadow mt-0.5">
+                  Luisa M. (2.5 km)
+                </div>
+</div>
+</div>
+<!-- Coverage Badge -->
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 rounded text-label-sm font-label-sm text-on-surface shadow-sm">
+<span class="font-bold text-secondary">● Cobertura en vivo:</span> 3 km a la redonda
+            </div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-sm text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary"></span> Tu Ubicación
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary"></span> Técnico Más Cercano
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-surface-tint"></span> Otros Técnicos
+            </span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Tiempos calculados con tráfico local en tiempo real</span>
+</div>
+</div>
+<!-- Right Box: Escrow & Guarantee Protection (5 Cols) -->
+<div class="lg:col-span-5 bg-primary-container text-on-primary rounded-xl p-space-lg shadow-md flex flex-col justify-between">
+<div>
+<!-- Title & Subtitle -->
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="p-2 rounded-lg bg-secondary/20 text-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-primary tracking-tight font-bold">
+                Custodia VeciPay &amp; Garantía
+              </h3>
+<p class="font-label-sm text-label-sm text-on-primary-container">
+                Protección 100% libre de riesgos para tu hogar
+              </p>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-tertiary-fixed mb-space-md">
+            Nunca pagas en efectivo por adelantado. Tu dinero se resguarda en cuenta de custodia y solo se transfiere cuando verificas que el grifo funciona perfectamente.
+          </p>
+<!-- 3 Visual Step Cards -->
+<div class="space-y-space-xs">
+<!-- Step 1 -->
+<div class="bg-tertiary-container/60 rounded-lg p-space-sm flex items-start gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary font-bold text-label-sm font-label-sm flex items-center justify-center shrink-0 mt-0.5">
+                1
+              </span>
+<div class="min-w-0">
+<h4 class="font-label-md text-label-md text-on-primary font-semibold">Elige tu técnico de confianza</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+                  Selecciona la propuesta que mejor te convenga y confirma el valor cerrado acordado.
+                </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-tertiary-container/60 rounded-lg p-space-sm flex items-start gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary font-bold text-label-sm font-label-sm flex items-center justify-center shrink-0 mt-0.5">
+                2
+              </span>
+<div class="min-w-0">
+<h4 class="font-label-md text-label-md text-on-primary font-semibold">Fondos seguros en custodia VeciPay</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+                  El pago queda congelado de forma segura en entidad bancaria vigilada. El técnico ya sabe que su pago está asegurado.
+                </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-tertiary-container/60 rounded-lg p-space-sm flex items-start gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary font-bold text-label-sm font-label-sm flex items-center justify-center shrink-0 mt-0.5">
+                3
+              </span>
+<div class="min-w-0">
+<h4 class="font-label-md text-label-md text-on-primary font-semibold">Liberas el pago con visto bueno</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+                  Solo cuando el grifo no gotee y apruebes la prueba técnica das un clic para liberar los fondos.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Badges Footer -->
+<div class="pt-space-md mt-space-sm bg-tertiary/20 rounded-lg p-space-sm flex flex-wrap items-center justify-between gap-space-xs text-on-primary-container">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">policy</span>
+<span>Póliza de Daños hasta <strong class="text-on-primary">$2.500.000 COP</strong></span>
+</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">encrypted</span>
+<span>Cifrado TLS 256-bit</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Quick Filter Script -->
+<script>
+    (function() {
+      const tabs = [
+        document.getElementById('tab-all'),
+        document.getElementById('tab-near'),
+        document.getElementById('tab-rating'),
+        document.getElementById('tab-price')
+      ];
+
+      tabs.forEach(tab => {
+        if (!tab) return;
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => {
+            if (t) {
+              t.className = 'px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-md text-label-md flex items-center gap-1.5 transition-colors shrink-0';
+            }
+          });
+          this.className = 'px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 shadow-sm shrink-0';
+        });
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>

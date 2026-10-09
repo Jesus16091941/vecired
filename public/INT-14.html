@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Publicar Solicitud de Servicio - VeciRed</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#0f2942',
+              dark: '#081726',
+              light: '#1b3f63',
+            },
+            surface: {
+              DEFAULT: '#f8f9ff',
+              container: '#ffffff',
+              subtle: '#eff4ff',
+              dim: '#e2e9f6',
+            },
+            accent: {
+              green: '#10b981',
+              red: '#ef4444',
+              amber: '#f59e0b',
+              blue: '#2563eb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f4f6fb;
+      color: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .pulse-radar {
+      position: relative;
+    }
+    .pulse-radar::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(16, 185, 129, 0.6);
+      animation: ripple 2s infinite ease-out;
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#f4f6fb]">
+<!-- Top Global Header -->
+<header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<!-- Brand & Neighborhood Context -->
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 text-primary font-extrabold text-xl tracking-tight" href="#">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
+<i class="fa-solid fa-house-chimney-crack text-sm"></i>
+</div>
+<span class="text-2xl font-bold tracking-tight text-primary">Veci<span class="text-blue-600">Red</span></span>
+</a>
+<!-- Location Badge Pill -->
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-subtle border border-blue-200 text-xs font-semibold text-primary">
+<i class="fa-solid fa-location-dot text-blue-600"></i>
+<span>TU BARRIO: <strong class="text-slate-900">Los Laureles / Envigado</strong></span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+<!-- Quick Nav & User Profile -->
+<div class="flex items-center gap-5">
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+<a class="hover:text-primary transition-colors" href="#">Cómo funciona</a>
+<a class="hover:text-primary transition-colors" href="#">Categorías</a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#">
+<i class="fa-solid fa-shield-halved text-emerald-600"></i>
+            Garantía VeciProtege
+          </a>
+</nav>
+<div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+<!-- Notification & User -->
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 hover:text-primary hover:bg-slate-100 rounded-lg transition-colors">
+<i class="fa-regular fa-bell text-lg"></i>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-emerald-500 rounded-full ring-2 ring-white"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-1">
+<div class="w-9 h-9 rounded-full bg-blue-100 border border-blue-300 flex items-center justify-center text-primary font-bold text-xs">
+              MF
+            </div>
+<div class="hidden sm:block text-left text-xs">
+<div class="font-semibold text-slate-800 leading-tight">María F.</div>
+<div class="text-slate-500 text-[11px]">Vecina Residente</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Progress Bar Sub-header -->
+<div class="bg-white border-b border-slate-200/80 py-3.5 shadow-xs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary text-white">
+            Paso 1 de 3
+          </span>
+<h1 class="text-base sm:text-lg font-bold text-slate-900">
+            Detalle de la Solicitud de Servicio
+          </h1>
+</div>
+<!-- Step Indicator Dots / Bars -->
+<div class="flex items-center gap-2 text-xs">
+<div class="flex items-center gap-1.5 font-semibold text-primary">
+<span class="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">1</span>
+<span>Descripción y Horario</span>
+</div>
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="flex items-center gap-1.5 text-slate-400 font-medium">
+<span class="w-5 h-5 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-[10px]">2</span>
+<span class="hidden md:inline">Revisión Vecinal</span>
+</div>
+<div class="w-8 h-1 bg-slate-200 rounded-full"></div>
+<div class="flex items-center gap-1.5 text-slate-400 font-medium">
+<span class="w-5 h-5 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-[10px]">3</span>
+<span class="hidden md:inline">Publicación</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout (2 Columns) -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Main Form (8 cols) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Urgency Alert Banner (Interactive Toggle) -->
+<div class="bg-gradient-to-r from-red-50 to-rose-50 border border-red-200 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-200 hover:border-red-300">
+<div class="flex items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-red-100 border border-red-200 text-red-600 flex items-center justify-center text-lg shrink-0">
+<i class="fa-solid fa-bell-concierge animate-bounce"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-sm sm:text-base font-bold text-red-900">Modo Urgencia: Atención Inmediata Hoy</h3>
+<span class="px-2 py-0.5 bg-red-600 text-white rounded text-[10px] font-extrabold uppercase tracking-wider">Prioridad Alta</span>
+</div>
+<p class="text-xs text-red-700 mt-0.5">
+                  Notifica inmediatamente a técnicos de guardia dentro de 1 a 3 km. Tiempo de respuesta estimado: &lt; 15 min.
+                </p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="urgencyToggle" type="checkbox"/>
+<div class="w-13 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-red-600"></div>
+</label>
+</div>
+</div>
+<!-- SECTION 1: Issue Description & Smart AI Categorization -->
+<section class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-100">
+                01
+              </span>
+<h2 class="text-base font-bold text-slate-900">¿Qué necesitas reparar o solucionar hoy?</h2>
+</div>
+<span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-wand-magic-sparkles text-blue-500 mr-1"></i>IA Predictiva Activa</span>
+</div>
+<p class="text-xs text-slate-500 mb-3">
+            Escribe en tus propias palabras con el mayor detalle posible. Nuestro asistente clasificará tu necesidad y sugerirá especialistas certificados.
+          </p>
+<!-- Textarea -->
+<div class="relative">
+<textarea class="w-full rounded-xl border border-slate-300 p-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none shadow-xs font-normal leading-relaxed" placeholder="Ej: Tengo una fuga continua debajo del lavaplatos que empezó anoche. El agua gotea por la llave de paso y ya mojó el mueble. Necesito que venga alguien a revisar y cambiar el empaque o tubería flexible..." rows="4">Tengo una fuga constante de agua bajo el mueble del lavaplatos en la cocina. Parece que la llave de paso o el sifón se agrietaron y gotea sin parar. Se necesita cambio urgente de tubería flexible y sellado.</textarea>
+<div class="absolute bottom-2.5 right-3 text-[11px] text-slate-400 font-medium">
+              184 / 500 caracteres
+            </div>
+</div>
+<!-- Quick Suggestion Pills -->
+<div class="mt-3 flex flex-wrap items-center gap-1.5">
+<span class="text-[11px] font-semibold text-slate-400 mr-1">Sugerencias rápidas:</span>
+<button class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">
+              Fuga en llave de paso
+            </button>
+<button class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">
+              Desagüe tapado
+            </button>
+<button class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">
+              Reemplazo grifo monomando
+            </button>
+<button class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors" type="button">
+              Presión baja de agua
+            </button>
+</div>
+<!-- AI Smart Category Predictor Badge Box -->
+<div class="mt-5 p-4 rounded-xl bg-surface-subtle border border-blue-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start sm:items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+<i class="fa-solid fa-faucet-drip text-base"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-blue-700 uppercase tracking-wider flex items-center gap-1">
+<i class="fa-solid fa-microchip"></i> Detección Automática IA
+                  </span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+<i class="fa-solid fa-circle-check text-[9px]"></i> 98% Confianza
+                  </span>
+</div>
+<div class="text-sm font-bold text-slate-900 mt-0.5">
+                  Gasfitería &amp; Fontanería Residencial
+                </div>
+</div>
+</div>
+<button class="text-xs font-semibold text-primary hover:text-blue-700 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:border-primary transition-all self-start sm:self-auto" type="button">
+<i class="fa-solid fa-pen-to-square text-[11px]"></i>
+              Cambiar Categoría
+            </button>
+</div>
+<!-- Interactive Specialty Tags -->
+<div class="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-2">
+<span class="text-xs font-medium text-slate-500 mr-1">Especialidades detectadas:</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-800 text-xs font-semibold border border-blue-200">
+<i class="fa-solid fa-check text-[10px]"></i> Detección y contención de fugas
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-blue-800 text-xs font-semibold border border-blue-200">
+<i class="fa-solid fa-check text-[10px]"></i> Reparación de grifería y sifón
+            </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer text-xs font-medium transition-colors">
+              + Instalación de llaves de bola
+            </span>
+</div>
+</section>
+<!-- SECTION 2: Photo & Video Upload -->
+<section class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-100">
+                02
+              </span>
+<h2 class="text-base font-bold text-slate-900">Fotos y Videos del Problema</h2>
+</div>
+<span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+              Presupuestos 40% más precisos
+            </span>
+</div>
+<p class="text-xs text-slate-500 mb-4">
+            Sube tomas claras del área dañada, marca de los repuestos o un video corto mostrando la fuga.
+          </p>
+<!-- Drop-zone area -->
+<div class="border-2 border-dashed border-slate-300 hover:border-primary rounded-2xl p-5 text-center bg-slate-50/60 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-white shadow-xs border border-slate-200 flex items-center justify-center mx-auto text-primary text-xl group-hover:scale-105 transition-transform">
+<i class="fa-solid fa-cloud-arrow-up"></i>
+</div>
+<div class="mt-2.5 text-sm font-bold text-slate-800">
+              Arrastra y suelta tus fotos o videos aquí
+            </div>
+<div class="text-xs text-slate-400 mt-1">
+              Formatos aceptados: JPG, PNG, HEIC o MP4 (Máximo 25MB por archivo)
+            </div>
+<button class="mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:text-primary hover:border-primary shadow-xs transition-all" type="button">
+<i class="fa-solid fa-folder-open text-[11px]"></i> Explorar archivos del dispositivo
+            </button>
+</div>
+<!-- Thumbnail Previews -->
+<div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- Thumbnail 1 (Uploaded) -->
+<div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-video sm:aspect-square flex flex-col justify-between p-2">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg');">
+<div class="absolute inset-0 bg-slate-900/30"></div>
+</div>
+<div class="relative z-10 flex justify-between items-start">
+<span class="px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px] font-semibold text-white">Foto 1</span>
+<button class="w-5 h-5 rounded-full bg-white/90 text-red-600 flex items-center justify-center hover:bg-white text-[11px] shadow-xs" type="button">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+<div class="relative z-10 bg-black/70 backdrop-blur-xs rounded p-1 text-[10px] text-white">
+<div class="font-medium truncate">Fuga_lavaplatos_01.jpg</div>
+<div class="text-slate-300 text-[9px]">2.4 MB • Subida lista</div>
+</div>
+</div>
+<!-- Thumbnail 2 (Uploaded) -->
+<div class="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-video sm:aspect-square flex flex-col justify-between p-2">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg');">
+<div class="absolute inset-0 bg-slate-900/30"></div>
+</div>
+<div class="relative z-10 flex justify-between items-start">
+<span class="px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px] font-semibold text-white">Video</span>
+<button class="w-5 h-5 rounded-full bg-white/90 text-red-600 flex items-center justify-center hover:bg-white text-[11px] shadow-xs" type="button">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+<div class="relative z-10 bg-black/70 backdrop-blur-xs rounded p-1 text-[10px] text-white">
+<div class="font-medium truncate flex items-center gap-1">
+<i class="fa-solid fa-circle-play text-[10px] text-emerald-400"></i> Goteo_activo.mp4
+                </div>
+<div class="text-slate-300 text-[9px]">14.1 MB • 0:12s</div>
+</div>
+</div>
+<!-- Add Another Slot Button -->
+<div class="border-2 border-dashed border-slate-200 rounded-xl hover:border-slate-400 flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all aspect-video sm:aspect-square bg-slate-50/50 hover:bg-slate-100/70">
+<div class="w-8 h-8 rounded-full bg-white border border-slate-300 flex items-center justify-center text-slate-600 text-sm mb-1.5 shadow-xs">
+<i class="fa-solid fa-plus"></i>
+</div>
+<span class="text-xs font-semibold text-slate-700">+ Añadir toma</span>
+<span class="text-[10px] text-slate-400">Hasta 5 archivos</span>
+</div>
+<!-- Placeholder Help Card -->
+<div class="border border-slate-200 rounded-xl p-3 flex flex-col justify-center bg-blue-50/40 text-left">
+<i class="fa-solid fa-lightbulb text-amber-500 text-sm mb-1"></i>
+<span class="text-[11px] font-bold text-slate-800">Tip del maestro:</span>
+<p class="text-[10px] text-slate-500 leading-tight mt-0.5">
+                Fotografía la etiqueta de marca del grifo o la conexión del tubo para saber el calibre exacto.
+              </p>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Schedule & Budget Options -->
+<section class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm space-y-6">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-100">
+              03
+            </span>
+<h2 class="text-base font-bold text-slate-900">Disponibilidad y Presupuesto Estimado</h2>
+</div>
+<!-- Day Selection Tabs -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-2">¿Cuándo requieres la visita?</label>
+<div class="grid grid-cols-3 gap-3">
+<!-- Tab Hoy (Active) -->
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-xl border-2 border-primary bg-surface-subtle text-primary font-bold text-sm shadow-xs transition-all" type="button">
+<span class="flex items-center gap-1.5">
+<i class="fa-solid fa-calendar-day text-xs"></i> Hoy
+                </span>
+<span class="text-[11px] font-medium text-slate-600 mt-0.5">Viernes, 24 Oct</span>
+</button>
+<!-- Tab Mañana -->
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-slate-700 font-semibold text-sm transition-all" type="button">
+<span>Mañana</span>
+<span class="text-[11px] font-normal text-slate-400 mt-0.5">Sábado, 25 Oct</span>
+</button>
+<!-- Tab Otra fecha -->
+<button class="flex flex-col items-center justify-center py-3 px-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-slate-700 font-semibold text-sm transition-all" type="button">
+<span class="flex items-center gap-1">
+<i class="fa-regular fa-calendar text-xs"></i> Otra fecha
+                </span>
+<span class="text-[11px] font-normal text-slate-400 mt-0.5">Elegir en calendario</span>
+</button>
+</div>
+</div>
+<!-- Time Slot Selector Cards -->
+<div>
+<label class="block text-xs font-bold text-slate-700 mb-2">Franja horaria preferida</label>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="border border-slate-200 rounded-xl p-3 hover:border-primary cursor-pointer transition-all bg-white flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+<i class="fa-regular fa-sun text-sm"></i>
+</div>
+<div>
+<div class="text-xs font-bold text-slate-800">Mañana</div>
+<div class="text-[11px] text-slate-500">08:00 – 12:00</div>
+</div>
+</div>
+<!-- Active slot -->
+<div class="border-2 border-primary rounded-xl p-3 bg-surface-subtle cursor-pointer transition-all flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-100 text-primary flex items-center justify-center shrink-0">
+<i class="fa-solid fa-cloud-sun text-sm"></i>
+</div>
+<div>
+<div class="text-xs font-bold text-primary">Tarde (Activa)</div>
+<div class="text-[11px] font-medium text-slate-600">12:00 – 17:00</div>
+</div>
+</div>
+<i class="fa-solid fa-circle-check text-primary text-sm"></i>
+</div>
+<div class="border border-slate-200 rounded-xl p-3 hover:border-primary cursor-pointer transition-all bg-white flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+<i class="fa-solid fa-moon text-sm"></i>
+</div>
+<div>
+<div class="text-xs font-bold text-slate-800">Noche</div>
+<div class="text-[11px] text-slate-500">17:00 – 20:00</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Budget Estimate Selector Cards -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="text-xs font-bold text-slate-700">Rango de Presupuesto Estimado (COP)</label>
+<span class="text-[11px] text-slate-400">Sin compromiso previo de cobro</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<!-- Option 1: Básico -->
+<div class="border border-slate-200 rounded-xl p-3.5 hover:border-slate-300 cursor-pointer transition-all bg-white">
+<div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Ajuste Menor</div>
+<div class="text-sm font-extrabold text-slate-800 mt-1">$25.000 – $40.000</div>
+<div class="text-[11px] text-slate-500 mt-1 leading-tight">Diagnóstico y cambio de empaque simple.</div>
+</div>
+<!-- Option 2: Más Común (Selected) -->
+<div class="border-2 border-primary rounded-xl p-3.5 bg-surface-subtle cursor-pointer transition-all relative">
+<div class="absolute -top-2.5 right-3 bg-primary text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">
+                  Más Común
+                </div>
+<div class="text-[11px] font-bold text-primary uppercase tracking-wider">Reparación Media</div>
+<div class="text-sm font-extrabold text-primary mt-1">$40.000 – $75.000</div>
+<div class="text-[11px] text-slate-600 mt-1 leading-tight">Cambio de piezas, flexibles o grifería completa.</div>
+</div>
+<!-- Option 3: Cotización Libre -->
+<div class="border border-slate-200 rounded-xl p-3.5 hover:border-slate-300 cursor-pointer transition-all bg-white">
+<div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">A Convenir</div>
+<div class="text-sm font-extrabold text-slate-800 mt-1">Cotización Libre</div>
+<div class="text-[11px] text-slate-500 mt-1 leading-tight">Que los técnicos coticen tras ver las fotos.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Hyperlocal Radius Selection & Embedded Map -->
+<section class="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-100">
+                04
+              </span>
+<h2 class="text-base font-bold text-slate-900">Radio Hiperlocal de Búsqueda</h2>
+</div>
+<div class="flex items-center gap-1.5 text-xs text-slate-600">
+<i class="fa-solid fa-map-pin text-primary"></i>
+<span>Dirección: <strong>Cra 74 #32-15, Los Laureles</strong></span>
+</div>
+</div>
+<p class="text-xs text-slate-500">
+            Define la distancia máxima de desplazamiento. Mantener un radio cercano garantiza menor tiempo de espera y técnicos vecinos verificados.
+          </p>
+<!-- Distance Selector Pill Group -->
+<div class="grid grid-cols-3 gap-3">
+<!-- 1 km -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button">
+<span class="font-bold text-slate-900">1 km</span>
+<span class="text-[10px] text-slate-500">Inmediato (&lt; 20 min)</span>
+</button>
+<!-- 3 km (Active) -->
+<button class="py-2.5 px-3 rounded-xl border-2 border-primary bg-surface-subtle font-medium text-xs text-primary flex flex-col items-center justify-center shadow-xs transition-all relative" type="button">
+<span class="font-extrabold text-primary flex items-center gap-1">
+                3 km <i class="fa-solid fa-circle-check text-xs"></i>
+</span>
+<span class="text-[10px] font-semibold text-blue-700">Recomendado (Sector Comuna 11)</span>
+</button>
+<!-- 5 km -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button">
+<span class="font-bold text-slate-900">5 km</span>
+<span class="text-[10px] text-slate-500">Máximo Perímetro</span>
+</button>
+</div>
+<!-- Embedded Interactive Map Widget -->
+<div class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 bg-[#0f2942] shadow-inner">
+<!-- Map Graphical Canvas Simulation -->
+<div class="absolute inset-0 opacity-65 bg-[radial-gradient(#1e40af_1px,transparent_1px)] [background-size:20px_20px]"></div>
+<!-- Map Streets and Water Lines (SVG) -->
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<path d="M-50,140 Q150,110 350,160 T850,120" fill="none" opacity="0.6" stroke="#334155" stroke-width="6"></path>
+<path d="M220,-20 L260,250" fill="none" opacity="0.5" stroke="#334155" stroke-width="4"></path>
+<path d="M480,-20 Q440,120 520,250" fill="none" opacity="0.5" stroke="#334155" stroke-width="4"></path>
+<path d="M-20,60 L750,90" fill="none" stroke="#1e293b" stroke-width="2"></path>
+<!-- Coverage Radius Circle around User Pin -->
+<circle cx="50%" cy="50%" fill="rgba(37, 99, 235, 0.18)" r="90" stroke="#3b82f6" stroke-dasharray="4 3" stroke-width="2"></circle>
+<circle cx="50%" cy="50%" fill="rgba(37, 99, 235, 0.1)" r="50" stroke="#60a5fa" stroke-width="1.5"></circle>
+</svg>
+<!-- Center User Pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 pointer-events-none">
+<div class="pulse-radar">
+<div class="w-10 h-10 rounded-full bg-blue-600 border-2 border-white shadow-lg flex items-center justify-center text-white text-sm">
+<i class="fa-solid fa-house"></i>
+</div>
+</div>
+<div class="mt-1.5 px-2 py-0.5 rounded-full bg-slate-900/90 text-white text-[10px] font-bold tracking-wide border border-white/20 whitespace-nowrap shadow-md backdrop-blur-xs">
+                Tu Hogar (Cra 74 #32-15)
+              </div>
+</div>
+<!-- Technician Pins in 3km perimeter -->
+<!-- Roberto D (Plumber) -->
+<div class="absolute top-[32%] left-[42%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="group relative cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-xs">
+<i class="fa-solid fa-wrench"></i>
+</div>
+<div class="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-900 text-white rounded text-[10px] whitespace-nowrap z-20">
+                  Roberto D. (800m) ★ 4.9
+                </div>
+</div>
+</div>
+<!-- Technician 2 -->
+<div class="absolute top-[58%] left-[58%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-[10px]">
+<i class="fa-solid fa-faucet"></i>
+</div>
+</div>
+<!-- Technician 3 -->
+<div class="absolute top-[38%] left-[62%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-[10px]">
+<i class="fa-solid fa-toolbox"></i>
+</div>
+</div>
+<!-- Technician 4 -->
+<div class="absolute top-[68%] left-[46%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="w-6 h-6 rounded-full bg-emerald-500/80 border border-white flex items-center justify-center text-white text-[9px]">
+<i class="fa-solid fa-wrench"></i>
+</div>
+</div>
+<!-- Floating Map Badge: Active Technicians -->
+<div class="absolute top-3 left-3 z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold backdrop-blur-md border border-white/10 shadow-lg">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>14 técnicos certificados en el perímetro</span>
+</div>
+<!-- Map Controls -->
+<div class="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md rounded-lg p-1 border border-white/10">
+<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded">
+<i class="fa-solid fa-plus"></i>
+</button>
+<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded">
+<i class="fa-solid fa-minus"></i>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Action Bar -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2" type="button">
+<i class="fa-regular fa-floppy-disk"></i>
+            Guardar como borrador
+          </button>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg transition-all" href="#">
+<span>Publicar y Buscar Técnicos Cercanos (3 km)</span>
+<i class="fa-solid fa-arrow-right text-xs"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Sidebar - Trust & Real-time Metrics (4 cols) -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- Live Activity Card -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Actividad Barrial en Vivo</h3>
+</div>
+<span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Los Laureles</span>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 text-center">
+<div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-base font-extrabold text-slate-900">14</div>
+<div class="text-[10px] text-slate-500 leading-tight mt-0.5">Especialistas en línea</div>
+</div>
+<div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-base font-extrabold text-emerald-600">~8 min</div>
+<div class="text-[10px] text-slate-500 leading-tight mt-0.5">Respuesta promedio</div>
+</div>
+<div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+<div class="text-base font-extrabold text-slate-900 flex items-center justify-center gap-0.5">
+                4.92 <span class="text-amber-500 text-xs">★</span>
+</div>
+<div class="text-[10px] text-slate-500 leading-tight mt-0.5">Calificación zona</div>
+</div>
+</div>
+<!-- Micro testimonial or recent request solved -->
+<div class="p-3 rounded-xl bg-surface-subtle border border-blue-100 text-xs text-slate-700 flex items-start gap-2.5">
+<i class="fa-solid fa-bolt text-amber-500 mt-0.5 shrink-0"></i>
+<div>
+<span class="font-bold text-slate-900">Última solicitud resuelta:</span> Hace 22 min en Carrera 76 (Reparación de sifón por Roberto D.).
+            </div>
+</div>
+</div>
+<!-- Escrow Protection Card: Custodia Segura VeciPay -->
+<div class="bg-gradient-to-br from-primary via-[#133352] to-primary-dark rounded-2xl p-6 text-white shadow-lg shadow-primary/15 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-emerald-400 text-lg">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+<div>
+<span class="text-[10px] font-bold text-emerald-300 uppercase tracking-wider block">100% Protegido</span>
+<h3 class="text-sm font-bold text-white">Custodia Segura VeciPay</h3>
+</div>
+</div>
+<p class="text-xs text-slate-200 leading-relaxed mb-4">
+            Tu dinero no se entrega al técnico hasta que confirmes que el arreglo quedó 100% terminado a tu entera satisfacción.
+          </p>
+<ul class="space-y-2.5 text-xs text-slate-200">
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
+<span>Cero adelantos a ciegas ni pagos informales sin respaldo.</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
+<span>Póliza <strong>VeciProtege</strong> incluida hasta $2.500.000 COP contra daños incidentales.</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
+<span>Cédula y antecedentes judiciales cotejados en tiempo real.</span>
+</li>
+</ul>
+<div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300">
+<span>Cifrado bancario TLS 256-bit</span>
+<span class="font-semibold text-emerald-300 flex items-center gap-1">
+<i class="fa-solid fa-lock text-[10px]"></i> Sin costo adicional
+            </span>
+</div>
+</div>
+<!-- "Consejos para recibir mejores presupuestos" Card -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+<div class="flex items-center gap-2.5 mb-3">
+<div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Consejos para mejores presupuestos
+            </h3>
+</div>
+<ul class="space-y-2.5 text-xs text-slate-600">
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-check text-blue-600 mt-0.5 shrink-0"></i>
+<span><strong>Muestra el contexto:</strong> Sube una foto amplia y otra en primer plano de la avería.</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-check text-blue-600 mt-0.5 shrink-0"></i>
+<span><strong>Aclara si tienes repuestos:</strong> Indica si ya compraste el grifo nuevo o si requieres que el técnico lo suministre.</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-check text-blue-600 mt-0.5 shrink-0"></i>
+<span><strong>Horario flexible:</strong> Ofrecer más de un rango horario amplía las ofertas de maestros con agenda copada.</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="fa-solid fa-check text-blue-600 mt-0.5 shrink-0"></i>
+<span><strong>Acceso al inmueble:</strong> Si vives en edificio con portería, avisa si se requiere registro previo.</span>
+</li>
+</ul>
+</div>
+<!-- Mini Coverage Zone Map Card -->
+<div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="text-xs font-bold text-slate-800 flex items-center gap-2">
+<i class="fa-solid fa-compass text-primary"></i>
+              Zona de Cobertura Activa
+            </div>
+<span class="text-[10px] font-semibold text-slate-400">Radio: 3 km</span>
+</div>
+<div class="relative h-28 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex items-center justify-center">
+<!-- Simulated minimal map graphic -->
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(#64748b_1px,transparent_1px)] [background-size:12px_12px]"></div>
+<div class="w-16 h-16 rounded-full bg-blue-100/60 border border-blue-400 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-blue-600 ring-4 ring-blue-300/50"></div>
+</div>
+<div class="absolute bottom-1.5 left-2 bg-white/90 backdrop-blur-xs px-2 py-0.5 rounded text-[10px] font-medium text-slate-600 shadow-2xs">
+              Los Laureles / Conquistadores / Belén
+            </div>
+</div>
+<div class="mt-3 flex items-center justify-between text-xs text-slate-500">
+<span>¿Te mudaste o necesitas otra sede?</span>
+<a class="font-bold text-primary hover:underline" href="#">Cambiar</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 mt-12 py-6 text-xs text-slate-500">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<span class="font-semibold text-primary">VeciRed Marketplace Hiperlocal</span>
+<div class="flex items-center gap-2 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+<i class="fa-solid fa-lock text-[11px]"></i>
+<span>Cifrado SSL 256-bit • Ley de Protección de Datos Personales</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Términos de Servicio</a>
+<a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
+<a class="hover:text-primary transition-colors" href="#">Centro de Ayuda Vecinal</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

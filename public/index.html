@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VeciRed — Prototipos</title>
+  <style>
+    :root {
+      --primary: #001428;
+      --primary-2: #0f2942;
+      --secondary: #006a61;
+      --bg: #f8f9ff;
+      --surface: #ffffff;
+      --surface-low: #eff4ff;
+      --border: #c3c6ce;
+      --text: #0b1c30;
+      --muted: #43474d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid rgba(195,198,206,.55);
+      box-shadow: 0 1px 8px rgba(15,41,66,.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: auto;
+      min-height: 72px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--primary-2);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .badge {
+      background: rgba(0,106,97,.10);
+      color: var(--secondary);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 54px 24px 70px;
+    }
+
+    .hero {
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 28px;
+    }
+
+    .section {
+      background: var(--surface);
+      border: 1px solid rgba(195,198,206,.65);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 2px 8px rgba(15,41,66,.035);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin: -7px 0 16px 42px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      text-decoration: none;
+      color: inherit;
+      background: var(--surface-low);
+      border: 1px solid rgba(195,198,206,.55);
+      border-radius: 13px;
+      padding: 16px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--secondary);
+      box-shadow: 0 7px 18px rgba(15,41,66,.09);
+      background: var(--surface);
+    }
+
+    .num {
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+
+    .name {
+      margin-top: 7px;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .open {
+      margin-top: 13px;
+      color: var(--primary-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 24px 35px;
+    }
+
+    @media (max-width: 850px) {
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .header-inner { padding: 0 16px; }
+      .badge { display: none; }
+      main { padding: 38px 16px 50px; }
+      .section { padding: 17px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <span>VeciRed</span>
+    </div>
+    <div class="badge">Prototipos de interfaz · 23 pantallas</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">Marketplace Hiperlocal</div>
+    <h1>Prototipos VeciRed</h1>
+    <p>
+      Índice de las 23 interfaces del prototipo, organizadas según el flujo general
+      de la plataforma: acceso, configuración de usuarios, búsqueda y publicación,
+      propuestas, contratación, coordinación y cierre del servicio.
+    </p>
+  </section>
+
+  <div class="flow">
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">01</div>
+        <h2>Entrada y acceso</h2>
+      </div>
+      <div class="section-subtitle">Primer contacto con la plataforma y gestión de acceso.</div>
+      <div class="cards">
+        <a class="card" href="INT-01.html"><div><div class="num">INT-01</div><div class="name">Home / Página de inicio</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-02.html"><div><div class="num">INT-02</div><div class="name">Registro de usuario</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-03.html"><div><div class="num">INT-03</div><div class="name">Selección del tipo de usuario</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-04.html"><div><div class="num">INT-04</div><div class="name">Inicio de sesión</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-05.html"><div><div class="num">INT-05</div><div class="name">Recuperación de contraseña</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">02</div>
+        <h2>Configuración del técnico</h2>
+      </div>
+      <div class="section-subtitle">Preparación del perfil del trabajador para ofrecer servicios.</div>
+      <div class="cards">
+        <a class="card" href="INT-06.html"><div><div class="num">INT-06</div><div class="name">Verificación de identidad del técnico</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-07.html"><div><div class="num">INT-07</div><div class="name">Dashboard del técnico</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-08.html"><div><div class="num">INT-08</div><div class="name">Edición del perfil profesional</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-09.html"><div><div class="num">INT-09</div><div class="name">Publicar servicio u oficio</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">03</div>
+        <h2>Búsqueda del cliente</h2>
+      </div>
+      <div class="section-subtitle">El cliente explora servicios, técnicos y opciones cercanas.</div>
+      <div class="cards">
+        <a class="card" href="INT-10.html"><div><div class="num">INT-10</div><div class="name">Panel principal del cliente</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-11.html"><div><div class="num">INT-11</div><div class="name">Búsqueda de servicios</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-12.html"><div><div class="num">INT-12</div><div class="name">Mapa hiperlocal</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-13.html"><div><div class="num">INT-13</div><div class="name">Perfil público del trabajador</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">04</div>
+        <h2>Publicación de una necesidad</h2>
+      </div>
+      <div class="section-subtitle">El cliente puede publicar directamente el trabajo que necesita resolver.</div>
+      <div class="cards">
+        <a class="card" href="INT-14.html"><div><div class="num">INT-14</div><div class="name">Publicar solicitud de servicio</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-15.html"><div><div class="num">INT-15</div><div class="name">Solicitud publicada con éxito</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">05</div>
+        <h2>Respuesta del técnico</h2>
+      </div>
+      <div class="section-subtitle">El trabajador encuentra solicitudes y decide a cuáles postular.</div>
+      <div class="cards">
+        <a class="card" href="INT-16.html"><div><div class="num">INT-16</div><div class="name">Solicitudes cercanas de trabajo</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-17.html"><div><div class="num">INT-17</div><div class="name">Detalle de solicitud</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">06</div>
+        <h2>Propuestas y selección</h2>
+      </div>
+      <div class="section-subtitle">El cliente recibe propuestas, las compara y selecciona un trabajador.</div>
+      <div class="cards">
+        <a class="card" href="INT-18.html"><div><div class="num">INT-18</div><div class="name">Propuestas recibidas</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-19.html"><div><div class="num">INT-19</div><div class="name">Comparación de técnicos</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div class="section-number">07</div>
+        <h2>Contratación y cierre</h2>
+      </div>
+      <div class="section-subtitle">Confirmación, coordinación, agenda y evaluación del servicio.</div>
+      <div class="cards">
+        <a class="card" href="INT-20.html"><div><div class="num">INT-20</div><div class="name">Servicio confirmado</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-21.html"><div><div class="num">INT-21</div><div class="name">Chat / coordinación</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-22.html"><div><div class="num">INT-22</div><div class="name">Agenda / servicios</div></div><div class="open">Abrir prototipo →</div></a>
+        <a class="card" href="INT-23.html"><div><div class="num">INT-23</div><div class="name">Finalización y evaluación</div></div><div class="open">Abrir prototipo →</div></a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  VeciRed · Prototipos de interfaz · 2026
+</footer>
+
+</body>
+</html>

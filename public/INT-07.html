@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#0f2942", "on-tertiary-container": "#818fa6", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#314863", "surface-variant": "#d3e4fe", "outline": "#74777e", "error-container": "#ffdad6", "surface": "#f8f9ff", "tertiary": "#041325", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#6bd8cb", "surface-container-high": "#dce9ff", "tertiary-container": "#1a283b", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#3a485c", "on-surface-variant": "#43474d", "on-secondary-container": "#006f66", "on-surface": "#0b1c30", "on-tertiary-fixed": "#0d1c2f", "error": "#ba1a1a", "on-background": "#0b1c30", "primary": "#001428", "tertiary-fixed": "#d5e3fd", "background": "#f8f9ff", "secondary": "#006a61", "on-error-container": "#93000a", "primary-fixed-dim": "#b0c9e8", "secondary-container": "#86f2e4", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "primary-fixed": "#d1e4ff", "tertiary-fixed-dim": "#b9c7e0", "on-secondary": "#ffffff", "outline-variant": "#c3c6ce", "inverse-primary": "#b0c9e8", "secondary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-tint": "#49607c", "on-primary": "#ffffff", "on-primary-container": "#7991af", "on-secondary-fixed-variant": "#005049", "on-error": "#ffffff", "inverse-surface": "#213145", "on-primary-fixed": "#011d35", "on-secondary-fixed": "#00201d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1280px", "space-sm": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "form-column-width": "540px", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-3xl": "4rem", "split-sidebar-width": "420px", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant/40 shadow-[0_1px_8px_rgba(15,41,66,0.04)]"><div class="h-16 max-w-container-max mx-auto px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><img alt="VeciRed Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W5DOBTQ5PZsEvZbzDPgi12nKfLWYgKSpCm8nzCUuEgN4EmQLICiVdOwvLmSAJTuH2J-HliBgkGUiCGIuTSl2tuiMaJpVeqwY7p8j6cAvcWS9LC3AvNoEkt_YQ4y8gIBISdhc-QD7XWl5mwAznH3BnzFHnsO38KP4-k7Lsp3Om5H1KaUtv7W_vR7bJShC2dsAZht9zHYbmcUujbJwcb4cr1EeqltdOfx6AyeEybwaJmmKDIHdw8SnNjBbw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">VeciRed</span></div><div class="hidden lg:flex items-center gap-space-2xs bg-surface-container-low border border-outline-variant/60 rounded-full px-space-sm py-1"><span class="material-symbols-outlined text-secondary text-[16px]">location_on</span><span class="font-label-sm text-label-sm text-secondary uppercase">Tu Barrio:</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">Los Laureles / Envigado</span></div></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-bold border-b-2 border-primary"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="como-funciona" href="#">Cómo funciona</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="categorias-de-servicios" href="#">Categorías de servicios</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors pb-1" data-path="garantia-de-confianza" href="#">Garantía de confianza</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" data-path="iniciar-sesion" href="#">¿Ya tienes cuenta? <span class="font-semibold text-primary underline decoration-outline-variant">Iniciar Sesión</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Operational Sub-Header Bar (Desktop Utility Strip) -->
+<div class="w-full bg-surface-container-lowest shadow-sm">
+<div class="max-w-container-max mx-auto px-space-lg py-space-sm flex flex-wrap items-center justify-between gap-space-md">
+<!-- Search and Quadrant Quick Context -->
+<div class="flex items-center gap-space-md flex-1 min-w-[280px] max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-space-md bg-surface-container-low rounded-lg text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" id="jobSearchInput" placeholder="Buscar por avería, barrio (ej: Laureles, Cll 37) o tipo de gasfitería..." type="text"/>
+</div>
+</div>
+<!-- Live Broadcast & Availability Toggle -->
+<div class="flex items-center gap-space-md">
+<!-- Emergency Bell with Pulsing Indicator -->
+<button class="relative flex items-center gap-space-2xs px-space-sm py-2 rounded-lg bg-error-container text-on-error-container hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+<span class="font-label-sm text-label-sm hidden sm:inline font-bold">2 emergencias en tu cuadrante</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+</button>
+<!-- Dynamic Status Switcher -->
+<div class="flex items-center gap-space-xs bg-secondary/10 px-space-sm py-1.5 rounded-full">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold tracking-tight">EN LÍNEA: Disponible</span>
+</div>
+<!-- Quick Profile Chip -->
+<div class="flex items-center gap-space-xs pl-space-xs">
+<div class="h-9 w-9 rounded-full overflow-hidden bg-primary-container">
+<img alt="Roberto D." class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XUWgT-DqfbPGcSkTJTsTZKe6M6Y5a5R1stsiW9TA2-d-OR-kUtyTuKsI7sDo5mbGCM_rYNhMPststj_aN5vJr-8hRSAzrbk7Z4jT9LEEzRvSmHsmnrHbJ0K9ykFBm5RNqPbNduPvOApJoIbKQpYwbwom0Ti2pkp56isJ7hqBzLe8c6O0ysqr8YRiQM4cDDTqDwM6mEKJpf0_yPQZFvqzBGROSUSs7gV6Ukr6APvATfHHl2F07-1dE064A"/>
+</div>
+<div class="hidden xl:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface leading-tight font-bold">Roberto D.</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Gasfíter Verificado</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Multi-Column Desktop Workspace -->
+<div class="max-w-container-max mx-auto px-space-lg py-space-lg w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- ==========================================
+           LEFT SIDEBAR: TECHNICIAN IDENTITY & RADAR
+           ========================================== -->
+<aside class="lg:col-span-3 flex flex-col gap-space-lg">
+<!-- Technician Profile Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-16 bg-primary-container"></div>
+<div class="relative mt-4 mb-space-sm">
+<div class="h-24 w-24 rounded-full overflow-hidden bg-surface shadow-md p-1">
+<img alt="Roberto D. Maestro Gasfíter Pro" class="h-full w-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1XUWgT-DqfbPGcSkTJTsTZKe6M6Y5a5R1stsiW9TA2-d-OR-kUtyTuKsI7sDo5mbGCM_rYNhMPststj_aN5vJr-8hRSAzrbk7Z4jT9LEEzRvSmHsmnrHbJ0K9ykFBm5RNqPbNduPvOApJoIbKQpYwbwom0Ti2pkp56isJ7hqBzLe8c6O0ysqr8YRiQM4cDDTqDwM6mEKJpf0_yPQZFvqzBGROSUSs7gV6Ukr6APvATfHHl2F07-1dE064A"/>
+</div>
+<span class="absolute bottom-1 right-1 bg-secondary text-on-secondary rounded-full p-1 flex items-center justify-center shadow" title="Técnico Verificado VeciRed">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold">Roberto D.</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">Maestro Gasfíter Pro</p>
+<!-- Badges Rack -->
+<div class="flex flex-col w-full gap-space-2xs mt-space-md">
+<div class="flex items-center justify-center gap-space-2xs py-1 px-space-sm rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>Sello Vecino Verificado</span>
+</div>
+<div class="flex items-center justify-center gap-space-2xs py-1 px-space-sm rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">workspace_premium</span>
+<span class="text-white">Membresía VeciPro Gold</span>
+</div>
+</div>
+<!-- Quick Metrics Ribbon -->
+<div class="grid grid-cols-2 w-full gap-space-xs mt-space-md pt-space-md bg-surface-container-low rounded-lg p-space-sm">
+<div class="text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Reseñas</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">112</span>
+</div>
+<div class="text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Efectividad</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">99.4%</span>
+</div>
+</div>
+</div>
+<!-- Navigation Menu Links -->
+<nav class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</div>
+<span class="h-2 w-2 rounded-full bg-secondary-container"></span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px]">person</span>
+<span>Mi Perfil</span>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary/15 text-secondary px-2 py-0.5 rounded-full font-bold">100%</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px]">handyman</span>
+<span>Mis Servicios</span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full">3 activos</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px]">calendar_month</span>
+<span>Agenda</span>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary text-on-secondary px-2 py-0.5 rounded-full font-bold">2 hoy</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline text-[20px]">account_balance_wallet</span>
+<span>Historial &amp; Pagos</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">VeciPay</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">support_agent</span>
+<span>Soporte VeciRed</span>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-bold">WhatsApp 24/7</span>
+</a>
+</nav>
+<!-- Dark Proximity & Radar Alert Widget -->
+<div class="bg-primary-container rounded-xl p-space-md text-on-primary shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">radar</span>
+<span class="font-label-md text-label-md font-bold text-white">Radar de Cuadrante</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-secondary text-white font-bold">5 km</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+            Rastreo continuo de fugas e instalaciones prioritarias en Los Laureles y Envigado.
+          </p>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-sm text-label-sm text-white font-medium">Alertas Sonoras Push</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="radarSoundToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</aside>
+<!-- ==========================================
+           CENTRAL WORKSPACE: KPIS & OPPS FEED
+           ========================================== -->
+<main class="lg:col-span-6 flex flex-col gap-space-lg">
+<!-- Top KPI Header Row (4-Grid) -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Completados</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">task_alt</span>
+</div>
+<div class="mt-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold block">148</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12 este mes
+              </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Calificación</span>
+<span class="material-symbols-outlined text-amber-500 text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="mt-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold block">4.9</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Top 5% del barrio</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Propuestas</span>
+<span class="material-symbols-outlined text-primary text-[20px]">send</span>
+</div>
+<div class="mt-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold block">4</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">1 aceptada hoy</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">En Custodia</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">lock</span>
+</div>
+<div class="mt-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold block truncate">$380k</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">VeciPay Escrow</span>
+</div>
+</div>
+</div>
+<!-- Main Opportunities Feed Section -->
+<section class="flex flex-col gap-space-md">
+<!-- Feed Filter Header Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Solicitudes en tu Zona (&lt; 5 km)</h2>
+<span class="font-label-sm text-label-sm bg-surface-container-high text-primary font-bold px-2 py-0.5 rounded-full">14 activas</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">sync</span> Actualizado hace 2m
+              </span>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-2xs" id="filterContainer">
+<button class="filter-pill px-space-sm py-1 rounded-full font-label-sm text-label-sm bg-primary text-on-primary font-bold shadow-sm transition-all" data-category="all">
+                Todas (14)
+              </button>
+<button class="filter-pill px-space-sm py-1 rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-semibold transition-all" data-category="plomeria">
+                Gasfitería &amp; Plomería (8)
+              </button>
+<button class="filter-pill px-space-sm py-1 rounded-full font-label-sm text-label-sm bg-error-container/60 text-on-error-container hover:bg-error-container font-semibold transition-all flex items-center gap-1" data-category="urgencias">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Urgencias Hoy (3)
+              </button>
+<button class="filter-pill px-space-sm py-1 rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-semibold transition-all flex items-center gap-1" data-category="cerca">
+<span class="material-symbols-outlined text-[14px]">near_me</span> &lt; 2 km (5)
+              </button>
+</div>
+</div>
+<!-- Job Card 1 (URGENT HIGHLIGHT) -->
+<article class="job-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md border-l-4 border-l-error relative overflow-hidden transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-error-container text-on-error-container font-bold px-2 py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Urgencia: Hoy (&lt; 15 min)
+                </span>
+<span class="font-label-sm text-label-sm bg-surface-container-low text-primary font-semibold px-2 py-0.5 rounded">
+                  Gasfitería / Plomería
+                </span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> A 0.8 km • ~8 min (Los Laureles)
+              </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold hover:text-primary transition-colors cursor-pointer">
+                Fuga de agua en llave monomando bajo lavaplatos
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Tengo una fuga constante de agua bajo el mueble del lavaplatos. Se necesita cambio urgente de manguera flexible y sellado con teflón industrial. Fotos y video adjuntos. Llave de paso cerrada preventivamente.
+              </p>
+</div>
+<!-- Client Trust Snippet -->
+<div class="flex flex-wrap items-center justify-between text-body-sm font-body-sm text-on-surface-variant bg-surface-container-low/70 px-space-sm py-2 rounded-lg gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span>Publicado por <strong>María F.</strong> (Vecina Verificada)</span>
+<span class="text-outline">• Cra 74 #32-15</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Hace 18 min</span>
+</div>
+<!-- Pricing & Action Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Presupuesto Sugerido:</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">$40.000 - $55.000 COP</span>
+<span class="font-label-sm text-label-sm bg-secondary/10 text-secondary px-2 py-0.5 rounded font-bold" title="Fondos ya depositados en VeciPay">
+                    🛡️ Pago en Escrow
+                  </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 active:scale-95" onclick="toggleQuickProposalModal(1)">
+<span>Ver Detalle y Postular</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Job Card 2 -->
+<article class="job-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-surface-container-low text-primary font-semibold px-2 py-0.5 rounded">
+                  Gasfitería / Calefones
+                </span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface-variant font-medium px-2 py-0.5 rounded">
+                  Visita Programada
+                </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span> A 1.4 km • ~12 min (Envigado Centro)
+              </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold hover:text-primary transition-colors cursor-pointer">
+                Mantenimiento preventivo y encendido de calefón a gas
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Calefón de 10L tiro natural no mantiene la llama piloto encendida al soltar la perilla. Requiere limpieza minuciosa de inyectores, regulación de paso de gas y chequeo de termocupla.
+              </p>
+</div>
+<div class="flex flex-wrap items-center justify-between text-body-sm font-body-sm text-on-surface-variant bg-surface-container-low/70 px-space-sm py-2 rounded-lg gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">person</span>
+<span>Publicado por <strong>Carlos H.</strong></span>
+<span class="text-outline">• Cll 37 Sur #41-20</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Hace 45 min</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Presupuesto Sugerido:</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">$60.000 - $85.000 COP</span>
+<span class="font-label-sm text-label-sm bg-secondary/10 text-secondary px-2 py-0.5 rounded font-medium">
+                    🛡️ Custodia VeciPay
+                  </span>
+</div>
+</div>
+<button class="px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 active:scale-95" onclick="toggleQuickProposalModal(2)">
+<span>Ver Detalle y Postular</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Job Card 3 -->
+<article class="job-card bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md transition-all hover:shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-sm text-label-sm bg-surface-container-low text-primary font-semibold px-2 py-0.5 rounded">
+                  Redes Hidráulicas
+                </span>
+<span class="font-label-sm text-label-sm bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Para mañana a primera hora
+                </span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span> A 2.1 km • ~18 min (Conquistadores)
+              </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold hover:text-primary transition-colors cursor-pointer">
+                Instalación de regulador de presión para casa residencial
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Presión excesiva proveniente de la red matriz provocando goteos en grifos mono-comando y válvula del tanque sanitario. Válvula reguladora de 3/4" ya comprada con manómetro integrado.
+              </p>
+</div>
+<div class="flex flex-wrap items-center justify-between text-body-sm font-body-sm text-on-surface-variant bg-surface-container-low/70 px-space-sm py-2 rounded-lg gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">person</span>
+<span>Publicado por <strong>Andrés M.</strong></span>
+<span class="text-outline">• Av. Nutibara con Transversal</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Hace 1 hora</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Presupuesto Sugerido:</span>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">$75.000 - $110.000 COP</span>
+<span class="font-label-sm text-label-sm bg-secondary/10 text-secondary px-2 py-0.5 rounded font-medium">
+                    🛡️ Custodia VeciPay
+                  </span>
+</div>
+</div>
+<button class="px-space-md py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1.5 active:scale-95" onclick="toggleQuickProposalModal(3)">
+<span>Ver Detalle y Postular</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</section>
+</main>
+<!-- ==========================================
+           RIGHT COLUMN: RADAR WIDGET & TRACKING BIDS
+           ========================================== -->
+<aside class="lg:col-span-3 flex flex-col gap-space-lg">
+<!-- Widget 1: Radar Barrial Activo (5 km) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold">Radar Barrial Activo</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary/10 px-2 py-0.5 rounded font-bold">5 km</span>
+</div>
+<!-- Radar Canvas Graphic Simulation -->
+<div class="relative w-full aspect-square bg-primary-container rounded-xl overflow-hidden flex items-center justify-center p-2 shadow-inner">
+<!-- Concentric Range Circles -->
+<div class="absolute w-[80%] h-[80%] rounded-full border border-white/15 pointer-events-none"></div>
+<div class="absolute w-[55%] h-[55%] rounded-full border border-white/20 pointer-events-none"></div>
+<div class="absolute w-[30%] h-[30%] rounded-full border border-white/25 pointer-events-none"></div>
+<!-- Crosshairs -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-full h-[1px] bg-white/10"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="h-full w-[1px] bg-white/10"></div>
+</div>
+<!-- Radar Sweep Ray (SVG Animation) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none animate-spin" style="animation-duration: 6s; transform-origin: center center;" viewbox="0 0 200 200">
+<defs>
+<lineargradient id="radarSweep" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#86f2e4" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#86f2e4" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M 100 100 L 195 100 A 95 95 0 0 0 167 33 Z" fill="url(#radarSweep)"></path>
+</svg>
+<!-- Center Origin Marker (Roberto's base location) -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="h-5 w-5 rounded-full bg-secondary-container flex items-center justify-center shadow-lg border border-white">
+<span class="material-symbols-outlined text-primary text-[12px] font-bold">home</span>
+</div>
+<span class="font-label-sm text-[9px] text-secondary-container mt-1 font-bold">Tu Ubicación</span>
+</div>
+<!-- Job Blip 1 (Urgent - Laureles) -->
+<div class="absolute top-[28%] right-[32%] z-10 flex items-center group cursor-pointer" title="Fuga de agua - 0.8 km">
+<span class="relative flex h-3.5 w-3.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-error"></span>
+</span>
+<span class="hidden group-hover:block absolute left-4 bg-surface text-on-surface font-label-sm text-[10px] px-2 py-1 rounded shadow-md whitespace-nowrap z-20">
+                0.8 km • Fuga Urgente ($55k)
+              </span>
+</div>
+<!-- Job Blip 2 (Envigado Calefón) -->
+<div class="absolute bottom-[30%] left-[28%] z-10 flex items-center group cursor-pointer" title="Calefón - 1.4 km">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="hidden group-hover:block absolute left-4 bg-surface text-on-surface font-label-sm text-[10px] px-2 py-1 rounded shadow-md whitespace-nowrap z-20">
+                1.4 km • Calefón ($85k)
+              </span>
+</div>
+<!-- Job Blip 3 (Conquistadores) -->
+<div class="absolute top-[35%] left-[22%] z-10 flex items-center group cursor-pointer" title="Regulador de Presión - 2.1 km">
+<span class="h-2.5 w-2.5 rounded-full bg-amber-400 inline-block shadow"></span>
+<span class="hidden group-hover:block absolute left-4 bg-surface text-on-surface font-label-sm text-[10px] px-2 py-1 rounded shadow-md whitespace-nowrap z-20">
+                2.1 km • Presión ($110k)
+              </span>
+</div>
+<!-- Range Ring Labels -->
+<span class="absolute right-2 top-2 font-label-sm text-[9px] text-white/50">5 km</span>
+<span class="absolute right-6 top-6 font-label-sm text-[9px] text-white/40">3 km</span>
+<span class="absolute right-10 top-10 font-label-sm text-[9px] text-white/30">1 km</span>
+</div>
+<div class="flex items-center gap-1.5 pt-1">
+<span class="h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Escaneando: Laureles / Envigado / Belén</span>
+</div>
+</div>
+<!-- Widget 2: Tus Propuestas en Tiempo Real -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment_turned_in</span>
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold">Tus Postulaciones</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-medium">3 activas</span>
+</div>
+<div class="flex flex-col gap-space-sm divide-y divide-surface-container-high/60">
+<!-- Bid 1: ACCEPTED -->
+<div class="pt-space-xs flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm bg-secondary/15 text-secondary font-bold px-2 py-0.5 rounded">
+                  ✓ Aceptada para Hoy 16:00
+                </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">$120.000</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface font-semibold">Reparación tubería de cobre</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cliente: Doña Beatriz (Belén Rosales)</p>
+<div class="mt-1 flex gap-space-xs">
+<button class="w-full py-1.5 px-space-xs rounded bg-secondary text-white font-label-sm text-label-sm font-bold flex items-center justify-center gap-1 hover:bg-secondary/90 transition-all">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Abrir Chat con Cliente</span>
+</button>
+</div>
+</div>
+<!-- Bid 2: In Evaluation -->
+<div class="pt-space-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface font-medium px-2 py-0.5 rounded">
+                  En Evaluación (3 técnicos)
+                </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">$45.000</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface font-semibold">Cambio de grifería en ducha</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cliente: Felipe G. (Laureles)</p>
+<span class="font-label-sm text-label-sm text-outline">Enviada hace 2h</span>
+</div>
+<!-- Bid 3: In Evaluation -->
+<div class="pt-space-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface font-medium px-2 py-0.5 rounded">
+                  En Evaluación
+                </span>
+<span class="font-label-md text-label-md font-bold text-on-surface">$35.000</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface font-semibold">Destape de sifón cocina</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cliente: Claudia V. (Envigado)</p>
+<span class="font-label-sm text-label-sm text-outline">Enviada hace 3h</span>
+</div>
+</div>
+</div>
+<!-- Widget 3: Membresía VeciPro & Garantía Card -->
+<div class="bg-gradient-to-br from-primary to-primary-container rounded-xl p-space-md text-on-primary shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary-container text-[22px]">verified</span>
+<div>
+<span class="font-label-md text-label-md font-bold text-white block leading-tight">Membresía VeciPro Activa</span>
+<span class="font-label-sm text-label-sm text-secondary-container">Beneficios para Roberto D.</span>
+</div>
+</div>
+<ul class="flex flex-col gap-space-2xs pt-space-2xs font-body-sm text-body-sm text-on-primary-container">
+<li class="flex items-center gap-space-xs text-white">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span><strong>0% Comisión</strong> en servicios barriales</span>
+</li>
+<li class="flex items-center gap-space-xs text-white">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span>Prioridad visual en radar de clientes</span>
+</li>
+<li class="flex items-center gap-space-xs text-white">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+<span>Seguro de daños VeciProtege $10M COP</span>
+</li>
+</ul>
+<div class="pt-space-2xs">
+<a class="font-label-sm text-label-sm text-secondary-fixed hover:underline flex items-center gap-1 font-semibold" href="#">
+<span>Gestionar certificado y póliza</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Interactive Quick-Proposal Modal (Hidden by default, triggered by buttons) -->
+<div class="fixed inset-0 z-50 bg-primary/60 backdrop-blur-sm hidden items-center justify-center p-space-md" id="proposalModal">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-xl shadow-2xl flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">send</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Enviar Postulación Rápida</h3>
+</div>
+<button class="text-outline hover:text-on-surface" onclick="toggleQuickProposalModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Trabajo seleccionado:</span>
+<span class="font-label-md text-label-md text-on-surface font-bold block" id="modalJobTitle">Fuga de agua en llave monomando</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Vecina María F. • Cra 74 #32-15</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-bold">Tu Precio Propuesto (COP):</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-on-surface">$</span>
+<input class="w-full h-11 pl-8 pr-4 bg-surface rounded-lg text-body-md font-bold text-on-surface border border-outline-variant focus:outline-none focus:border-primary" type="text" value="48.000"/>
+</div>
+<span class="font-label-sm text-[11px] text-secondary">0% comisión aplicada (Membresía VeciPro activa)</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-bold">Tiempo Estimado de Llegada:</label>
+<select class="w-full h-11 px-3 bg-surface rounded-lg text-body-sm text-on-surface border border-outline-variant focus:outline-none focus:border-primary">
+<option>En menos de 15 minutos (Inmediato)</option>
+<option>En 30 minutos</option>
+<option>Hoy en la tarde (14:00 - 18:00)</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-bold">Mensaje al Vecino:</label>
+<textarea class="w-full p-3 bg-surface rounded-lg text-body-sm text-on-surface border border-outline-variant focus:outline-none focus:border-primary placeholder:text-outline" placeholder="Hola María, estoy en Laureles con herramientas completas y manguera de repuesto de alta presión..." rows="3">Hola María, tengo disponibilidad inmediata y cuento con repuestos originales de alta presión para llave monomando. Llego en 10 minutos con garantía de 6 meses.</textarea>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md text-label-md" onclick="toggleQuickProposalModal()">
+          Cancelar
+        </button>
+<button class="px-space-lg py-2.5 rounded-lg bg-primary hover:bg-primary-container text-white font-label-md text-label-md font-bold flex items-center gap-1.5 shadow" onclick="submitProposalMock()">
+<span>Enviar Propuesta</span>
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Client-side Interactive Micro-Behaviors -->
+<script>
+    function toggleQuickProposalModal(jobId) {
+      const modal = document.getElementById('proposalModal');
+      const titleElem = document.getElementById('modalJobTitle');
+      if (jobId === 1) {
+        titleElem.textContent = 'Fuga de agua en llave monomando bajo lavaplatos (Laureles)';
+      } else if (jobId === 2) {
+        titleElem.textContent = 'Mantenimiento preventivo y encendido de calefón a gas (Envigado)';
+      } else if (jobId === 3) {
+        titleElem.textContent = 'Instalación de regulador de presión residencial (Conquistadores)';
+      }
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    function submitProposalMock() {
+      const modal = document.getElementById('proposalModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      alert('¡Propuesta enviada con éxito! La vecina recibirá tu notificación prioritaria en su celular.');
+    }
+
+    // Interactive category filter toggling
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'font-bold');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'font-semibold');
+        });
+        this.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'font-semibold');
+        this.classList.add('bg-primary', 'text-on-primary', 'font-bold');
+      });
+    });
+
+    // Real-time text filter simulation
+    const searchInput = document.getElementById('jobSearchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase();
+        document.querySelectorAll('.job-card').forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.style.display = text.includes(query) ? 'flex' : 'none';
+        });
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>
