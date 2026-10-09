@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es-CL">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -76,6 +76,10 @@
       100% { transform: scale(2.2); opacity: 0; }
     }
   </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<link rel="stylesheet" href="vecired.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
+<script src="vecired.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col bg-[#f4f6fb]">
 <!-- Top Global Header -->
@@ -83,7 +87,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 <!-- Brand & Neighborhood Context -->
 <div class="flex items-center gap-6">
-<a class="flex items-center gap-2 text-primary font-extrabold text-xl tracking-tight" href="#">
+<a class="flex items-center gap-2 text-primary font-extrabold text-xl tracking-tight" href="INT-01.html">
 <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
 <i class="fa-solid fa-house-chimney-crack text-sm"></i>
 </div>
@@ -92,16 +96,16 @@
 <!-- Location Badge Pill -->
 <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-subtle border border-blue-200 text-xs font-semibold text-primary">
 <i class="fa-solid fa-location-dot text-blue-600"></i>
-<span>TU BARRIO: <strong class="text-slate-900">Los Laureles / Envigado</strong></span>
+<span>TU BARRIO: <strong class="text-slate-900">Santiago Centro / Barrio Lastarria</strong></span>
 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
 </div>
 </div>
 <!-- Quick Nav & User Profile -->
 <div class="flex items-center gap-5">
 <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
-<a class="hover:text-primary transition-colors" href="#">Cómo funciona</a>
-<a class="hover:text-primary transition-colors" href="#">Categorías</a>
-<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="#">
+<a class="hover:text-primary transition-colors" href="INT-01.html">Cómo funciona</a>
+<a class="hover:text-primary transition-colors" href="INT-11.html">Categorías</a>
+<a class="hover:text-primary transition-colors flex items-center gap-1.5" href="INT-00-teryser.html">
 <i class="fa-solid fa-shield-halved text-emerald-600"></i>
             Garantía VeciProtege
           </a>
@@ -421,14 +425,14 @@
 <!-- Budget Estimate Selector Cards -->
 <div>
 <div class="flex items-center justify-between mb-2">
-<label class="text-xs font-bold text-slate-700">Rango de Presupuesto Estimado (COP)</label>
+<label class="text-xs font-bold text-slate-700">Rango de Presupuesto Estimado (CLP)</label>
 <span class="text-[11px] text-slate-400">Sin compromiso previo de cobro</span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
 <!-- Option 1: Básico -->
 <div class="border border-slate-200 rounded-xl p-3.5 hover:border-slate-300 cursor-pointer transition-all bg-white">
 <div class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Ajuste Menor</div>
-<div class="text-sm font-extrabold text-slate-800 mt-1">$25.000 – $40.000</div>
+<div class="text-sm font-extrabold text-slate-800 mt-1">$7.500 – $12.000</div>
 <div class="text-[11px] text-slate-500 mt-1 leading-tight">Diagnóstico y cambio de empaque simple.</div>
 </div>
 <!-- Option 2: Más Común (Selected) -->
@@ -437,7 +441,7 @@
                   Más Común
                 </div>
 <div class="text-[11px] font-bold text-primary uppercase tracking-wider">Reparación Media</div>
-<div class="text-sm font-extrabold text-primary mt-1">$40.000 – $75.000</div>
+<div class="text-sm font-extrabold text-primary mt-1">$12.000 – $22.500</div>
 <div class="text-[11px] text-slate-600 mt-1 leading-tight">Cambio de piezas, flexibles o grifería completa.</div>
 </div>
 <!-- Option 3: Cotización Libre -->
@@ -460,7 +464,7 @@
 </div>
 <div class="flex items-center gap-1.5 text-xs text-slate-600">
 <i class="fa-solid fa-map-pin text-primary"></i>
-<span>Dirección: <strong>Cra 74 #32-15, Los Laureles</strong></span>
+<span>Dirección: <strong>Huérfanos 1160, Santiago Centro</strong></span>
 </div>
 </div>
 <p class="text-xs text-slate-500">
@@ -469,27 +473,27 @@
 <!-- Distance Selector Pill Group -->
 <div class="grid grid-cols-3 gap-3">
 <!-- 1 km -->
-<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button">
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button" data-vr-set-radius="1000" data-vr-target="solicitud" aria-pressed="false">
 <span class="font-bold text-slate-900">1 km</span>
 <span class="text-[10px] text-slate-500">Inmediato (&lt; 20 min)</span>
 </button>
 <!-- 3 km (Active) -->
-<button class="py-2.5 px-3 rounded-xl border-2 border-primary bg-surface-subtle font-medium text-xs text-primary flex flex-col items-center justify-center shadow-xs transition-all relative" type="button">
+<button class="py-2.5 px-3 rounded-xl border-2 border-primary bg-surface-subtle font-medium text-xs text-primary flex flex-col items-center justify-center shadow-xs transition-all relative" type="button" data-vr-set-radius="3000" data-vr-target="solicitud" data-vr-active aria-pressed="true">
 <span class="font-extrabold text-primary flex items-center gap-1">
                 3 km <i class="fa-solid fa-circle-check text-xs"></i>
 </span>
-<span class="text-[10px] font-semibold text-blue-700">Recomendado (Sector Comuna 11)</span>
+<span class="text-[10px] font-semibold text-blue-700">Recomendado (Sector Santiago Centro)</span>
 </button>
 <!-- 5 km -->
-<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button">
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 bg-white font-medium text-xs text-slate-700 flex flex-col items-center justify-center transition-all" type="button" data-vr-set-radius="5000" data-vr-target="solicitud" aria-pressed="false">
 <span class="font-bold text-slate-900">5 km</span>
 <span class="text-[10px] text-slate-500">Máximo Perímetro</span>
 </button>
 </div>
 <!-- Embedded Interactive Map Widget -->
-<div class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 bg-[#0f2942] shadow-inner">
+<div data-vr-map="solicitud" data-vr-theme="dark" data-vr-radius="3000" class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 bg-[#0f2942] shadow-inner">
 <!-- Map Graphical Canvas Simulation -->
-<div class="absolute inset-0 opacity-65 bg-[radial-gradient(#1e40af_1px,transparent_1px)] [background-size:20px_20px]"></div>
+<div data-vr-decor class="absolute inset-0 opacity-65 bg-[radial-gradient(#1e40af_1px,transparent_1px)] [background-size:20px_20px]"></div>
 <!-- Map Streets and Water Lines (SVG) -->
 <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
 <path d="M-50,140 Q150,110 350,160 T850,120" fill="none" opacity="0.6" stroke="#334155" stroke-width="6"></path>
@@ -501,19 +505,19 @@
 <circle cx="50%" cy="50%" fill="rgba(37, 99, 235, 0.1)" r="50" stroke="#60a5fa" stroke-width="1.5"></circle>
 </svg>
 <!-- Center User Pin -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 pointer-events-none">
+<div data-vr-pin="0,0" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 pointer-events-none">
 <div class="pulse-radar">
 <div class="w-10 h-10 rounded-full bg-blue-600 border-2 border-white shadow-lg flex items-center justify-center text-white text-sm">
 <i class="fa-solid fa-house"></i>
 </div>
 </div>
 <div class="mt-1.5 px-2 py-0.5 rounded-full bg-slate-900/90 text-white text-[10px] font-bold tracking-wide border border-white/20 whitespace-nowrap shadow-md backdrop-blur-xs">
-                Tu Hogar (Cra 74 #32-15)
+                Tu Hogar (Huérfanos 1160)
               </div>
 </div>
 <!-- Technician Pins in 3km perimeter -->
 <!-- Roberto D (Plumber) -->
-<div class="absolute top-[32%] left-[42%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div data-vr-pin="1.18,-24" class="absolute top-[32%] left-[42%] -translate-x-1/2 -translate-y-1/2 z-10">
 <div class="group relative cursor-pointer">
 <div class="w-8 h-8 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-xs">
 <i class="fa-solid fa-wrench"></i>
@@ -524,19 +528,19 @@
 </div>
 </div>
 <!-- Technician 2 -->
-<div class="absolute top-[58%] left-[58%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div data-vr-pin="0.68,135" class="absolute top-[58%] left-[58%] -translate-x-1/2 -translate-y-1/2 z-10">
 <div class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-[10px]">
 <i class="fa-solid fa-faucet"></i>
 </div>
 </div>
 <!-- Technician 3 -->
-<div class="absolute top-[38%] left-[62%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div data-vr-pin="1.02,45" class="absolute top-[38%] left-[62%] -translate-x-1/2 -translate-y-1/2 z-10">
 <div class="w-7 h-7 rounded-full bg-emerald-500 border-2 border-white shadow-md flex items-center justify-center text-white text-[10px]">
 <i class="fa-solid fa-toolbox"></i>
 </div>
 </div>
 <!-- Technician 4 -->
-<div class="absolute top-[68%] left-[46%] -translate-x-1/2 -translate-y-1/2 z-10">
+<div data-vr-pin="1.11,-167" class="absolute top-[68%] left-[46%] -translate-x-1/2 -translate-y-1/2 z-10">
 <div class="w-6 h-6 rounded-full bg-emerald-500/80 border border-white flex items-center justify-center text-white text-[9px]">
 <i class="fa-solid fa-wrench"></i>
 </div>
@@ -548,10 +552,10 @@
 </div>
 <!-- Map Controls -->
 <div class="absolute bottom-3 right-3 z-20 flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md rounded-lg p-1 border border-white/10">
-<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded">
+<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded" data-vr-ctl="zoom-in" data-vr-target="solicitud" aria-label="Acercar">
 <i class="fa-solid fa-plus"></i>
 </button>
-<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded">
+<button class="w-6 h-6 flex items-center justify-center text-white text-xs hover:bg-white/20 rounded" data-vr-ctl="zoom-out" data-vr-target="solicitud" aria-label="Alejar">
 <i class="fa-solid fa-minus"></i>
 </button>
 </div>
@@ -559,12 +563,12 @@
 </section>
 <!-- Bottom Action Bar -->
 <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-<button class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2" type="button">
+<button class="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2" type="button" data-toast="Borrador guardado.">
 <i class="fa-regular fa-floppy-disk"></i>
             Guardar como borrador
           </button>
 <div class="flex items-center gap-3 w-full sm:w-auto">
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg transition-all" href="#">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold text-sm shadow-md shadow-primary/25 hover:shadow-lg transition-all" href="INT-15.html" data-go="INT-15.html" data-toast="Publicando tu solicitud…">
 <span>Publicar y Buscar Técnicos Cercanos (3 km)</span>
 <i class="fa-solid fa-arrow-right text-xs"></i>
 </a>
@@ -580,7 +584,7 @@
 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Actividad Barrial en Vivo</h3>
 </div>
-<span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Los Laureles</span>
+<span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Santiago Centro</span>
 </div>
 <div class="grid grid-cols-3 gap-2 py-4 text-center">
 <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
@@ -602,7 +606,7 @@
 <div class="p-3 rounded-xl bg-surface-subtle border border-blue-100 text-xs text-slate-700 flex items-start gap-2.5">
 <i class="fa-solid fa-bolt text-amber-500 mt-0.5 shrink-0"></i>
 <div>
-<span class="font-bold text-slate-900">Última solicitud resuelta:</span> Hace 22 min en Carrera 76 (Reparación de sifón por Roberto D.).
+<span class="font-bold text-slate-900">Última solicitud resuelta:</span> Hace 22 min en Calle Moneda (Reparación de sifón por Roberto D.).
             </div>
 </div>
 </div>
@@ -628,7 +632,7 @@
 </li>
 <li class="flex items-start gap-2">
 <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
-<span>Póliza <strong>VeciProtege</strong> incluida hasta $2.500.000 COP contra daños incidentales.</span>
+<span>Póliza <strong>VeciProtege</strong> incluida hasta $750.000 CLP contra daños incidentales.</span>
 </li>
 <li class="flex items-start gap-2">
 <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0"></i>
@@ -680,14 +684,14 @@
             </div>
 <span class="text-[10px] font-semibold text-slate-400">Radio: 3 km</span>
 </div>
-<div class="relative h-28 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex items-center justify-center">
+<div data-vr-map="resumen" data-vr-radius="3000" data-vr-interactive="false" class="relative h-28 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex items-center justify-center">
 <!-- Simulated minimal map graphic -->
-<div class="absolute inset-0 opacity-40 bg-[radial-gradient(#64748b_1px,transparent_1px)] [background-size:12px_12px]"></div>
-<div class="w-16 h-16 rounded-full bg-blue-100/60 border border-blue-400 flex items-center justify-center">
+<div data-vr-decor class="absolute inset-0 opacity-40 bg-[radial-gradient(#64748b_1px,transparent_1px)] [background-size:12px_12px]"></div>
+<div data-vr-decor class="w-16 h-16 rounded-full bg-blue-100/60 border border-blue-400 flex items-center justify-center">
 <div class="w-3 h-3 rounded-full bg-blue-600 ring-4 ring-blue-300/50"></div>
 </div>
 <div class="absolute bottom-1.5 left-2 bg-white/90 backdrop-blur-xs px-2 py-0.5 rounded text-[10px] font-medium text-slate-600 shadow-2xs">
-              Los Laureles / Conquistadores / Belén
+              Santiago Centro / Barrio Lastarria / Barrio Brasil
             </div>
 </div>
 <div class="mt-3 flex items-center justify-between text-xs text-slate-500">
@@ -709,9 +713,9 @@
 </div>
 </div>
 <div class="flex items-center gap-6">
-<a class="hover:text-primary transition-colors" href="#">Términos de Servicio</a>
-<a class="hover:text-primary transition-colors" href="#">Política de Privacidad</a>
-<a class="hover:text-primary transition-colors" href="#">Centro de Ayuda Vecinal</a>
+<a class="hover:text-primary transition-colors" href="INT-00-teryser.html">Términos de Servicio</a>
+<a class="hover:text-primary transition-colors" href="INT-00-poldepri.html">Política de Privacidad</a>
+<a class="hover:text-primary transition-colors" href="INT-00-cendeayu.html">Centro de Ayuda Vecinal</a>
 </div>
 </div>
 </footer>

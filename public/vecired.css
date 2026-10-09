@@ -8,6 +8,8 @@
   background: #e8eef6;
   font: inherit;
 }
+.vr-leaflet--dark { background: #0f2942; }
+.vr-leaflet--dark .leaflet-tile-pane { filter: invert(1) hue-rotate(190deg) brightness(0.85) saturate(0.6); }
 .vr-map-host > :not(.vr-leaflet) { z-index: 1; }
 .vr-map-host > .absolute.inset-0:not(.vr-leaflet) { pointer-events: none; }
 

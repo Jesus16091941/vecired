@@ -318,11 +318,8 @@
   }
 
   /* Mapas */
-  var TILES = {
-    light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-  };
-  var ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/" target="_blank" rel="noopener">CARTO</a>';
+  var TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
   var POSITION_CLASS = /^(absolute|fixed|transform|-?translate-[xy]-\S+|-?(left|right|top|bottom)-\S+|inset-\S+|z-\d+|animate-bounce)$/;
   var maps = [];
 
@@ -398,7 +395,8 @@
       tap: interactive
     });
     map.attributionControl.setPrefix(false);
-    var tiles = L.tileLayer(TILES[theme], { attribution: ATTRIBUTION, subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+    L.tileLayer(TILE_URL, { attribution: ATTRIBUTION, maxZoom: 19 }).addTo(map);
+    canvas.classList.toggle('vr-leaflet--dark', theme === 'dark');
     var accent = theme === 'dark' ? '#60a5fa' : '#006a61';
 
     var circle = L.circle([0, 0], { radius: radius || 1, color: accent, weight: 2, dashArray: '6 6', fillColor: accent, fillOpacity: radius ? 0.12 : 0, opacity: radius ? 0.9 : 0, interactive: false }).addTo(map);
@@ -410,7 +408,7 @@
 
     function fit() {
       if (state.radius) {
-        map.fitBounds(circle.getBounds(), { padding: [12, 12], animate: false });
+        map.fitBounds(dot.getLatLng().toBounds(state.radius * 2), { padding: [12, 12], animate: false });
       } else {
         var pts = markers.map(function (m) { return m.marker.getLatLng(); }).concat([dot.getLatLng()]);
         if (pts.length > 1) map.fitBounds(L.latLngBounds(pts), { padding: [48, 48], maxZoom: 16, animate: false });
@@ -441,7 +439,7 @@
 
     state.toggleLayers = function () {
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
-      tiles.setUrl(TILES[state.theme]);
+      canvas.classList.toggle('vr-leaflet--dark', state.theme === 'dark');
     };
 
     state.place(currentLocation);
