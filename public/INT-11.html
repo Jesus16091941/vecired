@@ -45,20 +45,21 @@
 <!-- Keyword input -->
 <div class="md:col-span-5 flex items-center gap-space-xs px-space-sm py-2 bg-surface-container-low rounded-lg">
 <span class="material-symbols-outlined text-outline text-[20px]">search</span>
-<input class="w-full bg-transparent text-on-surface placeholder:text-outline text-body-md font-body-md focus:outline-none" placeholder="Buscar por oficio, problema o nombre (ej. fuga de agua, electricista, chapa)..." type="text" value="Plomería y Gasfitería"/>
+<input class="w-full bg-transparent text-on-surface placeholder:text-outline text-body-md font-body-md focus:outline-none" placeholder="Buscar por oficio, problema o nombre (ej. fuga de agua, electricista, chapa)..." type="text" value="" id="vr-search" data-vr-nostore=""/>
 </div>
 <!-- Category Selector Dropdown -->
 <div class="md:col-span-3 flex items-center gap-space-xs px-space-sm py-2 bg-surface-container-low rounded-lg">
 <span class="material-symbols-outlined text-outline text-[20px]">home_repair_service</span>
 <div class="w-full flex flex-col">
 <label class="text-[10px] uppercase font-label-sm text-on-surface-variant tracking-wider leading-none">Categoría</label>
-<select class="w-full bg-transparent text-on-surface text-body-sm font-label-md focus:outline-none cursor-pointer">
-<option selected="">Plomería y Gasfitería (12)</option>
-<option>Electricidad Residencial (8)</option>
-<option>Cerrajería de Emergencia (5)</option>
-<option>Pintura &amp; Acabados (7)</option>
-<option>Jardinería &amp; Paisajismo (4)</option>
-<option>Refrigeración &amp; Línea Blanca (6)</option>
+<select id="vr-cat" data-vr-nostore="" aria-label="Categoría" class="w-full bg-transparent text-on-surface text-body-sm font-label-md focus:outline-none cursor-pointer">
+<option value="" selected="">Todas las categorías</option>
+<option value="plomeria">Plomería y Gasfitería</option>
+<option value="electricidad">Electricidad e Iluminación</option>
+<option value="cerrajeria">Cerrajería de Urgencia</option>
+<option value="pintura">Pintura y Albañilería</option>
+<option value="refrigeracion">Refrigeración y Lavadoras</option>
+<option value="jardineria">Jardinería y Mantenimiento</option>
 </select>
 </div>
 </div>
@@ -231,7 +232,7 @@
 <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
 <div>
 <p class="text-body-md font-body-md text-on-surface font-semibold">
-                Mostrando <span class="text-primary font-bold">24 profesionales</span> en Santiago Centro y alrededores
+                Mostrando <span id="vr-count" class="text-primary font-bold">24 profesionales</span> en Santiago Centro y alrededores
               </p>
 <!-- Active Tag Chips -->
 <div class="flex flex-wrap items-center gap-1.5 mt-2">
@@ -243,9 +244,9 @@
                   Vecinos Verificados
                   <button class="hover:text-primary cursor-pointer leading-none" type="button">✕</button>
 </span>
-<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant text-label-sm font-label-sm px-2.5 py-1 rounded-full">
-                  Plomería y Gasfitería
-                  <button class="hover:text-primary cursor-pointer leading-none" type="button">✕</button>
+<span id="vr-cat-chip" hidden class="inline-flex items-center gap-1 bg-secondary-container/40 text-on-secondary-container text-label-sm font-label-sm px-2.5 py-1 rounded-full font-semibold">
+                  <span id="vr-cat-chip-label"></span>
+                  <button id="vr-cat-clear" class="hover:text-primary cursor-pointer leading-none" type="button" aria-label="Quitar filtro de categoría">✕</button>
 </span>
 </div>
 </div>
@@ -263,7 +264,7 @@
 <!-- Technician Cards Grid (3 Columns) -->
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg">
 <!-- Card 1: Roberto D. (Plomero Master) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="plomeria" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <!-- Top Image & Quick Badges -->
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
@@ -320,7 +321,7 @@
 </div>
 </article>
 <!-- Card 2: Lucía M. (Electricista) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="electricidad" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a Hispanic woman certified electrician in a navy work vest with tools visible in background, confident smile, clean well-lit electrical service workshop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAcChc2QzcOE_mnpYEKaiN0D245YXuz7cFUundX2m1mbsRzXY3jAEEcAtQOs2647lMmmL6uK4iS1PhekMgbjPCrmA3Q4cfP4njyEY4gBc363gOPRi3iHMrEfV9dyymnyoTh9oKns7L6uXxfhmguwRo_ppSPDJFI3lp-B0NSxsgbC-MnB3l9mpRqqnLlQph2QQeMUWV_fn6xN7MKqBL0r5KX4sYRe83FyOtInU6D5ro45SYIqS0T-tn"/>
@@ -372,7 +373,7 @@
 </div>
 </article>
 <!-- Card 3: Carlos V. (Cerrajería de Alta Seguridad) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="cerrajeria" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="Portrait of an experienced male master locksmith holding professional lock picks and precision key machine in a tidy local hardware shop, warm ambient light, friendly professional aura." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrHQTwupdxneS31R7Yf3mX_HI7dYfr2trUHqx6IVi2PbKviCvf5CaL5FixmlAiV9MGMTeTJg-4gt5y4vD_3NK3GSLcYzMGwQMkbrqqCJAUhjxwNLL6QYZpbMZKD-4Yancg_0xupE4PqQdAqXoHzhcSAGJlEqqxZXz4sMveeeqrXoBfDxXlLoUQImZ6tT8IWSHf9Xn-DZXak3bxrPcPro8riibNaqXiNiBxB-eVaP07C_G9n9BSVnyi"/>
@@ -424,7 +425,7 @@
 </div>
 </article>
 <!-- Card 4: Andrés P. (Pintor y Acabados) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="pintura" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="Portrait of a clean, skilled house painter specialist wearing painters overalls, holding a high quality brush next to a freshly painted modern interior wall in warm neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKgbZSnrpgybrQisELeRfeIFmXuZZjYXkta4yDjwayuIowC49iIOllOdBazuWyleyt9Bgx_Wb6xTASygWUyXcpE5ZchifLU8hjDGsgSZt75Zb2roVPRDh1p55j9Eg99kkkOjcnWffDIGL1nM4EHYvhG9DLxWWS_GBM7x2Z2bDWVyjNEGyqx0tBeyQSGp3WbcoB4VhU88Ydndq9FNmpZTO-ayYHOnlAQ3kOAvgu6So9mMvigo8DJnwk"/>
@@ -475,7 +476,7 @@
 </div>
 </article>
 <!-- Card 5: Mateo S. (Electrodomésticos) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="refrigeracion" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="Professional technician inspecting the electronic motherboard of an appliance in a modern workshop with specialized diagnostic equipment, clean professional workwear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqaFP-XGke4ao9My5ukkkSphDr2sDzQrJxHhN19iMGIW-TMRxsL3pifl2tbZ8hlu71miQFYt7GPoboRn86btqCWzUoNqgHfg1F6y6LPmd_FDU5ofMzVC4A7YhUbb_t-EyAkLcAuERfcKVdjKswO4wuot9Il0zOS9cb9zLwCAAOc68Do5WzsaDu1FKMpvbEsCeHhVf_15AJdBXQnJqANnSy0bw91mydtLaqCTFbc1syElBxyk0Rjm5d"/>
@@ -526,7 +527,7 @@
 </div>
 </article>
 <!-- Card 6: Valentina R. (Paisajismo & Jardinería) -->
-<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<article data-cat="jardineria" class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
 <div>
 <div class="relative h-48 w-full bg-surface-container overflow-hidden">
 <img class="w-full h-full object-cover" data-alt="A portrait of a cheerful female landscape gardener with gardening gloves and shears in an upscale residential garden with lush greenery, sunlight, natural aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH9DXwu1o9LDr3YE02w8Ka_0mFT66SpEAveelBLEwI9iEnznJ1bMHohbR-7MorfLtVvhsX6weG6wZGM6rWTwJiBTHzHpF5skGvi2NyhT1rpEqIM7gIdBScEi8WVXEFvHWAlN2L4dqluxz0o9x195JHDj-cH2gu1P8vQeVoLbUdpHbytmXksrYUqEhT7RZhdcCPiacTEJzRNLiRrM5NxacWz5EBLzMEEfGM4xp6wmZ40nIrejwzPeRY"/>
@@ -637,3 +638,42 @@
 </div>
 </section>
 </div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>
+<p id="vr-empty" hidden class="text-center text-on-surface-variant py-8">No hay profesionales para esta categoría.</p>
+<script>
+(function () {
+  var select = document.getElementById('vr-cat');
+  var search = document.getElementById('vr-search');
+  var count = document.getElementById('vr-count');
+  var chip = document.getElementById('vr-cat-chip');
+  var chipLabel = document.getElementById('vr-cat-chip-label');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('article[data-cat]'));
+  var labels = {};
+  Array.prototype.forEach.call(select.options, function (o) { if (o.value) labels[o.value] = o.textContent; });
+
+  function apply(cat, updateUrl) {
+    if (cat && !labels[cat]) cat = '';
+    select.value = cat;
+    search.value = cat ? labels[cat] : '';
+    var visible = 0;
+    cards.forEach(function (card) {
+      var show = !cat || card.getAttribute('data-cat') === cat;
+      card.hidden = !show;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    count.textContent = cat ? visible + (visible === 1 ? ' profesional' : ' profesionales') : '24 profesionales';
+    chip.hidden = !cat;
+    chip.style.display = cat ? '' : 'none';
+    chipLabel.textContent = cat ? labels[cat] : '';
+    if (updateUrl) {
+      var url = new URL(location.href);
+      if (cat) url.searchParams.set('cat', cat); else url.searchParams.delete('cat');
+      history.replaceState(null, '', url);
+    }
+  }
+
+  select.addEventListener('change', function () { apply(select.value, true); });
+  document.getElementById('vr-cat-clear').addEventListener('click', function () { apply('', true); });
+  apply(new URLSearchParams(location.search).get('cat') || '', false);
+})();
+</script>
