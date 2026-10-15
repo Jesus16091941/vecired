@@ -107,7 +107,7 @@
 </div>
 </div>
 <!-- Input Fields Form Grid -->
-<form id="form-registro" class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
+<form id="form-registro" data-vr-register class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
 <!-- Full Name & Email -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
 <div class="flex flex-col gap-1">
@@ -651,6 +651,7 @@ Reajustar pin
       input.value = i === 0 ? name : email;
       input.dispatchEvent(new Event('input', { bubbles: true }));
     });
+    document.getElementById('form-registro').setAttribute('data-vr-provider', provider);
     closeModal(modalSocial);
     window.VeciRed.toast('Cuenta de ' + PROVIDERS[provider] + ' vinculada. Completa teléfono, contraseña y ubicación.');
     document.getElementById('input-phone').focus();

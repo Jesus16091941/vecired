@@ -114,10 +114,89 @@
     // Prototipo sin backend: nunca recargamos la página al enviar un formulario.
     event.preventDefault();
     var submitter = event.submitter || event.target.querySelector('[data-go], [data-go-role], [data-toast]');
-    if (submitter && (submitter.hasAttribute('data-go') || submitter.hasAttribute('data-go-role') || submitter.hasAttribute('data-toast'))) {
-      go(submitter);
+    var navigates = submitter && (submitter.hasAttribute('data-go') || submitter.hasAttribute('data-go-role') || submitter.hasAttribute('data-toast'));
+    if (event.target.hasAttribute('data-vr-register')) {
+      users.registerFromForm(event.target).then(function (user) {
+        if (!user) return;
+        if (submitter) submitter.setAttribute('data-toast', '¡Cuenta creada! Bienvenido/a a VeciRed, ' + user.nombre.split(' ')[0] + '.');
+        if (navigates) go(submitter);
+      });
+      return;
     }
+    if (navigates) go(submitter);
   }, true);
+
+  /* Registro temporal de usuarios (localStorage del navegador; sin backend en el prototipo) */
+  var USERS_KEY = 'vecired:users';
+  var users = {
+    list: function () {
+      try { return JSON.parse(localStorage.getItem(USERS_KEY)) || []; } catch (e) { return []; }
+    },
+    save: function (list) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(list));
+    },
+    current: function () { return store.get('user'); },
+    logout: function () { try { sessionStorage.removeItem('vecired:user'); } catch (e) { /* sin almacenamiento */ } },
+    clear: function () { localStorage.removeItem(USERS_KEY); users.logout(); },
+    registerFromForm: function (form) {
+      var field = function (name) {
+        var el = form.elements.namedItem(name);
+        return el && typeof el.value === 'string' ? el.value.trim() : '';
+      };
+      var email = field('correo').toLowerCase();
+      var password = (form.elements.namedItem('password') || {}).value || '';
+      if (users.list().some(function (u) { return u.correo === email; })) {
+        toast('Ya existe una cuenta registrada con ' + email + '.');
+        var emailInput = form.elements.namedItem('correo');
+        if (emailInput) emailInput.focus();
+        return Promise.resolve(null);
+      }
+      var salt = randomHex(16);
+      return hashPassword(password, salt).then(function (hash) {
+        var user = {
+          id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'u-' + Date.now(),
+          nombre: field('nombre'),
+          correo: email,
+          telefono: '+56 ' + field('telefono').replace(/\s+/g, ' '),
+          direccion: field('direccion'),
+          barrio: field('barrio'),
+          depto: field('depto'),
+          rol: store.get('role') || 'client',
+          proveedor: form.getAttribute('data-vr-provider') || 'correo',
+          salt: salt,
+          passwordHash: hash,
+          creadoEn: new Date().toISOString()
+        };
+        var list = users.list();
+        list.push(user);
+        try {
+          users.save(list);
+        } catch (e) {
+          toast('No se pudo guardar el registro en este navegador.');
+          return null;
+        }
+        var publicUser = Object.assign({}, user);
+        delete publicUser.salt;
+        delete publicUser.passwordHash;
+        store.set('user', publicUser);
+        return publicUser;
+      });
+    }
+  };
+
+  function randomHex(bytes) {
+    var arr = new Uint8Array(bytes);
+    crypto.getRandomValues(arr);
+    return Array.prototype.map.call(arr, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  function hashPassword(password, salt) {
+    if (!(window.crypto && crypto.subtle)) return Promise.resolve(null);
+    var data = new TextEncoder().encode(salt + ':' + password);
+    return crypto.subtle.digest('SHA-256', data).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    });
+  }
 
   function wireLogo() {
     var logo = document.querySelector('header img, nav img');
@@ -557,6 +636,7 @@
 
   /* API pública usada por los scripts de cada pantalla */
   window.VeciRed = {
+    users: users,
     locate: locate,
     toast: toast,
     store: store,
