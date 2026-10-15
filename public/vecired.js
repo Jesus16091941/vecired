@@ -400,7 +400,17 @@
     var accent = theme === 'dark' ? '#60a5fa' : '#006a61';
 
     var circle = L.circle([0, 0], { radius: radius || 1, color: accent, weight: 2, dashArray: '6 6', fillColor: accent, fillOpacity: radius ? 0.12 : 0, opacity: radius ? 0.9 : 0, interactive: false }).addTo(map);
-    var dot = L.circleMarker([0, 0], { radius: 7, color: '#ffffff', weight: 3, fillColor: '#001428', fillOpacity: 1, interactive: false }).addTo(map);
+    var draggable = interactive && host.hasAttribute('data-vr-draggable');
+    var dot = draggable
+      ? L.marker([0, 0], {
+          icon: L.divIcon({ className: 'vr-divicon', iconSize: [0, 0], html: '<div class="vr-pin vr-pin--bottom"><div class="vr-home-pin"><span class="vr-home-pin__label">' + (host.getAttribute('data-vr-draggable') || 'Tu hogar') + '</span><span class="material-symbols-outlined" aria-hidden="true">home_pin</span></div></div>' }),
+          draggable: true,
+          autoPan: true,
+          title: 'Arrastra el pin para ajustar tu ubicación',
+          zIndexOffset: 1000
+        }).addTo(map)
+      : L.circleMarker([0, 0], { radius: 7, color: '#ffffff', weight: 3, fillColor: '#001428', fillOpacity: 1, interactive: false }).addTo(map);
+    if (draggable) L.control.zoom({ position: 'topright' }).addTo(map);
     var markers = pins.map(function (p) { return { pin: p, marker: L.marker([0, 0], { icon: p.icon, keyboard: false, riseOnHover: true }).addTo(map) }; });
     var route = host.hasAttribute('data-vr-route') ? L.polyline([], { color: '#14b8a6', weight: 5, dashArray: '8 6', opacity: 0.9 }).addTo(map) : null;
 
@@ -427,8 +437,25 @@
         var origin = markers.filter(function (m) { return m.pin.km; })[0];
         if (origin) route.setLatLngs([origin.marker.getLatLng(), center]);
       }
-      fit();
+      if (loc.manual) map.panTo(center);
+      else fit();
     };
+
+    if (draggable) {
+      var moveHome = function (latlng) {
+        var loc = { lat: latlng.lat, lng: latlng.lng, label: 'Ubicación ajustada', place: 'Ubicación ajustada manualmente', fallback: false, manual: true };
+        setLocation(loc);
+        host.dispatchEvent(new CustomEvent('vr:pinmoving', { detail: loc, bubbles: true }));
+        reverseGeocode(loc).then(function (named) {
+          if (currentLocation.lat !== loc.lat || currentLocation.lng !== loc.lng) return;
+          setLocation(named);
+          host.dispatchEvent(new CustomEvent('vr:pinmoved', { detail: named, bubbles: true }));
+        });
+      };
+      dot.on('dragend', function () { moveHome(dot.getLatLng()); });
+      map.on('click', function (e) { moveHome(e.latlng); });
+      state.recenter = function () { map.setView(dot.getLatLng(), Math.max(map.getZoom(), 16)); };
+    }
 
     state.setRadius = function (meters) {
       state.radius = meters;
@@ -471,6 +498,10 @@
           });
         } else if (state && action === 'zoom-in') state.map.zoomIn();
         else if (state && action === 'zoom-out') state.map.zoomOut();
+        else if (state && action === 'recenter' && state.recenter) {
+          state.recenter();
+          toast('Arrastra el pin o haz clic en el mapa para ubicar tu hogar.');
+        }
         else if (state && action === 'layers') state.toggleLayers();
         return;
       }

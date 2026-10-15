@@ -39,13 +39,13 @@
 <div class="max-w-container-max mx-auto flex flex-wrap items-center justify-between gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
 <div class="flex items-center gap-space-xs">
 <span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-<span class="text-on-surface font-semibold">Red activa en Santiago y Valle de Aburrá:</span>
+<span class="text-on-surface font-semibold">Red activa en la Región Metropolitana:</span>
 <span>48 técnicos certificados en turno dentro de tu radio local</span>
 </div>
 <div class="hidden md:flex items-center gap-space-md">
 <span class="flex items-center gap-space-2xs text-secondary font-semibold">
 <span class="material-symbols-outlined text-[15px]">verified_user</span>
-          Identidad 100% cotejada con Registraduría Nacional
+          Identidad 100% cotejada con el Registro Civil
         </span>
 <span class="text-outline-variant">|</span>
 <span class="flex items-center gap-space-2xs">
@@ -88,7 +88,7 @@
 </div>
 <div class="mt-space-sm">
 <p class="font-headline-sm text-headline-sm text-primary font-bold">Soy Vecino / Cliente</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Busco técnicos certificados, fontanería, electricidad y soluciones para mi hogar.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Busco técnicos certificados, gasfitería, electricidad y soluciones para mi hogar.</p>
 </div>
 </div>
 <!-- Worker Role -->
@@ -107,56 +107,57 @@
 </div>
 </div>
 <!-- Input Fields Form Grid -->
-<form class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
+<form id="form-registro" class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
 <!-- Full Name & Email -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
 <div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Nombre y Apellido</label>
+<label class="font-label-md text-label-md text-on-surface" for="input-name">Nombre y Apellido</label>
 <div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">person</span>
-<input class="w-full h-12 pl-10 pr-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="Ej. Carlos Restrepo" type="text" value="Carlos Mario Restrepo"/>
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]" aria-hidden="true">person</span>
+<input class="w-full h-12 pl-10 pr-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-name" name="nombre" placeholder="Ej. Camila Rojas Soto" type="text" autocomplete="name" minlength="3" required/>
 </div>
 </div>
 <div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Correo Electrónico</label>
+<label class="font-label-md text-label-md text-on-surface" for="input-email">Correo Electrónico</label>
 <div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">mail</span>
-<input class="w-full h-12 pl-10 pr-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="carlos@ejemplo.com" type="email" value="carlos.restrepo@vecired.co"/>
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]" aria-hidden="true">mail</span>
+<input class="w-full h-12 pl-10 pr-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-email" name="correo" placeholder="Ej. camila.rojas@gmail.com" type="email" autocomplete="email" required/>
 </div>
 </div>
 </div>
 <!-- Phone & Password -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
 <div class="flex flex-col gap-1">
-<label class="font-label-md text-label-md text-on-surface">Teléfono Móvil (WhatsApp Activo)</label>
+<label class="font-label-md text-label-md text-on-surface" for="input-phone">Teléfono Móvil (WhatsApp Activo)</label>
 <div class="relative flex items-center">
 <div class="absolute left-3 flex items-center gap-1 text-on-surface-variant font-label-md text-label-md">
-<span>🇨🇴</span>
+<span aria-hidden="true">🇨🇱</span>
 <span>+56</span>
 </div>
-<input class="w-full h-12 pl-16 pr-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" placeholder="300 123 4567" type="tel" value="312 849 2031"/>
+<input class="w-full h-12 pl-16 pr-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-phone" name="telefono" placeholder="9 1234 5678" type="tel" autocomplete="tel-national" inputmode="numeric" pattern="\s*9(\s*\d){8}\s*" title="Celular chileno de 9 dígitos que empieza con 9 (ej. 9 1234 5678)" required/>
 </div>
 </div>
 <!-- Password with Visual Strength Check -->
 <div class="flex flex-col gap-1">
 <div class="flex items-center justify-between">
-<label class="font-label-md text-label-md text-on-surface">Contraseña de Seguridad</label>
-<span class="font-label-sm text-label-sm text-secondary font-bold">Nivel: Segura</span>
+<label class="font-label-md text-label-md text-on-surface" for="pwd-input">Contraseña de Seguridad</label>
+<span id="pwd-level" class="font-label-sm text-label-sm text-on-surface-variant font-bold" aria-live="polite">Nivel: —</span>
 </div>
 <div class="relative flex items-center">
-<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">lock_reset</span>
-<input class="w-full h-12 pl-10 pr-10 rounded-lg bg-surface-container-lowest text-on-surface text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" id="pwd-input" type="password" value="VeciSantiago Centro#2024"/>
-<button class="absolute right-3 text-outline hover:text-on-surface transition-colors" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]" aria-hidden="true">lock_reset</span>
+<input class="w-full h-12 pl-10 pr-10 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-md font-body-md outline-none focus:ring-2 focus:ring-primary shadow-sm" id="pwd-input" name="password" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" aria-describedby="pwd-hint" required/>
+<button class="absolute right-3 text-outline hover:text-on-surface transition-colors" onclick="togglePasswordVisibility()" type="button" aria-label="Mostrar u ocultar contraseña">
 <span class="material-symbols-outlined text-[20px]" id="pwd-icon">visibility</span>
 </button>
 </div>
 <!-- Strength Pills -->
-<div class="grid grid-cols-4 gap-1.5 mt-1">
-<div class="h-1.5 rounded-full bg-secondary"></div>
-<div class="h-1.5 rounded-full bg-secondary"></div>
-<div class="h-1.5 rounded-full bg-secondary"></div>
-<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+<div id="pwd-bars" class="grid grid-cols-4 gap-1.5 mt-1" aria-hidden="true">
+<div class="h-1.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest transition-colors"></div>
 </div>
+<p id="pwd-hint" class="font-body-sm text-[12px] text-on-surface-variant">Usa 12+ caracteres, mayúsculas, minúsculas, números y símbolos.</p>
 </div>
 </div>
 <!-- Hyperlocal Residential Address Component -->
@@ -166,28 +167,28 @@
 <span class="material-symbols-outlined text-secondary text-[20px]">pin_drop</span>
 <span class="font-label-md text-label-md text-primary font-bold">Ubicación Residencial Exacta</span>
 </div>
-<button class="flex items-center gap-1.5 bg-surface-container-lowest hover:bg-surface-container px-space-sm py-1.5 rounded-full text-secondary font-label-sm text-label-sm shadow-sm transition-colors self-start sm:self-auto" onclick="detectGPS()" type="button">
-<span class="material-symbols-outlined text-[16px] animate-spin-slow">my_location</span>
-<span>Detectar por GPS</span>
+<button id="btn-gps" class="flex items-center gap-1.5 bg-surface-container-lowest hover:bg-surface-container disabled:opacity-60 disabled:cursor-wait px-space-sm py-1.5 rounded-full text-secondary font-label-sm text-label-sm shadow-sm transition-colors self-start sm:self-auto" onclick="detectGPS()" type="button">
+<span id="btn-gps-icon" class="material-symbols-outlined text-[16px]" aria-hidden="true">my_location</span>
+<span id="btn-gps-text">Detectar por GPS</span>
 </button>
 </div>
 <!-- Address Split Inputs -->
 <div class="grid grid-cols-1 sm:grid-cols-12 gap-space-sm">
 <div class="sm:col-span-5 flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Dirección Principal</label>
-<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-address" type="text" value="Huérfanos 1160"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-address">Dirección Principal</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-address" name="direccion" type="text" placeholder="Ej. Huérfanos 1160" autocomplete="street-address" required/>
 </div>
 <div class="sm:col-span-4 flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Barrio / Comuna</label>
-<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-neighborhood" type="text" value="Santiago Centro (Santiago Centro)"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-neighborhood">Barrio / Comuna</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-neighborhood" name="barrio" type="text" placeholder="Ej. Barrio Lastarria, Santiago" autocomplete="address-level2" required/>
 </div>
 <div class="sm:col-span-3 flex flex-col gap-1">
-<label class="font-label-sm text-label-sm text-on-surface-variant">Apto / Torre</label>
-<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" type="text" value="Apto 402 Ed. Laurel"/>
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-unit">Depto / Torre</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-unit" name="depto" type="text" placeholder="Ej. Depto 402, Torre B" autocomplete="address-line2"/>
 </div>
 </div>
-<!-- Vector Map Widget with Geolocation Radar and Radius -->
-<div data-vr-map="registro" data-vr-theme="dark" data-vr-radius="5000" data-vr-interactive="false" class="relative w-full h-44 rounded-lg overflow-hidden bg-primary-container text-on-primary shadow-inner flex flex-col justify-between p-space-sm">
+<!-- Mapa real interactivo con pin ajustable -->
+<div data-vr-map="registro" data-vr-theme="light" data-vr-radius="5000" data-vr-draggable="Tu hogar" class="relative w-full h-64 rounded-lg overflow-hidden bg-surface-container shadow-inner flex flex-col justify-between p-space-sm">
 <!-- SVG Vector Grid Representation of Local District -->
 <svg class="absolute inset-0 w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -204,54 +205,47 @@
 <circle cx="50%" cy="50%" fill="#86f2e4" fill-opacity="0.12" r="68" stroke="#6bd8cb" stroke-dasharray="3,3" stroke-width="1.5"></circle>
 </svg>
 <!-- Floating Coordinates Pill -->
-<div class="relative z-10 flex items-center justify-between">
-<div class="flex items-center gap-1.5 bg-primary/80 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-label-sm text-secondary-fixed">
+<div class="relative z-10 flex flex-wrap items-center gap-1.5 pr-10 pointer-events-none">
+<div class="flex items-center gap-1.5 bg-primary/85 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-label-sm text-secondary-fixed">
 <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
-<span>Lat: 6.2442° N • Long: 75.5902° W</span>
+<span data-vr-coords>Lat: 33.4378° S • Long: 70.6504° O</span>
 </div>
 <div class="bg-surface-container-lowest/90 backdrop-blur text-primary text-[11px] font-label-sm font-bold px-2 py-0.5 rounded shadow">
                     Radio Máximo: 5 km
                   </div>
 </div>
-<!-- Center User Pin -->
-<div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-<div class="relative flex flex-col items-center">
-<span class="absolute -top-7 bg-secondary text-on-secondary text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap shadow-md">
-                      📍 Tu Hogar
-                    </span>
-<div class="w-8 h-8 rounded-full bg-secondary/30 flex items-center justify-center animate-pulse">
-<div class="w-4 h-4 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></div>
-</div>
-</div>
-</div>
-<!-- Clustered technician icons inside the 5km zone -->
-<div class="absolute top-10 left-28 z-10 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Fontanero a 900m">
+<!-- Técnicos cercanos dentro de la zona de 5 km -->
+<div data-vr-pin="0.9,40" class="w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Gasfíter a 900 m">
 <span class="material-symbols-outlined text-[13px] text-primary">plumbing</span>
 </div>
-<div class="absolute bottom-8 left-36 z-10 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Electricista a 1.2km">
+<div data-vr-pin="1.2,200" class="w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Electricista a 1,2 km">
 <span class="material-symbols-outlined text-[13px] text-secondary">bolt</span>
 </div>
-<div class="absolute top-12 right-32 z-10 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Cerrajería a 600m">
+<div data-vr-pin="0.6,120" class="w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Cerrajero a 600 m">
 <span class="material-symbols-outlined text-[13px] text-primary">key</span>
 </div>
-<div class="absolute bottom-10 right-28 z-10 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Pintor y Acabados a 1.8km">
-<span class="material-symbols-outlined text-[13px] text-on-primary-container">format_paint</span>
+<div data-vr-pin="1.8,300" class="w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center" title="Pintor y terminaciones a 1,8 km">
+<span class="material-symbols-outlined text-[13px] text-primary">format_paint</span>
 </div>
 <!-- Bottom Floating Stats Overlay -->
-<div class="relative z-10 flex items-center justify-between">
+<div class="relative z-10 flex items-center justify-between gap-2 pointer-events-none">
 <span class="bg-primary/85 backdrop-blur px-2.5 py-1 rounded text-[11px] font-label-sm text-on-primary flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px] text-secondary-fixed">group</span>
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed" aria-hidden="true">group</span>
 <strong>48 técnicos</strong> listos para cotizar en tu radio
                   </span>
-<span class="text-[11px] text-on-primary-container underline cursor-pointer">Reajustar pin</span>
+<button type="button" data-vr-ctl="recenter" class="pointer-events-auto flex items-center gap-1 bg-surface-container-lowest text-primary text-[11px] font-label-sm font-bold px-2.5 py-1 rounded-full shadow hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[14px]" aria-hidden="true">edit_location_alt</span>
+Reajustar pin
+</button>
 </div>
 </div>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Arrastra el pin o haz clic en el mapa para marcar tu hogar. La dirección y el barrio se completan solos.</p>
 </div>
 <!-- Terms & Consent -->
 <div class="flex items-start gap-space-xs pt-1">
-<input checked="" class="mt-1 w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" id="terms" type="checkbox"/>
+<input class="mt-1 w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer shrink-0" id="terms" name="terminos" type="checkbox" data-vr-nostore required/>
 <label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="terms">
-                Acepto los <a class="text-primary font-semibold underline" href="INT-00-teryser.html">Términos del Servicio</a>, la <a class="text-primary font-semibold underline" href="INT-00-prodeda.html">Política de Tratamiento de Datos (Ley 19.628)</a> y la validación comunitaria de antecedentes vecinales.
+                Acepto los <a class="text-primary font-semibold underline" href="INT-00-teryser.html">Términos del Servicio</a>, la <button type="button" id="btnLey19628" class="text-primary font-semibold underline">Política de Tratamiento de Datos (Ley 19.628)</button> y la validación comunitaria de antecedentes vecinales.
               </label>
 </div>
 <!-- Primary Submission CTA -->
@@ -266,8 +260,8 @@
 </div>
 <!-- Social Logins -->
 <div class="grid grid-cols-2 gap-space-sm">
-<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-colors" type="button">
-<svg class="w-4 h-4" viewbox="0 0 24 24">
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-colors" type="button" data-social="google">
+<svg class="w-4 h-4" viewbox="0 0 24 24" aria-hidden="true">
 <path d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z" fill="#EA4335"></path>
 <path d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z" fill="#4285F4"></path>
 <path d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15s.7 5.3 1.9 7.7l3.7-2.9z" fill="#FBBC05"></path>
@@ -275,8 +269,8 @@
 </svg>
 <span>Google</span>
 </button>
-<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-colors" type="button">
-<svg class="w-4 h-4 text-[#1877F2] fill-current" viewbox="0 0 24 24">
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-colors" type="button" data-social="facebook">
+<svg class="w-4 h-4 text-[#1877F2] fill-current" viewbox="0 0 24 24" aria-hidden="true">
 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
 </svg>
 <span>Facebook</span>
@@ -318,7 +312,7 @@
 <div class="flex flex-col">
 <h3 class="font-headline-sm text-headline-sm text-on-primary text-[17px] font-bold">Verificación de Antecedentes y Oficio</h3>
 <p class="font-body-sm text-body-sm text-on-primary-container mt-0.5">
-                  Validación exhaustiva de cédula, antecedentes policiales y experiencia técnica verificada con referencias de vecinos reales.
+                  Validación exhaustiva de cédula de identidad (RUN), certificado de antecedentes del Registro Civil y experiencia técnica verificada con referencias de vecinos reales.
                 </p>
 </div>
 </div>
@@ -358,7 +352,7 @@
 <span class="font-label-sm text-label-sm text-secondary-fixed">Servicio Completado Hoy</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-primary italic">
-              “Contacté a Roberto a 800 metros de mi casa en Santiago Centro por una urgencia de plomería un domingo por la mañana. En 30 minutos ya estaba en el apartamento con sus antecedentes e identidad 100% verificados.”
+              “Contacté a Roberto a 800 metros de mi casa en Santiago Centro por una urgencia de gasfitería un domingo en la mañana. En 30 minutos ya estaba en el departamento con sus antecedentes e identidad 100% verificados.”
             </p>
 <div class="flex items-center justify-between pt-1 border-t border-outline-variant/15">
 <div class="flex items-center gap-space-xs">
@@ -366,8 +360,8 @@
                   CR
                 </div>
 <div>
-<p class="font-label-md text-label-md text-on-primary font-bold">Camila Restrepo</p>
-<p class="font-label-sm text-label-sm text-on-primary-container">Vecina de Santiago Centro, Cra 76</p>
+<p class="font-label-md text-label-md text-on-primary font-bold">Camila Rojas</p>
+<p class="font-label-sm text-label-sm text-on-primary-container">Vecina de Santiago Centro, calle San Antonio</p>
 </div>
 </div>
 <span class="material-symbols-outlined text-secondary-fixed text-[20px]">verified</span>
@@ -396,7 +390,7 @@
 <span class="material-symbols-outlined text-secondary text-[22px]">policy</span>
 <div class="flex flex-col">
 <span class="font-label-sm text-label-sm text-primary font-bold">Filtro Judicial</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Policía Nacional</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Registro Civil e Identificación</span>
 </div>
 </div>
 <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm flex items-center gap-space-xs">
@@ -422,7 +416,7 @@
 </div>
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-secondary text-[18px]">gavel</span>
-<span>Ley Habeas Data (Ley 19.628)</span>
+<span>Protección de la Vida Privada (Ley 19.628)</span>
 </div>
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-secondary text-[18px]">local_police</span>
@@ -431,7 +425,7 @@
 </div>
 <div class="flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
 <span>Soporte Inmediato WhatsApp:</span>
-<a class="text-secondary font-bold hover:underline" href="#">+56 9 3091 2840</a>
+<a class="text-secondary font-bold hover:underline" href="https://wa.me/56930912840" target="_blank" rel="noopener">+56 9 3091 2840</a>
 </div>
 </div>
 </div>
@@ -466,19 +460,202 @@
       }
     }
 
+    function setField(id, value) {
+      const input = document.getElementById(id);
+      if (!input || !value) return;
+      input.value = value;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
+    function fillAddressFrom(loc) {
+      if (loc.street) setField('input-address', loc.street);
+      setField('input-neighborhood', loc.place || loc.label);
+    }
+
+    const GPS_FALLBACK_REASONS = {
+      denied: 'Permiso de ubicación denegado.',
+      unavailable: 'No se pudo obtener la señal GPS.',
+      unsupported: 'Tu navegador no permite usar el GPS.',
+      imprecise: 'La ubicación detectada es muy imprecisa.'
+    };
+
     function detectGPS() {
-      const addressInput = document.getElementById('input-address');
-      const neighborhoodInput = document.getElementById('input-neighborhood');
-      
-      addressInput.value = 'Calculando por GPS...';
+      const button = document.getElementById('btn-gps');
+      const icon = document.getElementById('btn-gps-icon');
+      const text = document.getElementById('btn-gps-text');
+      button.disabled = true;
+      icon.classList.add('animate-spin');
+      text.textContent = 'Buscando ubicación…';
+
       window.VeciRed.locate({ force: true }).then((loc) => {
-        addressInput.value = loc.fallback ? 'Agustinas 1235' : (loc.street || 'Ubicación GPS detectada');
-        neighborhoodInput.value = loc.fallback ? 'Santiago Centro' : (loc.label || 'Tu barrio');
-        addressInput.dispatchEvent(new Event('input', { bubbles: true }));
-        neighborhoodInput.dispatchEvent(new Event('input', { bubbles: true }));
+        if (loc.fallback) {
+          setField('input-address', 'Agustinas 1235');
+          setField('input-neighborhood', 'Santiago Centro, Santiago');
+          window.VeciRed.toast((GPS_FALLBACK_REASONS[loc.reason] || 'GPS no disponible.') + ' Usamos Santiago Centro; ajusta el pin en el mapa.');
+        } else {
+          fillAddressFrom(loc);
+          window.VeciRed.toast('Ubicación detectada: ' + (loc.street ? loc.street + ', ' : '') + (loc.place || loc.label));
+        }
+      }).finally(() => {
+        button.disabled = false;
+        icon.classList.remove('animate-spin');
+        text.textContent = 'Detectar por GPS';
       });
     }
+
+    document.addEventListener('vr:pinmoving', () => {
+      setField('input-address', 'Buscando dirección…');
+    });
+    document.addEventListener('vr:pinmoved', (event) => {
+      const loc = event.detail;
+      setField('input-address', loc.street || ('Punto ' + loc.lat.toFixed(5) + ', ' + loc.lng.toFixed(5)));
+      setField('input-neighborhood', loc.place || loc.label);
+    });
+
+    const PWD_LEVELS = [
+      { label: 'Nivel: —', color: null, text: 'text-on-surface-variant' },
+      { label: 'Nivel: Muy débil', color: '#ba1a1a', text: 'text-error' },
+      { label: 'Nivel: Débil', color: '#e8590c', text: 'text-[#c2410c]' },
+      { label: 'Nivel: Aceptable', color: '#d4a106', text: 'text-[#a16207]' },
+      { label: 'Nivel: Segura', color: '#006a61', text: 'text-secondary' }
+    ];
+
+    function passwordLevel(pwd) {
+      if (!pwd) return 0;
+      let score = 0;
+      if (pwd.length >= 8) score++;
+      if (pwd.length >= 12) score++;
+      if (/[a-z]/.test(pwd) && /[A-Z]/.test(pwd)) score++;
+      if (/\d/.test(pwd)) score++;
+      if (/[^A-Za-z0-9]/.test(pwd)) score++;
+      const predictable = /^(.)\1+$/.test(pwd) || /(0123|1234|2345|3456|4567|5678|6789|abcd|qwerty|asdf|password|contrase(ñ|n)a|vecired)/i.test(pwd);
+      if (pwd.length < 8 || predictable) score = Math.min(score, 1);
+      return Math.max(1, Math.min(4, score));
+    }
+
+    function updatePasswordStrength() {
+      const input = document.getElementById('pwd-input');
+      const levelLabel = document.getElementById('pwd-level');
+      const level = passwordLevel(input.value);
+      const info = PWD_LEVELS[level];
+      levelLabel.textContent = info.label;
+      levelLabel.className = 'font-label-sm text-label-sm font-bold ' + info.text;
+      document.querySelectorAll('#pwd-bars > div').forEach((bar, index) => {
+        bar.style.backgroundColor = index < level ? info.color : '';
+      });
+      input.setCustomValidity(input.value && level < 3 ? 'Tu contraseña es muy débil. Usa al menos 8 caracteres combinando mayúsculas, minúsculas, números o símbolos.' : '');
+    }
+
+    document.getElementById('pwd-input').addEventListener('input', updatePasswordStrength);
+    updatePasswordStrength();
   </script>
+
+<!-- Ventana emergente: Ley 19.628 -->
+<div id="modalLey19628" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloLey19628">
+  <div class="modal-card flex flex-col gap-4" style="max-width: 560px;">
+    <div class="flex items-start justify-between">
+      <h3 id="tituloLey19628" class="font-headline-lg text-primary">Ley 19.628 sobre Protección de la Vida Privada</h3>
+      <button type="button" data-close-modal class="text-on-surface-variant hover:text-primary text-xl font-bold shrink-0 ml-3" aria-label="Cerrar">&times;</button>
+    </div>
+    <p class="text-on-surface-variant text-body-md">En Chile, la Ley N° 19.628 regula el tratamiento de los datos personales. Así la aplicamos en VeciRed:</p>
+    <ul class="flex flex-col gap-2 text-body-sm text-on-surface-variant list-disc pl-4">
+      <li><strong>Consentimiento:</strong> solo tratamos tus datos si nos autorizas expresamente y por escrito al marcar esta casilla, y puedes revocar esa autorización cuando quieras.</li>
+      <li><strong>Finalidad:</strong> usamos tu nombre, correo, teléfono y ubicación únicamente para conectarte con técnicos cercanos, gestionar pagos y verificar identidades.</li>
+      <li><strong>Datos sensibles:</strong> no tratamos datos sensibles (salud, creencias, origen étnico, etc.) salvo que la ley lo autorice o tú lo consientas.</li>
+      <li><strong>Derechos ARCO:</strong> tienes derecho a acceder, rectificar, cancelar (eliminar) y oponerte al tratamiento de tus datos, de forma gratuita.</li>
+      <li><strong>Seguridad y secreto:</strong> quienes trabajan con tus datos deben guardar secreto y protegerlos con medidas de seguridad adecuadas.</li>
+      <li><strong>Sin venta a terceros:</strong> no vendemos tus datos. Tu dirección exacta solo se comparte con el técnico que tú apruebas.</li>
+    </ul>
+    <p class="text-on-surface-variant text-body-sm">Para ejercer tus derechos escríbenos a <strong>privacidad@vecired.cl</strong>. Si no respondemos en 2 días hábiles, puedes acudir al juzgado de letras civil de tu domicilio (art. 16). La Ley 21.719 modernizará esta normativa a partir de diciembre de 2026.</p>
+    <div class="flex flex-col sm:flex-row gap-2 mt-2">
+      <a href="INT-00-prodeda.html" class="flex-1 text-center border border-outline-variant text-primary font-label-md py-2.5 px-4 rounded-lg hover:bg-surface-container-low transition-colors">Ver política completa</a>
+      <button type="button" data-close-modal class="flex-1 bg-primary text-on-primary font-label-md py-2.5 px-4 rounded-lg hover:opacity-90 transition-opacity">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ventana emergente: registro con Google / Facebook (simulado en el prototipo) -->
+<div id="modalSocial" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloSocial">
+  <form id="formSocial" class="modal-card flex flex-col gap-4" novalidate>
+    <div class="flex items-start justify-between">
+      <h3 id="tituloSocial" class="font-headline-lg text-primary">Continuar con Google</h3>
+      <button type="button" data-close-modal class="text-on-surface-variant hover:text-primary text-xl font-bold shrink-0 ml-3" aria-label="Cerrar">&times;</button>
+    </div>
+    <p class="text-on-surface-variant text-body-sm bg-surface-container-low rounded-lg p-3"><strong>Modo prototipo:</strong> este paso simula la autorización de <span data-social-name>Google</span>. VeciRed recibirá tu nombre y correo; luego solo completas tu ubicación.</p>
+    <div class="flex flex-col gap-1">
+      <label for="social-name" class="font-label-md text-label-md text-on-surface">Nombre de la cuenta</label>
+      <input id="social-name" data-vr-nostore type="text" placeholder="Ej. Camila Rojas Soto" autocomplete="name" class="h-11 px-3 rounded-lg bg-surface-container-lowest border border-outline-variant/60 text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primary"/>
+    </div>
+    <div class="flex flex-col gap-1">
+      <label for="social-email" class="font-label-md text-label-md text-on-surface">Correo de la cuenta</label>
+      <input id="social-email" data-vr-nostore type="email" placeholder="Ej. camila.rojas@gmail.com" autocomplete="email" class="h-11 px-3 rounded-lg bg-surface-container-lowest border border-outline-variant/60 text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primary"/>
+    </div>
+    <p id="social-error" class="text-error text-body-sm hidden" role="alert"></p>
+    <button type="submit" class="bg-primary text-on-primary font-label-md py-2.5 px-4 rounded-lg hover:opacity-90 transition-opacity">Autorizar y continuar</button>
+  </form>
+</div>
+
+<script>(() => {
+  const openModal = (modal) => { modal.style.display = 'flex'; const focusable = modal.querySelector('input, button'); if (focusable) focusable.focus(); };
+  const closeModal = (modal) => { modal.style.display = 'none'; };
+
+  ['modalLey19628', 'modalSocial'].forEach((id) => {
+    const modal = document.getElementById(id);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.closest('[data-close-modal]')) closeModal(modal);
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    ['modalLey19628', 'modalSocial'].forEach((id) => closeModal(document.getElementById(id)));
+  });
+
+  const modalLey = document.getElementById('modalLey19628');
+  document.getElementById('btnLey19628').addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(modalLey);
+  });
+
+  const modalSocial = document.getElementById('modalSocial');
+  const formSocial = document.getElementById('formSocial');
+  const socialError = document.getElementById('social-error');
+  const PROVIDERS = { google: 'Google', facebook: 'Facebook' };
+  let provider = 'google';
+
+  document.querySelectorAll('[data-social]').forEach((button) => {
+    button.addEventListener('click', () => {
+      provider = button.getAttribute('data-social');
+      const name = PROVIDERS[provider];
+      document.getElementById('tituloSocial').textContent = 'Continuar con ' + name;
+      modalSocial.querySelectorAll('[data-social-name]').forEach((el) => { el.textContent = name; });
+      document.getElementById('social-email').placeholder = provider === 'google' ? 'Ej. camila.rojas@gmail.com' : 'Ej. camila.rojas@outlook.cl';
+      socialError.classList.add('hidden');
+      openModal(modalSocial);
+    });
+  });
+
+  formSocial.addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const nameInput = document.getElementById('social-name');
+    const emailInput = document.getElementById('social-email');
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    if (name.length < 3 || !emailInput.checkValidity() || !email) {
+      socialError.textContent = 'Ingresa un nombre y un correo válidos para continuar.';
+      socialError.classList.remove('hidden');
+      return;
+    }
+    ['input-name', 'input-email'].forEach((id, i) => {
+      const input = document.getElementById(id);
+      input.value = i === 0 ? name : email;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    closeModal(modalSocial);
+    window.VeciRed.toast('Cuenta de ' + PROVIDERS[provider] + ' vinculada. Completa teléfono, contraseña y ubicación.');
+    document.getElementById('input-phone').focus();
+  }, true);
+})();</script>
 </div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>
 
 <!-- Banner compartido (replicado desde INT-01) -->
