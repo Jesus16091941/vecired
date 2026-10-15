@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html lang="es-CL"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#0f2942", "on-tertiary-container": "#818fa6", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#314863", "surface-variant": "#d3e4fe", "outline": "#74777e", "error-container": "#ffdad6", "surface": "#f8f9ff", "tertiary": "#041325", "surface-container": "#e5eeff", "surface-container-highest": "#d3e4fe", "secondary-fixed-dim": "#6bd8cb", "surface-container-high": "#dce9ff", "tertiary-container": "#1a283b", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#3a485c", "on-surface-variant": "#43474d", "on-secondary-container": "#006f66", "on-surface": "#0b1c30", "on-tertiary-fixed": "#0d1c2f", "error": "#ba1a1a", "on-background": "#0b1c30", "primary": "#001428", "tertiary-fixed": "#d5e3fd", "background": "#f8f9ff", "secondary": "#006a61", "on-error-container": "#93000a", "primary-fixed-dim": "#b0c9e8", "secondary-container": "#86f2e4", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "primary-fixed": "#d1e4ff", "tertiary-fixed-dim": "#b9c7e0", "on-secondary": "#ffffff", "outline-variant": "#c3c6ce", "inverse-primary": "#b0c9e8", "secondary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-tint": "#49607c", "on-primary": "#ffffff", "on-primary-container": "#7991af", "on-secondary-fixed-variant": "#005049", "on-error": "#ffffff", "inverse-surface": "#213145", "on-primary-fixed": "#011d35", "on-secondary-fixed": "#00201d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1280px", "space-sm": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "form-column-width": "540px", "space-md": "1rem", "space-xl": "2rem", "space-xs": "0.5rem", "space-3xl": "4rem", "split-sidebar-width": "420px", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-lg": ["15px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<link rel="stylesheet" href="vecired.css"/>
+<title>Panel de administración | VeciRed</title>
+<script src="vecired.js" defer></script>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+<header class="sticky top-0 z-40 bg-primary-container text-white">
+  <div class="h-16 max-w-[1400px] mx-auto px-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-outlined text-secondary-fixed-dim text-[30px]" aria-hidden="true">hub</span>
+      <span class="font-bold text-xl tracking-tight">VeciRed</span>
+      <span class="ml-1 inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-secondary-fixed-dim">
+        <span class="material-symbols-outlined text-[14px]" aria-hidden="true">shield_person</span>Administración
+      </span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="admin-name" class="hidden sm:block text-sm text-white/80"></span>
+      <button id="btn-logout" type="button" class="inline-flex items-center gap-1 rounded-lg border border-white/20 px-3 py-1.5 text-sm font-semibold hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary-fixed-dim">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">logout</span>Cerrar sesión
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="admin-app" class="max-w-[1400px] mx-auto px-6 py-6">
+  <section id="admin-denied" hidden class="mx-auto mt-12 max-w-md rounded-2xl border border-outline-variant bg-surface-container-lowest p-8 text-center">
+    <span class="material-symbols-outlined text-error text-[44px]" aria-hidden="true">lock</span>
+    <h1 class="mt-2 text-2xl font-bold text-primary">Acceso restringido</h1>
+    <p class="mt-2 text-on-surface-variant">Este panel es solo para administradores. Inicia sesión con una cuenta de administrador para continuar.</p>
+    <a href="INT-04.html" class="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white hover:bg-primary-container">
+      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">login</span>Ir a iniciar sesión
+    </a>
+  </section>
+
+  <div id="admin-content" hidden>
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h1 class="text-[28px] font-bold leading-tight text-primary">Usuarios registrados</h1>
+        <p class="text-on-surface-variant">Revisa, verifica y edita las cuentas de la comunidad. Los cambios se guardan en este navegador.</p>
+      </div>
+      <button id="btn-export" type="button" class="inline-flex items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-primary hover:bg-surface-container-low">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>Exportar JSON
+      </button>
+    </div>
+
+    <ul id="admin-stats" class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6" aria-label="Resumen de cuentas"></ul>
+
+    <div class="mt-5 flex flex-col gap-3 rounded-2xl border border-outline-variant/60 bg-surface-container-lowest p-3 md:flex-row md:items-center">
+      <label class="relative flex-1">
+        <span class="sr-only">Buscar usuario</span>
+        <span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" aria-hidden="true">search</span>
+        <input id="f-search" type="search" placeholder="Buscar por nombre, correo, teléfono, RUT u oficio" class="w-full rounded-lg border border-outline-variant bg-surface px-10 py-2 text-[15px] focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/30"/>
+      </label>
+      <div class="flex flex-wrap gap-2">
+        <label class="sr-only" for="f-tipo">Tipo de cuenta</label>
+        <select id="f-tipo" class="rounded-lg border border-outline-variant bg-surface px-3 py-2 text-sm">
+          <option value="">Todos los tipos</option>
+          <option value="vecino">Vecinos / Clientes</option>
+          <option value="certificado">Profesionales certificados</option>
+          <option value="experiencia">Profesionales con experiencia</option>
+          <option value="admin">Administradores</option>
+        </select>
+        <label class="sr-only" for="f-estado">Estado</label>
+        <select id="f-estado" class="rounded-lg border border-outline-variant bg-surface px-3 py-2 text-sm">
+          <option value="">Todos los estados</option>
+          <option value="activa">Activas</option>
+          <option value="pendiente">Verificación pendiente</option>
+          <option value="suspendida">Suspendidas</option>
+        </select>
+        <label class="sr-only" for="f-orden">Ordenar</label>
+        <select id="f-orden" class="rounded-lg border border-outline-variant bg-surface px-3 py-2 text-sm">
+          <option value="nombre">Nombre (A–Z)</option>
+          <option value="reciente">Más recientes</option>
+          <option value="tipo">Tipo de cuenta</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4 grid gap-5 lg:grid-cols-[minmax(0,1fr)_440px]">
+      <section aria-labelledby="list-title" class="min-w-0">
+        <h2 id="list-title" class="sr-only">Lista de usuarios</h2>
+        <p id="list-count" class="mb-2 text-sm text-on-surface-variant" aria-live="polite"></p>
+        <ul id="user-list" class="flex flex-col gap-2"></ul>
+      </section>
+
+      <aside id="detail" aria-labelledby="detail-title" class="lg:sticky lg:top-20 lg:self-start">
+        <div id="detail-empty" class="rounded-2xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[40px] text-outline" aria-hidden="true">person_search</span>
+          <p class="mt-2">Selecciona un usuario para ver su perfil completo.</p>
+        </div>
+        <div id="detail-card" hidden class="overflow-hidden rounded-2xl border border-outline-variant/60 bg-surface-container-lowest shadow-[0_4px_20px_rgba(15,41,66,0.06)]">
+          <div class="flex items-start gap-3 border-b border-outline-variant/50 p-5">
+            <div id="d-avatar" class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-container text-lg font-bold text-white" aria-hidden="true"></div>
+            <div class="min-w-0 flex-1">
+              <h2 id="detail-title" class="truncate text-lg font-bold text-primary"></h2>
+              <p id="d-sub" class="truncate text-sm text-on-surface-variant"></p>
+              <div id="d-badges" class="mt-2 flex flex-wrap gap-1.5"></div>
+            </div>
+            <button id="d-close" type="button" class="rounded-lg p-1 text-outline hover:bg-surface-container-low lg:hidden" aria-label="Cerrar detalle">
+              <span class="material-symbols-outlined" aria-hidden="true">close</span>
+            </button>
+          </div>
+          <div role="tablist" aria-label="Secciones del usuario" class="flex border-b border-outline-variant/50 px-2">
+            <button role="tab" type="button" id="tab-perfil" aria-controls="panel-perfil" aria-selected="true" class="vr-admin-tab">Perfil</button>
+            <button role="tab" type="button" id="tab-editar" aria-controls="panel-editar" aria-selected="false" tabindex="-1" class="vr-admin-tab">Editar</button>
+            <button role="tab" type="button" id="tab-actividad" aria-controls="panel-actividad" aria-selected="false" tabindex="-1" class="vr-admin-tab">Actividad</button>
+          </div>
+          <div class="max-h-[calc(100vh-17rem)] min-h-[200px] overflow-y-auto">
+            <div role="tabpanel" id="panel-perfil" aria-labelledby="tab-perfil" class="p-5">
+              <div id="d-actions" class="mb-4 flex flex-wrap gap-2"></div>
+              <dl id="d-fields" class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-2 text-sm"></dl>
+            </div>
+            <div role="tabpanel" id="panel-editar" aria-labelledby="tab-editar" hidden class="p-5">
+              <form id="edit-form" class="flex flex-col gap-3" novalidate></form>
+            </div>
+            <div role="tabpanel" id="panel-actividad" aria-labelledby="tab-actividad" hidden class="p-5">
+              <ol id="d-log" class="flex flex-col gap-3 text-sm"></ol>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<dialog id="confirm-dialog" class="w-[min(92vw,420px)] rounded-2xl p-0 backdrop:bg-primary/40">
+  <form method="dialog" class="p-6">
+    <h2 id="confirm-title" class="text-lg font-bold text-primary"></h2>
+    <p id="confirm-text" class="mt-2 text-sm text-on-surface-variant"></p>
+    <p id="confirm-code" hidden class="mt-3 select-all rounded-lg bg-surface-container-low px-3 py-2 text-center font-mono text-lg font-bold tracking-wider text-primary"></p>
+    <label id="confirm-input-wrap" hidden class="mt-3 block text-sm font-semibold">
+      <span id="confirm-input-label">Motivo</span>
+      <input id="confirm-input" type="text" class="mt-1 w-full rounded-lg border border-outline-variant px-3 py-2 font-normal"/>
+    </label>
+    <div class="mt-5 flex justify-end gap-2">
+      <button id="confirm-cancel" value="cancel" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low">Cancelar</button>
+      <button id="confirm-ok" value="ok" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-container">Confirmar</button>
+    </div>
+  </form>
+</dialog>
+
+<style>
+  .vr-admin-tab { padding: 12px 14px; font-size: 14px; font-weight: 600; color: #43474d; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .vr-admin-tab[aria-selected="true"] { color: #001428; border-color: #006a61; }
+  .vr-admin-tab:focus-visible { outline: 2px solid #006a61; outline-offset: -2px; }
+  .vr-admin-row[aria-current="true"] { border-color: #006a61; box-shadow: 0 0 0 1px #006a61; background: #eff4ff; }
+  .vr-field label { display: block; font-size: 13px; font-weight: 600; color: #0b1c30; margin-bottom: 4px; }
+  .vr-field input, .vr-field select, .vr-field textarea { width: 100%; border: 1px solid #c3c6ce; border-radius: 8px; padding: 8px 10px; font-size: 14px; background: #fff; }
+  .vr-field input:focus, .vr-field select:focus, .vr-field textarea:focus { outline: none; border-color: #006a61; box-shadow: 0 0 0 3px rgba(0,106,97,.18); }
+  .vr-field [aria-invalid="true"] { border-color: #ba1a1a; }
+  .vr-field select:disabled { background: #eff4ff; color: #43474d; }
+  .vr-fieldset { border-top: 1px solid #e5eeff; padding-top: 12px; margin-top: 4px; }
+  .vr-fieldset legend { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #006a61; padding-right: 8px; }
+  .vr-chip { display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; padding: 2px 10px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .vr-dt { color: #43474d; white-space: nowrap; }
+  .vr-dd { color: #0b1c30; overflow-wrap: anywhere; }
+  .vr-dsec { grid-column: 1 / -1; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #006a61; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e5eeff; }
+  .vr-dsec:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+</style>
+
+<script>
+(() => {
+  const VR = window.VeciRed;
+  const $ = (id) => document.getElementById(id);
+  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const TIPO = VR.users.admin.tipoCuenta;
+  const TIPO_STYLE = {
+    vecino: 'bg-surface-container text-primary',
+    certificado: 'bg-secondary-container text-on-secondary-container',
+    experiencia: 'bg-tertiary-fixed text-on-tertiary-fixed-variant',
+    admin: 'bg-primary-container text-white'
+  };
+  const LABELS = {
+    nombre: 'Nombre', correo: 'Correo', telefono: 'Teléfono', direccion: 'Dirección', barrio: 'Barrio', depto: 'Depto / Casa',
+    rol: 'Rol', perfil: 'Perfil', tipoCuenta: 'Tipo de cuenta', proveedor: 'Registro vía', creadoEn: 'Creada', actualizadoEn: 'Última edición',
+    id: 'ID', demo: 'Cuenta demo', permisos: 'Permisos', oficios: 'Oficios', anosExperiencia: 'Años de experiencia',
+    suspendido: 'Suspendida', motivoSuspension: 'Motivo suspensión', notasAdmin: 'Notas internas', motivoRechazo: 'Motivo rechazo',
+    estado: 'Estado', rut: 'RUT', titulo: 'Título / certificación', respaldo: 'Respaldo', tipo: 'Tipo',
+    documentos: 'Documentos', enviadoEn: 'Enviado'
+  };
+  const SKIP_TOP = ['verificacion', 'sello', 'id'];
+
+  let all = [];
+  let selectedId = null;
+
+  if (!VR.users.admin.isAdmin()) {
+    $('admin-denied').hidden = false;
+    return;
+  }
+  $('admin-content').hidden = false;
+  $('admin-name').textContent = VR.users.current().nombre;
+  $('btn-logout').addEventListener('click', () => { VR.users.logout(); location.href = 'INT-04.html'; });
+
+  const verifEstado = (u) => (u.verificacion && u.verificacion.estado) || '';
+  const isPending = (u) => u.rol === 'tech' && (/pendiente|revisi/i.test(verifEstado(u)) || /pendiente|revisi/i.test((u.sello && u.sello.estado) || ''));
+  const initials = (n) => String(n || '?').split(/\s+/).filter(Boolean).slice(0, 2).map((p) => p[0].toUpperCase()).join('');
+  const fmtDate = (iso) => { const d = new Date(iso); return isNaN(d) ? String(iso) : d.toLocaleString('es-CL', { dateStyle: 'medium', timeStyle: 'short' }); };
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+  function statusChip(u) {
+    if (u.suspendido) return '<span class="vr-chip bg-error-container text-on-error-container">Suspendida</span>';
+    if (isPending(u)) return '<span class="vr-chip bg-[#fff1d6] text-[#7a4b00]">Verificación pendiente</span>';
+    if (u.rol === 'tech' && /rechaz/i.test(verifEstado(u))) return '<span class="vr-chip bg-error-container text-on-error-container">Verificación rechazada</span>';
+    return '<span class="vr-chip bg-surface-container-low text-secondary">Activa</span>';
+  }
+
+  /* Estadísticas (también funcionan como filtros rápidos) */
+  function renderStats() {
+    const count = (fn) => all.filter(fn).length;
+    const stats = [
+      ['group', 'Total', all.length, ''],
+      ['home', 'Vecinos', count((u) => u.perfil === 'vecino'), 'vecino'],
+      ['workspace_premium', 'Certificados', count((u) => u.perfil === 'certificado'), 'certificado'],
+      ['handyman', 'Con experiencia', count((u) => u.perfil === 'experiencia'), 'experiencia'],
+      ['pending_actions', 'Pendientes', count(isPending), 'pendiente'],
+      ['block', 'Suspendidas', count((u) => u.suspendido), 'suspendida']
+    ];
+    $('admin-stats').innerHTML = stats.map(([icon, label, n, key]) => `
+      <li><button type="button" data-stat="${key}" class="flex w-full items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-3 text-left hover:border-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary">
+        <span class="material-symbols-outlined rounded-lg bg-surface-container-low p-2 text-secondary" aria-hidden="true">${icon}</span>
+        <span><span class="block text-xl font-bold leading-none text-primary">${n}</span><span class="text-xs text-on-surface-variant">${label}</span></span>
+      </button></li>`).join('');
+  }
+  $('admin-stats').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-stat]');
+    if (!btn) return;
+    const key = btn.dataset.stat;
+    const isEstado = key === 'pendiente' || key === 'suspendida';
+    $('f-tipo').value = isEstado ? '' : key;
+    $('f-estado').value = isEstado ? key : '';
+    renderList();
+  });
+
+  /* Lista */
+  function filtered() {
+    const q = $('f-search').value.trim().toLowerCase();
+    const tipo = $('f-tipo').value;
+    const estado = $('f-estado').value;
+    const orden = $('f-orden').value;
+    const rows = all.filter((u) => {
+      if (tipo && u.perfil !== tipo) return false;
+      if (estado === 'suspendida' && !u.suspendido) return false;
+      if (estado === 'pendiente' && !isPending(u)) return false;
+      if (estado === 'activa' && (u.suspendido || isPending(u))) return false;
+      if (!q) return true;
+      const hay = [u.nombre, u.correo, u.telefono, u.barrio, u.direccion, u.verificacion && u.verificacion.rut, (u.oficios || []).join(' ')].join(' ').toLowerCase();
+      return hay.includes(q);
+    });
+    const order = ['admin', 'certificado', 'experiencia', 'vecino'];
+    rows.sort((a, b) => {
+      if (orden === 'reciente') return String(b.creadoEn).localeCompare(String(a.creadoEn));
+      if (orden === 'tipo') return order.indexOf(a.perfil) - order.indexOf(b.perfil) || a.nombre.localeCompare(b.nombre, 'es');
+      return a.nombre.localeCompare(b.nombre, 'es');
+    });
+    return rows;
+  }
+
+  function renderList() {
+    const rows = filtered();
+    $('list-count').textContent = rows.length + ' de ' + all.length + ' usuarios';
+    if (!rows.length) {
+      $('user-list').innerHTML = '<li class="rounded-xl border border-dashed border-outline-variant p-6 text-center text-on-surface-variant">No hay usuarios que coincidan con los filtros.</li>';
+      return;
+    }
+    $('user-list').innerHTML = rows.map((u) => `
+      <li><button type="button" data-id="${esc(u.id)}" aria-current="${u.id === selectedId}" class="vr-admin-row flex w-full items-center gap-3 rounded-xl border border-outline-variant/60 bg-surface-container-lowest p-3 text-left hover:border-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary">
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${u.suspendido ? 'bg-outline' : 'bg-primary-container'} text-sm font-bold text-white" aria-hidden="true">${esc(initials(u.nombre))}</span>
+        <span class="min-w-0 flex-1">
+          <span class="block truncate font-semibold text-primary">${esc(u.nombre)}</span>
+          <span class="block truncate text-sm text-on-surface-variant">${esc(u.correo)}${u.barrio ? ' · ' + esc(u.barrio) : ''}</span>
+        </span>
+        <span class="hidden flex-col items-end gap-1 sm:flex">
+          <span class="vr-chip ${TIPO_STYLE[u.perfil] || TIPO_STYLE.vecino}">${esc(TIPO[u.perfil] || u.perfil)}</span>
+          ${statusChip(u)}
+        </span>
+        <span class="material-symbols-outlined text-outline" aria-hidden="true">chevron_right</span>
+      </button></li>`).join('');
+  }
+  ['f-search', 'f-tipo', 'f-estado', 'f-orden'].forEach((id) => $(id).addEventListener('input', renderList));
+  $('user-list').addEventListener('click', (e) => {
+    const row = e.target.closest('[data-id]');
+    if (row) select(row.dataset.id, true);
+  });
+
+  /* Perfil completo */
+  function formatValue(k, v) {
+    if (typeof v === 'boolean') return v ? 'Sí' : 'No';
+    if (Array.isArray(v)) return v.map((x) => (x && typeof x === 'object') ? (x.nombre || JSON.stringify(x)) : x).join(', ') || '—';
+    if (v && typeof v === 'object') return Object.keys(v).map((kk) => (LABELS[kk] || kk) + ': ' + formatValue(kk, v[kk])).join(' · ');
+    if (/En$/.test(k)) return fmtDate(v);
+    return v;
+  }
+  function fieldRows(obj, skip) {
+    return Object.keys(obj).filter((k) => !(skip || []).includes(k) && obj[k] !== '' && obj[k] != null).map((k) =>
+      `<dt class="vr-dt">${esc(LABELS[k] || k)}</dt><dd class="vr-dd">${esc(formatValue(k, obj[k]))}</dd>`).join('');
+  }
+
+  function renderDetail() {
+    const u = all.find((x) => x.id === selectedId);
+    $('detail-empty').hidden = !!u;
+    $('detail-card').hidden = !u;
+    if (!u) return;
+    const me = VR.users.current();
+    const isMe = !!(me && me.id === u.id);
+    $('d-avatar').textContent = initials(u.nombre);
+    $('detail-title').textContent = u.nombre + (isMe ? ' (tú)' : '');
+    $('d-sub').textContent = u.correo;
+    $('d-badges').innerHTML = `<span class="vr-chip ${TIPO_STYLE[u.perfil] || ''}">${esc(TIPO[u.perfil] || u.perfil)}</span>${statusChip(u)}${u.demo ? '<span class="vr-chip bg-surface-container text-on-surface-variant">Demo</span>' : ''}`;
+
+    const pending = isPending(u);
+    const btn = (action, icon, label, cls) => `<button type="button" data-action="${action}" class="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-semibold ${cls}"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">${icon}</span>${label}</button>`;
+    const soft = 'border border-outline-variant text-primary hover:bg-surface-container-low';
+    $('d-actions').innerHTML = [
+      u.rol === 'tech' && pending ? btn('approve', 'verified', 'Aprobar verificación', 'bg-secondary text-white hover:opacity-90') : '',
+      u.rol === 'tech' && pending ? btn('reject', 'cancel', 'Rechazar', soft) : '',
+      btn('edit', 'edit', 'Editar', soft),
+      btn('reset', 'key', 'Restablecer contraseña', soft),
+      !isMe ? (u.suspendido ? btn('unsuspend', 'lock_open', 'Reactivar', soft) : btn('suspend', 'block', 'Suspender', 'border border-error/40 text-error hover:bg-error-container')) : '',
+      !isMe ? btn('delete', 'delete', 'Eliminar', 'text-error hover:bg-error-container') : ''
+    ].join('');
+
+    let html = '<div class="vr-dsec">Datos de la cuenta</div>' + fieldRows(u, SKIP_TOP);
+    if (u.verificacion) html += '<div class="vr-dsec">Verificación</div>' + fieldRows(u.verificacion);
+    if (u.sello) html += '<div class="vr-dsec">Sello VeciRed</div>' + fieldRows(u.sello);
+    html += '<div class="vr-dsec">Sistema</div>' + fieldRows({ id: u.id });
+    $('d-fields').innerHTML = html;
+
+    renderEditForm(u, isMe);
+    renderLog(u);
+  }
+
+  function select(id, scroll) {
+    selectedId = id;
+    renderList();
+    renderDetail();
+    showTab('perfil');
+    if (scroll && window.matchMedia('(max-width: 1023px)').matches) $('detail').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  $('d-close').addEventListener('click', () => { selectedId = null; renderList(); renderDetail(); });
+
+  /* Pestañas */
+  const TABS = ['perfil', 'editar', 'actividad'];
+  function showTab(name) {
+    TABS.forEach((t) => {
+      const on = t === name;
+      const tab = $('tab-' + t);
+      tab.setAttribute('aria-selected', String(on));
+      tab.tabIndex = on ? 0 : -1;
+      $('panel-' + t).hidden = !on;
+    });
+  }
+  TABS.forEach((t, i) => {
+    const tab = $('tab-' + t);
+    tab.addEventListener('click', () => showTab(t));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const next = TABS[(i + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length];
+      showTab(next);
+      $('tab-' + next).focus();
+    });
+  });
+
+  /* Formulario de edición */
+  const opt = (value, label, current) => `<option value="${esc(value)}"${value === current ? ' selected' : ''}>${esc(label)}</option>`;
+  const input = (name, label, value, type, attrs) => `<div class="vr-field"><label for="e-${name}">${label}</label><input id="e-${name}" name="${name}" type="${type || 'text'}" value="${esc(value)}" ${attrs || ''}/></div>`;
+
+  function renderEditForm(u, isMe) {
+    const v = u.verificacion || {};
+    const s = u.sello || {};
+    const isTech = u.rol === 'tech';
+    $('edit-form').innerHTML = `
+      ${input('nombre', 'Nombre completo', u.nombre, 'text', 'required autocomplete="off"')}
+      ${input('correo', 'Correo electrónico', u.correo, 'email', 'required autocomplete="off"')}
+      ${input('telefono', 'Teléfono', u.telefono, 'tel', 'autocomplete="off"')}
+      <div class="grid grid-cols-2 gap-3">${input('direccion', 'Dirección', u.direccion)}${input('depto', 'Depto / Casa', u.depto)}</div>
+      ${input('barrio', 'Barrio', u.barrio)}
+      <div class="vr-field"><label for="e-perfil">Tipo de cuenta</label>
+        <select id="e-perfil" name="perfil" ${isMe ? 'disabled aria-describedby="perfil-hint"' : ''}>
+          ${Object.keys(TIPO).map((k) => opt(k, TIPO[k], u.perfil)).join('')}
+        </select>
+        ${isMe ? '<p id="perfil-hint" class="mt-1 text-xs text-on-surface-variant">No puedes cambiar el tipo de tu propia cuenta.</p>' : ''}
+      </div>
+      <fieldset class="vr-fieldset flex flex-col gap-3" data-tech ${isTech ? '' : 'hidden'}>
+        <legend>Datos profesionales</legend>
+        ${input('oficios', 'Oficios (separados por coma)', (u.oficios || []).join(', '))}
+        <div class="grid grid-cols-2 gap-3">
+          ${input('anosExperiencia', 'Años de experiencia', u.anosExperiencia == null ? '' : u.anosExperiencia, 'number', 'min="0" max="70"')}
+          ${input('v_rut', 'RUT', v.rut || '')}
+        </div>
+        ${input('v_titulo', 'Título / certificación', v.titulo || '')}
+        ${input('v_respaldo', 'Respaldo de experiencia', v.respaldo || '')}
+        <div class="grid grid-cols-2 gap-3">
+          <div class="vr-field"><label for="e-v_estado">Estado verificación</label><select id="e-v_estado" name="v_estado">
+            ${['pendiente de revisión', 'verificado', 'rechazado'].map((x) => opt(x, cap(x), v.estado || 'pendiente de revisión')).join('')}
+          </select></div>
+          <div class="vr-field"><label for="e-s_estado">Estado del sello</label><select id="e-s_estado" name="s_estado">
+            ${['sin solicitar', 'pendiente de revisión', 'aprobado', 'rechazado'].map((x) => opt(x, cap(x), s.estado || 'sin solicitar')).join('')}
+          </select></div>
+        </div>
+      </fieldset>
+      <fieldset class="vr-fieldset" data-admin ${u.rol === 'admin' ? '' : 'hidden'}>
+        <legend>Permisos</legend>
+        <div class="mt-1 grid grid-cols-2 gap-2 text-sm">
+          ${['usuarios', 'verificaciones', 'reportes', 'contenido'].map((p) => `<label class="flex items-center gap-2"><input type="checkbox" name="permisos" value="${p}" ${(u.permisos || []).includes(p) ? 'checked' : ''} class="h-4 w-4 accent-[#006a61]"/>${cap(p)}</label>`).join('')}
+        </div>
+      </fieldset>
+      <div class="vr-field vr-fieldset"><label for="e-notasAdmin">Notas internas (solo administradores)</label><textarea id="e-notasAdmin" name="notasAdmin" rows="3">${esc(u.notasAdmin || '')}</textarea></div>
+      <p id="edit-error" role="alert" class="text-sm font-semibold text-error"></p>
+      <div class="flex justify-end gap-2">
+        <button type="button" id="edit-cancel" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low">Descartar</button>
+        <button type="submit" class="inline-flex items-center gap-1 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary-container">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">save</span>Guardar cambios
+        </button>
+      </div>`;
+    const perfilSel = $('e-perfil');
+    perfilSel.addEventListener('change', () => {
+      const p = perfilSel.value;
+      $('edit-form').querySelector('[data-tech]').hidden = !(p === 'certificado' || p === 'experiencia');
+      $('edit-form').querySelector('[data-admin]').hidden = p !== 'admin';
+    });
+    $('edit-cancel').addEventListener('click', () => { renderDetail(); showTab('perfil'); });
+  }
+
+  $('edit-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const form = e.currentTarget;
+    const u = all.find((x) => x.id === selectedId);
+    if (!u) return;
+    const f = (n) => ((form.elements.namedItem(n) && form.elements.namedItem(n).value) || '').trim();
+    const err = $('edit-error');
+    form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+    const fail = (name, msg) => {
+      err.textContent = msg;
+      const el = name && form.elements.namedItem(name);
+      if (el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
+    };
+    if (!f('nombre')) return fail('nombre', 'El nombre es obligatorio.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f('correo'))) return fail('correo', 'Ingresa un correo válido.');
+
+    const perfil = form.elements.namedItem('perfil').disabled ? u.perfil : f('perfil');
+    const patch = {
+      nombre: f('nombre'), correo: f('correo'), telefono: f('telefono'), direccion: f('direccion'),
+      depto: f('depto'), barrio: f('barrio'), perfil: perfil, notasAdmin: f('notasAdmin')
+    };
+    if (perfil === 'certificado' || perfil === 'experiencia') {
+      const anos = f('anosExperiencia');
+      if (anos && (isNaN(Number(anos)) || Number(anos) < 0)) return fail('anosExperiencia', 'Años de experiencia inválidos.');
+      patch.oficios = f('oficios').split(',').map((x) => x.trim()).filter(Boolean);
+      patch.anosExperiencia = anos ? Number(anos) : null;
+      const verif = Object.assign({}, u.verificacion || {}, { estado: f('v_estado'), rut: f('v_rut') });
+      if (f('v_titulo')) verif.titulo = f('v_titulo'); else delete verif.titulo;
+      if (f('v_respaldo')) verif.respaldo = f('v_respaldo'); else delete verif.respaldo;
+      patch.verificacion = verif;
+      patch.sello = Object.assign({ tipo: perfil === 'certificado' ? 'Sello Profesional Certificado' : 'Sello Experiencia Verificada' }, u.sello || {}, { estado: f('s_estado') });
+    }
+    if (perfil === 'admin') {
+      patch.permisos = Array.from(form.querySelectorAll('input[name="permisos"]:checked')).map((c) => c.value);
+    }
+    const res = VR.users.admin.update(u.id, patch);
+    if (res.error) return fail(/correo/.test(res.error) ? 'correo' : null, res.error);
+    err.textContent = '';
+    VR.toast(res.changed.length ? 'Cambios guardados para ' + res.user.nombre.split(' ')[0] + '.' : 'No hubo cambios.');
+    reload().then(() => showTab('perfil'));
+  }, true);
+
+  /* Historial de actividad */
+  function renderLog(u) {
+    const entries = VR.users.admin.log(u.id);
+    const base = [{ fecha: u.creadoEn, accion: 'Cuenta creada', detalle: u.demo ? 'Cuenta de demostración' : 'Registro vía ' + (u.proveedor || 'correo'), admin: '' }];
+    $('d-log').innerHTML = entries.concat(base).map((e) => `
+      <li class="flex gap-3">
+        <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-secondary" aria-hidden="true"></span>
+        <div><p class="font-semibold text-primary">${esc(e.accion)}</p>
+        <p class="text-on-surface-variant">${esc(e.detalle)}</p>
+        <p class="text-xs text-outline">${esc(fmtDate(e.fecha))}${e.admin ? ' · ' + esc(e.admin) : ''}</p></div>
+      </li>`).join('');
+  }
+
+  /* Diálogo de confirmación */
+  function confirmDialog({ title, text, okLabel, danger, askInput, code, noCancel }) {
+    const dlg = $('confirm-dialog');
+    $('confirm-title').textContent = title;
+    $('confirm-text').textContent = text;
+    $('confirm-code').hidden = !code;
+    $('confirm-code').textContent = code || '';
+    $('confirm-ok').textContent = okLabel || 'Confirmar';
+    $('confirm-ok').className = 'rounded-lg px-4 py-2 text-sm font-semibold text-white ' + (danger ? 'bg-error hover:opacity-90' : 'bg-primary hover:bg-primary-container');
+    $('confirm-cancel').hidden = !!noCancel;
+    $('confirm-input-wrap').hidden = !askInput;
+    $('confirm-input').value = '';
+    if (askInput) $('confirm-input-label').textContent = askInput;
+    dlg.returnValue = '';
+    return new Promise((resolve) => {
+      dlg.addEventListener('close', () => resolve(dlg.returnValue === 'ok' ? { value: $('confirm-input').value.trim() } : null), { once: true });
+      dlg.showModal();
+    });
+  }
+  // vecired.js intercepta los submit en captura; dejamos que el form method="dialog" cierre el diálogo.
+  $('confirm-dialog').querySelector('form').addEventListener('submit', (e) => {
+    e.stopPropagation();
+    $('confirm-dialog').close(e.submitter ? e.submitter.value : 'cancel');
+  }, true);
+
+  /* Acciones rápidas */
+  $('d-actions').addEventListener('click', async (e) => {
+    const trigger = e.target.closest('[data-action]');
+    const u = all.find((x) => x.id === selectedId);
+    if (!trigger || !u) return;
+    const action = trigger.dataset.action;
+    const first = u.nombre.split(' ')[0];
+    const selloTipo = u.perfil === 'certificado' ? 'Sello Profesional Certificado' : 'Sello Experiencia Verificada';
+    let res;
+    if (action === 'edit') { showTab('editar'); $('e-nombre').focus(); return; }
+    if (action === 'approve') {
+      res = VR.users.admin.update(u.id, {
+        verificacion: Object.assign({}, u.verificacion, { estado: 'verificado' }),
+        sello: Object.assign({ tipo: selloTipo }, u.sello, { estado: 'aprobado' })
+      }, 'Verificación aprobada');
+      if (!res.error) VR.toast('Verificación de ' + first + ' aprobada.');
+    }
+    if (action === 'reject') {
+      const ok = await confirmDialog({ title: 'Rechazar verificación', text: 'El especialista verá su verificación como rechazada.', okLabel: 'Rechazar', danger: true, askInput: 'Motivo (opcional)' });
+      if (!ok) return;
+      res = VR.users.admin.update(u.id, {
+        verificacion: Object.assign({}, u.verificacion, { estado: 'rechazado', motivoRechazo: ok.value }),
+        sello: Object.assign({ tipo: selloTipo }, u.sello, { estado: 'rechazado' })
+      }, 'Verificación rechazada');
+      if (!res.error) VR.toast('Verificación de ' + first + ' rechazada.');
+    }
+    if (action === 'suspend') {
+      const ok = await confirmDialog({ title: 'Suspender a ' + u.nombre, text: 'No podrá iniciar sesión hasta que reactives su cuenta.', okLabel: 'Suspender', danger: true, askInput: 'Motivo (se mostrará al usuario)' });
+      if (!ok) return;
+      res = VR.users.admin.setSuspended(u.id, true, ok.value);
+      if (!res.error) VR.toast('Cuenta de ' + first + ' suspendida.');
+    }
+    if (action === 'unsuspend') {
+      res = VR.users.admin.setSuspended(u.id, false);
+      if (!res.error) VR.toast('Cuenta de ' + first + ' reactivada.');
+    }
+    if (action === 'reset') {
+      const ok = await confirmDialog({ title: 'Restablecer contraseña', text: 'Se generará una contraseña temporal para ' + u.nombre + '. La actual dejará de funcionar.', okLabel: 'Generar' });
+      if (!ok) return;
+      res = await VR.users.admin.resetPassword(u.id);
+      if (!res.error) {
+        await confirmDialog({ title: 'Contraseña temporal', text: 'Compártela con ' + first + ' por un canal seguro. No se volverá a mostrar.', code: res.password, okLabel: 'Entendido', noCancel: true });
+      }
+    }
+    if (action === 'delete') {
+      const ok = await confirmDialog({ title: 'Eliminar cuenta', text: 'Se eliminará la cuenta de ' + u.nombre + ' (' + u.correo + ') de este navegador. Esta acción no se puede deshacer.', okLabel: 'Eliminar', danger: true });
+      if (!ok) return;
+      res = VR.users.admin.remove(u.id);
+      if (!res.error) { VR.toast('Cuenta eliminada.'); selectedId = null; }
+    }
+    if (res && res.error) VR.toast(res.error);
+    reload();
+  });
+
+  $('btn-export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(all, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'vecired-usuarios-' + new Date().toISOString().slice(0, 10) + '.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+
+  function reload() {
+    return VR.users.admin.list().then((list) => {
+      all = list;
+      if (selectedId && !all.some((u) => u.id === selectedId)) selectedId = null;
+      renderStats();
+      renderList();
+      renderDetail();
+    });
+  }
+  reload();
+})();
+</script>
+</body></html>

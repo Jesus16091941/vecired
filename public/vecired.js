@@ -35,6 +35,7 @@
     ['INT-21', 'Chat / coordinación'],
     ['INT-22', 'Agenda e historial'],
     ['INT-23', 'Calificar servicio'],
+    ['INT-24', 'Panel de administración'],
     ['INT-00-teryser', 'Términos del servicio'],
     ['INT-00-poldepri', 'Política de privacidad'],
     ['INT-00-prodeda', 'Protección de datos'],
@@ -219,6 +220,7 @@
         if (!user) return null;
         return hashPassword(password, user.salt).then(function (hash) {
           if (!hash || hash !== user.passwordHash) return null;
+          if (user.suspendido) return { suspendido: true, motivo: user.motivoSuspension || '' };
           var publicUser = Object.assign({}, user);
           delete publicUser.salt;
           delete publicUser.passwordHash;
@@ -230,9 +232,111 @@
     },
     homeFor: function (user) {
       if (!user) return 'INT-01.html';
-      if (user.rol === 'admin') return 'index.html';
+      if (user.rol === 'admin') return 'INT-24.html';
       return user.rol === 'tech' ? 'INT-07.html' : 'INT-10.html';
     }
+  };
+
+  /* Herramientas del Administrador (solo operan si la sesión actual tiene rol 'admin') */
+  var ADMIN_LOG_KEY = 'vecired:admin-log';
+  var PROTECTED_FIELDS = ['id', 'salt', 'passwordHash', 'creadoEn', 'demo'];
+
+  function stripSecrets(user) {
+    if (!user) return null;
+    var copy = JSON.parse(JSON.stringify(user));
+    delete copy.salt;
+    delete copy.passwordHash;
+    return copy;
+  }
+
+  users.admin = {
+    isAdmin: function () {
+      var me = users.current();
+      return !!(me && me.rol === 'admin');
+    },
+    list: function () {
+      return seedReady.then(function () { return users.list().map(stripSecrets); });
+    },
+    get: function (id) {
+      return stripSecrets(users.list().find(function (u) { return u.id === id; }));
+    },
+    log: function (userId) {
+      var entries;
+      try { entries = JSON.parse(localStorage.getItem(ADMIN_LOG_KEY)) || []; } catch (e) { entries = []; }
+      return userId ? entries.filter(function (e) { return e.userId === userId; }) : entries;
+    },
+    addLog: function (userId, accion, detalle) {
+      var entries = users.admin.log();
+      var me = users.current() || {};
+      entries.unshift({ fecha: new Date().toISOString(), userId: userId, accion: accion, detalle: detalle || '', admin: me.nombre || 'Administrador' });
+      try { localStorage.setItem(ADMIN_LOG_KEY, JSON.stringify(entries.slice(0, 300))); } catch (e) { /* sin espacio */ }
+    },
+    update: function (id, patch, accion) {
+      if (!users.admin.isAdmin()) return { error: 'Solo un administrador puede modificar cuentas.' };
+      var list = users.list();
+      var target = list.find(function (u) { return u.id === id; });
+      if (!target) return { error: 'La cuenta ya no existe.' };
+      var clean = {};
+      Object.keys(patch).forEach(function (k) { if (PROTECTED_FIELDS.indexOf(k) === -1) clean[k] = patch[k]; });
+      if (clean.correo) {
+        clean.correo = String(clean.correo).trim().toLowerCase();
+        if (list.some(function (u) { return u.id !== id && u.correo === clean.correo; })) {
+          return { error: 'Ya existe otra cuenta con el correo ' + clean.correo + '.' };
+        }
+      }
+      if (clean.perfil) {
+        clean.rol = rolFor(clean.perfil);
+        clean.tipoCuenta = TIPO_CUENTA[clean.perfil];
+      }
+      var me = users.current();
+      if (me && me.id === id && clean.rol && clean.rol !== 'admin') {
+        return { error: 'No puedes quitarte a ti mismo el rol de administrador.' };
+      }
+      var changed = Object.keys(clean).filter(function (k) { return JSON.stringify(target[k]) !== JSON.stringify(clean[k]); });
+      if (!changed.length) return { user: stripSecrets(target), changed: [] };
+      Object.assign(target, clean, { actualizadoEn: new Date().toISOString() });
+      try { users.save(list); } catch (e) { return { error: 'No se pudo guardar en este navegador.' }; }
+      if (me && me.id === id) store.set('user', stripSecrets(target));
+      users.admin.addLog(id, accion || 'Datos editados', 'Campos: ' + changed.join(', '));
+      return { user: stripSecrets(target), changed: changed };
+    },
+    setSuspended: function (id, suspendido, motivo) {
+      var me = users.current();
+      if (me && me.id === id) return { error: 'No puedes suspender tu propia cuenta.' };
+      return users.admin.update(id, { suspendido: !!suspendido, motivoSuspension: suspendido ? (motivo || '') : '' },
+        suspendido ? 'Cuenta suspendida' : 'Cuenta reactivada');
+    },
+    resetPassword: function (id) {
+      if (!users.admin.isAdmin()) return Promise.resolve({ error: 'Solo un administrador puede hacer esto.' });
+      var alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+      var bytes = new Uint8Array(10);
+      crypto.getRandomValues(bytes);
+      var temp = Array.prototype.map.call(bytes, function (b) { return alphabet[b % alphabet.length]; }).join('') + '!';
+      var salt = randomHex(16);
+      return hashPassword(temp, salt).then(function (hash) {
+        var list = users.list();
+        var target = list.find(function (u) { return u.id === id; });
+        if (!target || !hash) return { error: 'No se pudo restablecer la contraseña.' };
+        target.salt = salt;
+        target.passwordHash = hash;
+        target.actualizadoEn = new Date().toISOString();
+        users.save(list);
+        users.admin.addLog(id, 'Contraseña restablecida', 'Se generó una contraseña temporal');
+        return { password: temp };
+      });
+    },
+    remove: function (id) {
+      var me = users.current();
+      if (!users.admin.isAdmin()) return { error: 'Solo un administrador puede eliminar cuentas.' };
+      if (me && me.id === id) return { error: 'No puedes eliminar tu propia cuenta.' };
+      var list = users.list();
+      var target = list.find(function (u) { return u.id === id; });
+      if (!target) return { error: 'La cuenta ya no existe.' };
+      users.save(list.filter(function (u) { return u.id !== id; }));
+      users.admin.addLog(id, 'Cuenta eliminada', target.nombre + ' (' + target.correo + ')');
+      return { ok: true };
+    },
+    tipoCuenta: TIPO_CUENTA
   };
 
   /*

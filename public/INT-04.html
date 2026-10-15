@@ -260,6 +260,11 @@
           document.getElementById('password').focus();
           return;
         }
+        if (user.suspendido) {
+          restore();
+          VR.toast('Tu cuenta está suspendida' + (user.motivo ? ': ' + user.motivo : '') + '. Escríbenos al chat de soporte.');
+          return;
+        }
         submitBtn.innerHTML = `
           <span class="material-symbols-outlined text-[18px]">check_circle</span>
           <span>¡Acceso concedido!</span>
