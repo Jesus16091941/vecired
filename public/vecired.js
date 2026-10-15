@@ -35,6 +35,7 @@
     ['INT-21', 'Chat / coordinación'],
     ['INT-22', 'Agenda e historial'],
     ['INT-23', 'Calificar servicio'],
+    ['INT-24', 'Panel de administración'],
     ['INT-00-teryser', 'Términos del servicio'],
     ['INT-00-poldepri', 'Política de privacidad'],
     ['INT-00-prodeda', 'Protección de datos'],
@@ -206,8 +207,244 @@
         store.set('user', publicUser);
         return publicUser;
       });
+    },
+    authenticate: function (identifier, password) {
+      var id = String(identifier || '').trim().toLowerCase();
+      var digits = id.replace(/\D/g, '');
+      return seedReady.then(function () {
+        var user = users.list().find(function (u) {
+          if (u.correo === id) return true;
+          var phone = String(u.telefono || '').replace(/\D/g, '');
+          return digits.length >= 8 && phone.slice(-digits.length) === digits;
+        });
+        if (!user) return null;
+        return hashPassword(password, user.salt).then(function (hash) {
+          if (!hash || hash !== user.passwordHash) return null;
+          if (user.suspendido) return { suspendido: true, motivo: user.motivoSuspension || '' };
+          var publicUser = Object.assign({}, user);
+          delete publicUser.salt;
+          delete publicUser.passwordHash;
+          store.set('user', publicUser);
+          store.set('role', user.rol === 'tech' ? 'tech' : user.rol === 'admin' ? 'admin' : 'client');
+          return publicUser;
+        });
+      });
+    },
+    homeFor: function (user) {
+      if (!user) return 'INT-01.html';
+      if (user.rol === 'admin') return 'INT-24.html';
+      return user.rol === 'tech' ? 'INT-07.html' : 'INT-10.html';
     }
   };
+
+  /* Herramientas del Administrador (solo operan si la sesión actual tiene rol 'admin') */
+  var ADMIN_LOG_KEY = 'vecired:admin-log';
+  var PROTECTED_FIELDS = ['id', 'salt', 'passwordHash', 'creadoEn', 'demo'];
+
+  function stripSecrets(user) {
+    if (!user) return null;
+    var copy = JSON.parse(JSON.stringify(user));
+    delete copy.salt;
+    delete copy.passwordHash;
+    return copy;
+  }
+
+  users.admin = {
+    isAdmin: function () {
+      var me = users.current();
+      return !!(me && me.rol === 'admin');
+    },
+    list: function () {
+      return seedReady.then(function () { return users.list().map(stripSecrets); });
+    },
+    get: function (id) {
+      return stripSecrets(users.list().find(function (u) { return u.id === id; }));
+    },
+    log: function (userId) {
+      var entries;
+      try { entries = JSON.parse(localStorage.getItem(ADMIN_LOG_KEY)) || []; } catch (e) { entries = []; }
+      return userId ? entries.filter(function (e) { return e.userId === userId; }) : entries;
+    },
+    addLog: function (userId, accion, detalle) {
+      var entries = users.admin.log();
+      var me = users.current() || {};
+      entries.unshift({ fecha: new Date().toISOString(), userId: userId, accion: accion, detalle: detalle || '', admin: me.nombre || 'Administrador' });
+      try { localStorage.setItem(ADMIN_LOG_KEY, JSON.stringify(entries.slice(0, 300))); } catch (e) { /* sin espacio */ }
+    },
+    update: function (id, patch, accion) {
+      if (!users.admin.isAdmin()) return { error: 'Solo un administrador puede modificar cuentas.' };
+      var list = users.list();
+      var target = list.find(function (u) { return u.id === id; });
+      if (!target) return { error: 'La cuenta ya no existe.' };
+      var clean = {};
+      Object.keys(patch).forEach(function (k) { if (PROTECTED_FIELDS.indexOf(k) === -1) clean[k] = patch[k]; });
+      if (clean.correo) {
+        clean.correo = String(clean.correo).trim().toLowerCase();
+        if (list.some(function (u) { return u.id !== id && u.correo === clean.correo; })) {
+          return { error: 'Ya existe otra cuenta con el correo ' + clean.correo + '.' };
+        }
+      }
+      if (clean.perfil) {
+        clean.rol = rolFor(clean.perfil);
+        clean.tipoCuenta = TIPO_CUENTA[clean.perfil];
+      }
+      var me = users.current();
+      if (me && me.id === id && clean.rol && clean.rol !== 'admin') {
+        return { error: 'No puedes quitarte a ti mismo el rol de administrador.' };
+      }
+      var changed = Object.keys(clean).filter(function (k) { return JSON.stringify(target[k]) !== JSON.stringify(clean[k]); });
+      if (!changed.length) return { user: stripSecrets(target), changed: [] };
+      Object.assign(target, clean, { actualizadoEn: new Date().toISOString() });
+      try { users.save(list); } catch (e) { return { error: 'No se pudo guardar en este navegador.' }; }
+      if (me && me.id === id) store.set('user', stripSecrets(target));
+      users.admin.addLog(id, accion || 'Datos editados', 'Campos: ' + changed.join(', '));
+      return { user: stripSecrets(target), changed: changed };
+    },
+    setSuspended: function (id, suspendido, motivo) {
+      var me = users.current();
+      if (me && me.id === id) return { error: 'No puedes suspender tu propia cuenta.' };
+      return users.admin.update(id, { suspendido: !!suspendido, motivoSuspension: suspendido ? (motivo || '') : '' },
+        suspendido ? 'Cuenta suspendida' : 'Cuenta reactivada');
+    },
+    resetPassword: function (id) {
+      if (!users.admin.isAdmin()) return Promise.resolve({ error: 'Solo un administrador puede hacer esto.' });
+      var alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+      var bytes = new Uint8Array(10);
+      crypto.getRandomValues(bytes);
+      var temp = Array.prototype.map.call(bytes, function (b) { return alphabet[b % alphabet.length]; }).join('') + '!';
+      var salt = randomHex(16);
+      return hashPassword(temp, salt).then(function (hash) {
+        var list = users.list();
+        var target = list.find(function (u) { return u.id === id; });
+        if (!target || !hash) return { error: 'No se pudo restablecer la contraseña.' };
+        target.salt = salt;
+        target.passwordHash = hash;
+        target.actualizadoEn = new Date().toISOString();
+        users.save(list);
+        users.admin.addLog(id, 'Contraseña restablecida', 'Se generó una contraseña temporal');
+        return { password: temp };
+      });
+    },
+    remove: function (id) {
+      var me = users.current();
+      if (!users.admin.isAdmin()) return { error: 'Solo un administrador puede eliminar cuentas.' };
+      if (me && me.id === id) return { error: 'No puedes eliminar tu propia cuenta.' };
+      var list = users.list();
+      var target = list.find(function (u) { return u.id === id; });
+      if (!target) return { error: 'La cuenta ya no existe.' };
+      users.save(list.filter(function (u) { return u.id !== id; }));
+      users.admin.addLog(id, 'Cuenta eliminada', target.nombre + ' (' + target.correo + ')');
+      return { ok: true };
+    },
+    tipoCuenta: TIPO_CUENTA
+  };
+
+  /*
+   * Modelo de cuentas:
+   *   rol     'client' (vecino) | 'tech' (especialista) | 'admin' (administrador)
+   *   perfil  'vecino' | 'certificado' | 'experiencia' | 'admin'
+   *   tipoCuenta  etiqueta legible del tipo de usuario
+   * Cuentas de demostración: se crean una sola vez por navegador (localStorage) y nunca pisan
+   * registros existentes con el mismo correo. Contraseñas de demo: ver DEMO_PASSWORDS.
+   */
+  var SEED_VERSION = 1;
+  var SEED_KEY = 'vecired:seed-version';
+  var DEMO_PASSWORDS = { client: 'Vecino2026!', tech: 'Tecnico2026!', admin: 'Admin2026!' };
+  var TIPO_CUENTA = {
+    vecino: 'Vecino / Cliente',
+    certificado: 'Profesional certificado',
+    experiencia: 'Profesional con experiencia',
+    admin: 'Administrador'
+  };
+
+  var SEED_USERS = [
+    { id: 'seed-admin', nombre: 'Administración VeciRed', correo: 'admin@vecired.cl', telefono: '+56 9 2000 0000', perfil: 'admin', direccion: 'Agustinas 1070', barrio: 'Santiago Centro', permisos: ['usuarios', 'verificaciones', 'reportes', 'contenido'] },
+
+    { id: 'seed-v-maria', nombre: 'María Fuentes', correo: 'maria.fuentes@vecired.demo', telefono: '+56 9 3111 0001', perfil: 'vecino', direccion: 'Huérfanos 1160', barrio: 'Santiago Centro' },
+    { id: 'seed-v-camila', nombre: 'Camila Restrepo', correo: 'camila.restrepo@vecired.demo', telefono: '+56 9 3111 0002', perfil: 'vecino', direccion: 'Merced 450', barrio: 'Barrio Lastarria' },
+    { id: 'seed-v-ana', nombre: 'Ana Soto', correo: 'ana.soto@vecired.demo', telefono: '+56 9 3111 0003', perfil: 'vecino', direccion: 'Compañía 2015', barrio: 'Barrio Brasil' },
+    { id: 'seed-v-rosa', nombre: 'Rosa Pérez', correo: 'rosa.perez@vecired.demo', telefono: '+56 9 3111 0004', perfil: 'vecino', direccion: 'Agustinas 2240', barrio: 'Barrio Yungay' },
+    { id: 'seed-v-felipe', nombre: 'Felipe González', correo: 'felipe.gonzalez@vecired.demo', telefono: '+56 9 3111 0005', perfil: 'vecino', direccion: 'San Antonio 385', barrio: 'Santiago Centro' },
+    { id: 'seed-v-claudia', nombre: 'Claudia Valdés', correo: 'claudia.valdes@vecired.demo', telefono: '+56 9 3111 0006', perfil: 'vecino', direccion: 'José Victorino Lastarria 90', barrio: 'Barrio Lastarria' },
+    { id: 'seed-v-beatriz', nombre: 'Beatriz Rosales', correo: 'beatriz.rosales@vecired.demo', telefono: '+56 9 3111 0007', perfil: 'vecino', direccion: 'Libertad 120', barrio: 'Barrio Yungay' },
+    { id: 'seed-v-carlos', nombre: 'Carlos Herrera', correo: 'carlos.herrera@vecired.demo', telefono: '+56 9 3111 0008', perfil: 'vecino', direccion: 'Santa Isabel 640', barrio: 'Barrio Santa Isabel' },
+    { id: 'seed-v-andres', nombre: 'Andrés Morales', correo: 'andres.morales@vecired.demo', telefono: '+56 9 3111 0009', perfil: 'vecino', direccion: 'Portugal 210', barrio: 'Barrio San Borja' },
+
+    { id: 'seed-t-roberto', nombre: 'Roberto Díaz', correo: 'roberto.diaz@vecired.demo', telefono: '+56 9 4222 0001', perfil: 'certificado', direccion: 'Catedral 1850', barrio: 'Barrio Yungay', oficios: ['Gasfitería'], titulo: 'Maestro Gasfíter certificado SEC', anosExperiencia: 15, rut: '11.111.111-1' },
+    { id: 'seed-t-lucia', nombre: 'Lucía Muñoz', correo: 'lucia.munoz@vecired.demo', telefono: '+56 9 4222 0002', perfil: 'certificado', direccion: 'Monjitas 520', barrio: 'Barrio Bellas Artes', oficios: ['Electricidad'], titulo: 'Ingeniera Electricista, instaladora SEC clase A', anosExperiencia: 9, rut: '12.222.222-0' },
+    { id: 'seed-t-carlosv', nombre: 'Carlos Vargas', correo: 'carlos.vargas@vecired.demo', telefono: '+56 9 4222 0003', perfil: 'certificado', direccion: 'San Pablo 1400', barrio: 'Santiago Centro', oficios: ['Cerrajería'], titulo: 'Técnico en cerrajería de alta seguridad', anosExperiencia: 11, rut: '13.333.333-4' },
+    { id: 'seed-t-carlost', nombre: 'Carlos Torres', correo: 'carlos.torres@vecired.demo', telefono: '+56 9 4222 0004', perfil: 'certificado', direccion: 'Rosas 1290', barrio: 'Barrio Brasil', oficios: ['Carpintería'], titulo: 'Técnico en construcción y carpintería', anosExperiencia: 8, rut: '14.444.444-8' },
+    { id: 'seed-t-andresp', nombre: 'Andrés Pizarro', correo: 'andres.pizarro@vecired.demo', telefono: '+56 9 4222 0005', perfil: 'certificado', direccion: 'Ricardo Cumming 330', barrio: 'Barrio Brasil', oficios: ['Pintura', 'Terminaciones'], titulo: 'Curso de pintura y terminaciones (OTEC)', anosExperiencia: 7, rut: '15.555.555-1' },
+    { id: 'seed-t-juan', nombre: 'Juan Camilo Ramírez', correo: 'juancamilo.ramirez@vecired.demo', telefono: '+56 9 4222 0006', perfil: 'certificado', direccion: 'Huérfanos 2050', barrio: 'Barrio Brasil', oficios: ['Electricidad'], titulo: 'Técnico electricista, instalador SEC clase D', anosExperiencia: 6, rut: '16.666.666-5' },
+    { id: 'seed-t-luisa', nombre: 'Luisa María Mendoza', correo: 'luisa.mendoza@vecired.demo', telefono: '+56 9 4222 0007', perfil: 'certificado', direccion: 'Agustinas 1500', barrio: 'Santiago Centro', oficios: ['Gasfitería', 'Gas'], titulo: 'Instaladora de gas SEC clase 3', anosExperiencia: 10, rut: '17.777.777-9' },
+    { id: 'seed-t-valentina', nombre: 'Valentina Rivas', correo: 'valentina.rivas@vecired.demo', telefono: '+56 9 4222 0008', perfil: 'certificado', direccion: 'Mac Iver 640', barrio: 'Santiago Centro', oficios: ['Climatización'], titulo: 'Técnica en refrigeración y climatización', anosExperiencia: 5, rut: '18.888.888-2' },
+
+    { id: 'seed-e-hernan', nombre: 'Hernán Soto', correo: 'hernan.soto@vecired.demo', telefono: '+56 9 5333 0001', perfil: 'experiencia', direccion: 'Cueto 410', barrio: 'Barrio Yungay', oficios: ['Albañilería', 'Cerámica'], anosExperiencia: 25, rut: '9.876.543-3', respaldo: 'Recomendaciones de 6 vecinos y fotos de 12 trabajos' },
+    { id: 'seed-e-marta', nombre: 'Marta Leiva', correo: 'marta.leiva@vecired.demo', telefono: '+56 9 5333 0002', perfil: 'experiencia', direccion: 'Erasmo Escala 2180', barrio: 'Barrio Brasil', oficios: ['Pintura', 'Empapelado'], anosExperiencia: 14, rut: '10.234.567-8', respaldo: 'Recomendaciones de 4 vecinos y fotos de 9 trabajos' },
+    { id: 'seed-e-jorge', nombre: 'Jorge Contreras', correo: 'jorge.contreras@vecired.demo', telefono: '+56 9 5333 0003', perfil: 'experiencia', direccion: 'Sazié 2050', barrio: 'Barrio República', oficios: ['Gasfitería', 'Reparaciones del hogar'], anosExperiencia: 18, rut: '8.765.432-1', respaldo: 'Recomendaciones de 5 vecinos y fotos de 7 trabajos' }
+  ];
+
+  function rolFor(perfil) {
+    if (perfil === 'admin') return 'admin';
+    return perfil === 'vecino' ? 'client' : 'tech';
+  }
+
+  function buildSeedUser(data) {
+    var rol = rolFor(data.perfil);
+    var user = {
+      id: data.id,
+      nombre: data.nombre,
+      correo: data.correo,
+      telefono: data.telefono,
+      direccion: data.direccion,
+      barrio: data.barrio,
+      depto: '',
+      rol: rol,
+      perfil: data.perfil,
+      tipoCuenta: TIPO_CUENTA[data.perfil],
+      proveedor: 'correo',
+      demo: true,
+      creadoEn: '2026-01-15T12:00:00.000Z'
+    };
+    if (rol === 'admin') user.permisos = data.permisos;
+    if (rol === 'tech') {
+      user.oficios = data.oficios;
+      user.anosExperiencia = data.anosExperiencia;
+      user.verificacion = data.perfil === 'certificado'
+        ? { estado: 'verificado', rut: data.rut, titulo: data.titulo }
+        : { estado: 'verificado', rut: data.rut, respaldo: data.respaldo };
+      user.sello = {
+        tipo: data.perfil === 'certificado' ? 'Sello Profesional Certificado' : 'Sello Experiencia Verificada',
+        estado: 'aprobado'
+      };
+    }
+    return user;
+  }
+
+  function seedDemoUsers() {
+    var done;
+    try { done = Number(localStorage.getItem(SEED_KEY)) >= SEED_VERSION; } catch (e) { return Promise.resolve(); }
+    if (done || !(window.crypto && crypto.subtle)) return Promise.resolve();
+    var existing = users.list();
+    var taken = {};
+    existing.forEach(function (u) { taken[u.correo] = true; taken[u.id] = true; });
+    var pending = SEED_USERS.filter(function (d) { return !taken[d.correo] && !taken[d.id]; });
+    return Promise.all(pending.map(function (data) {
+      var user = buildSeedUser(data);
+      user.salt = randomHex(16);
+      return hashPassword(DEMO_PASSWORDS[user.rol], user.salt).then(function (hash) {
+        user.passwordHash = hash;
+        return user;
+      });
+    })).then(function (created) {
+      try {
+        users.save(users.list().concat(created));
+        localStorage.setItem(SEED_KEY, String(SEED_VERSION));
+      } catch (e) { /* almacenamiento lleno o bloqueado */ }
+    });
+  }
+
+  var seedReady = seedDemoUsers();
 
   /* Datos de verificación del especialista: solo campos visibles; de los archivos se guarda la referencia, no el contenido */
   function collectVerification(form) {

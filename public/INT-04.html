@@ -249,16 +249,32 @@
         <span>Autenticando en ${currentRole === 'client' ? 'VeciRed' : 'VeciRed Pro'}...</span>
       `;
 
-      setTimeout(() => {
+      const password = document.getElementById('password').value;
+      const VR = window.VeciRed;
+      const restore = () => { submitBtn.disabled = false; submitBtn.innerHTML = originalText; };
+
+      VR.users.authenticate(identifier, password).then((user) => {
+        if (!user) {
+          restore();
+          VR.toast('Correo/teléfono o contraseña incorrectos.');
+          document.getElementById('password').focus();
+          return;
+        }
+        if (user.suspendido) {
+          restore();
+          VR.toast('Tu cuenta está suspendida' + (user.motivo ? ': ' + user.motivo : '') + '. Escríbenos al chat de soporte.');
+          return;
+        }
         submitBtn.innerHTML = `
           <span class="material-symbols-outlined text-[18px]">check_circle</span>
-          <span>¡Acceso Concedido!</span>
+          <span>¡Acceso concedido!</span>
         `;
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-        }, 1500);
-      }, 1000);
+        VR.toast('Hola, ' + user.nombre.split(' ')[0] + ' · ' + user.tipoCuenta);
+        setTimeout(() => { location.href = VR.users.homeFor(user); }, 900);
+      }).catch(() => {
+        restore();
+        VR.toast('No se pudo iniciar sesión en este navegador.');
+      });
     }
 
     function handleSocialLogin(provider) {
