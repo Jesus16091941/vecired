@@ -675,8 +675,359 @@
     locate();
   }
 
+  /* Chat de soporte: reemplaza los enlaces al Centro de Ayuda por una conversación con respuestas programadas */
+  var support = (function () {
+    var CHAT_KEY = 'support-chat';
+    var AGENT = { nombre: 'Camila', cargo: 'Soporte VeciRed', inicial: 'C' };
+    var SUPPORT_SELECTOR = 'a[href$="INT-00-cendeayu.html"], [data-vr-support]';
+
+    var MAIN_CHIPS = ['Problemas para registrarme', 'Olvidé mi contraseña', 'Verificación y sellos', 'Pagos con VeciPay', 'Problema con un servicio'];
+
+    var INTENTS = [
+      {
+        keys: ['humano', 'persona real', 'ejecutivo', 'agente', 'hablar con alguien', 'operador'],
+        reply: ['Estás hablando conmigo, Camila, del equipo de soporte. Soy una persona de verdad, no te preocupes.', 'Si prefieres, también puedo dejar tu caso con prioridad para que un supervisor te llame. ¿Me cuentas brevemente qué pasó?'],
+        chips: ['Problema con un servicio', 'Pagos con VeciPay']
+      },
+      {
+        keys: ['contrasena', 'clave', 'password', 'olvide', 'no puedo entrar', 'iniciar sesion', 'login', 'acceder'],
+        reply: ['Uy, eso pasa más de lo que crees, tranquilo/a.', 'En la pantalla de inicio de sesión toca "¿Olvidaste tu contraseña?" y te llegará un código a tu correo para crear una nueva.', 'Si el correo no te llega en unos minutos, revisa la carpeta de spam. ¿Te funcionó?'],
+        chips: ['Sí, ya pude', 'No me llega el correo'],
+        actions: [{ label: 'Ir a recuperar contraseña', href: 'INT-05.html' }]
+      },
+      {
+        keys: ['no me llega', 'spam', 'no llego el correo', 'no recibo'],
+        reply: ['Entiendo, qué lata. Revisa que el correo esté bien escrito, a veces se cuela un punto o una letra de más.', 'Si sigue sin llegar, escríbeme el correo con el que te registraste y lo reviso desde acá.']
+      },
+      {
+        keys: ['registr', 'crear cuenta', 'cuenta nueva', 'inscrib', 'unirme'],
+        reply: ['¡Bacán que te quieras sumar a VeciRed!', 'El registro tiene dos pasos: primero eliges si eres vecino o especialista, y luego completas tus datos y ubicación.', 'Si eres especialista te pediremos tu RUT y algo que respalde tu oficio (un certificado o recomendaciones de trabajos anteriores). ¿En qué parte te quedaste pegado/a?'],
+        chips: ['Soy vecino', 'Soy especialista', 'Error con el RUT'],
+        actions: [{ label: 'Empezar registro', href: 'INT-03.html' }]
+      },
+      {
+        keys: ['rut'],
+        reply: ['El RUT lo puedes escribir con o sin puntos, pero tiene que incluir el dígito verificador (por ejemplo 12.345.678-5).', 'Si te marca error, es probable que el dígito no coincida. Revísalo en tu cédula y vuelve a intentarlo.']
+      },
+      {
+        keys: ['soy vecino', 'vecino', 'cliente'],
+        reply: ['Perfecto. Como vecino solo necesitas tus datos básicos y tu ubicación para ver técnicos cerca.', 'Después puedes publicar una solicitud y los especialistas del barrio te mandan propuestas.']
+      },
+      {
+        keys: ['soy especialista', 'especialista', 'tecnico', 'maestro', 'oficio'],
+        reply: ['¡Buenísimo! Los especialistas pueden ser titulados/certificados o personas que aprendieron el oficio trabajando. Ambos son bienvenidos.', 'Con tu RUT y tus respaldos quedas registrado, y si quieres más confianza de los vecinos puedes pedir el Sello Verificado.']
+      },
+      {
+        keys: ['sello', 'verific', 'certificad', 'antecedentes', 'cedula', 'documento'],
+        reply: ['El Sello Verificado es opcional, pero ayuda mucho a que te elijan.', 'Te pedimos fotos de tu cédula por ambos lados, un comprobante de domicilio y el certificado de antecedentes (se saca gratis en el Registro Civil).', 'La revisión toma entre 24 y 48 horas hábiles. Te avisamos apenas esté listo.'],
+        actions: [{ label: 'Ir a la verificación', href: 'INT-06.html' }]
+      },
+      {
+        keys: ['pago', 'pagar', 'vecipay', 'cobro', 'reembolso', 'devolucion', 'tarjeta', 'transferencia', 'boleta'],
+        reply: ['Con VeciPay el pago queda retenido hasta que confirmas que el trabajo quedó bien. Así nadie pierde.', 'Si te cobraron algo que no corresponde o necesitas un reembolso, cuéntame el día del servicio y el nombre del técnico, y lo reviso.'],
+        chips: ['Me cobraron de más', 'Quiero un reembolso']
+      },
+      {
+        keys: ['de mas', 'reembolso', 'cobraron'],
+        reply: ['Lamento mucho eso. Dejé tu caso marcado para revisión.', 'Normalmente lo resolvemos en 3 a 5 días hábiles y el dinero vuelve al mismo medio de pago. ¿Hay algo más en lo que te pueda ayudar mientras tanto?']
+      },
+      {
+        keys: ['no llego', 'no vino', 'atraso', 'tarde', 'problema', 'reclamo', 'queja', 'mal trabajo', 'mal hecho', 'denuncia'],
+        reply: ['Uf, lamento que hayas tenido esa experiencia. Vamos a solucionarlo.', 'Si el técnico no llegó o el trabajo no quedó bien, no confirmes el servicio todavía: el pago sigue protegido.', 'Cuéntame qué pasó con un poco más de detalle y lo escalo con el equipo de mediación vecinal.'],
+        chips: ['El técnico no llegó', 'El trabajo quedó mal']
+      },
+      {
+        keys: ['cancelar', 'cancelacion', 'reagendar', 'cambiar la hora', 'cambiar fecha'],
+        reply: ['Sin problema. Puedes cancelar o reagendar desde tu agenda hasta 2 horas antes de la visita sin costo.', 'Si falta menos tiempo, avísale al técnico por el chat de coordinación para que no salga en vano.'],
+        actions: [{ label: 'Abrir mi agenda', href: 'INT-22.html' }]
+      },
+      {
+        keys: ['seguridad', 'peligro', 'emergencia', 'robo', 'acoso', 'amenaza', 'miedo'],
+        reply: ['Tu seguridad es lo primero. Si estás en peligro ahora mismo, llama al 133 (Carabineros).', 'Cuando estés a salvo, escríbeme qué pasó y bloquearemos la cuenta involucrada mientras investigamos.']
+      },
+      {
+        keys: ['publicar', 'solicitud', 'buscar tecnico', 'necesito un', 'gasfiter', 'electric', 'cerrajer', 'pintor'],
+        reply: ['¡Te ayudo! Lo más rápido es publicar una solicitud contando qué necesitas, y los especialistas cercanos te envían propuestas.', 'También puedes buscar directamente en el mapa y ver reseñas de cada uno.'],
+        actions: [{ label: 'Publicar solicitud', href: 'INT-14.html' }, { label: 'Ver mapa de técnicos', href: 'INT-12.html' }]
+      },
+      {
+        keys: ['si ya pude', 'ya pude', 'funciono', 'listo', 'solucionado', 'resuelto'],
+        reply: ['¡Qué bueno! Me alegra mucho.', '¿Hay algo más en lo que te pueda ayudar?']
+      },
+      {
+        keys: ['gracias', 'muchas gracias', 'te pasaste', 'genial', 'bacan', 'excelente'],
+        reply: ['¡De nada! Para eso estamos.', 'Si te surge cualquier otra duda, aquí voy a estar.']
+      },
+      {
+        keys: ['chao', 'adios', 'hasta luego', 'nos vemos', 'eso es todo', 'nada mas'],
+        reply: ['¡Que estés muy bien! Gracias por ser parte de VeciRed.']
+      },
+      {
+        keys: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'alo', 'hey'],
+        reply: ['¡Hola! ¿En qué te puedo ayudar hoy?'],
+        chips: MAIN_CHIPS
+      }
+    ];
+
+    var FALLBACKS = [
+      ['Mmm, no estoy segura de haberte entendido bien.', '¿Me lo podrías contar con otras palabras? O elige uno de estos temas:'],
+      ['Perdona, se me escapó eso. ¿Tiene que ver con alguno de estos temas?'],
+      ['Quiero ayudarte bien, así que déjame anotarlo para revisarlo con el equipo.', 'Mientras tanto, ¿es sobre alguno de estos temas?']
+    ];
+
+    var host, log, input, sendBtn, chipsHost, lastTrigger, fallbackCount = 0, busy = false, pending = [];
+    var state = store.get(CHAT_KEY) || { messages: [], open: false };
+
+    function save() { store.set(CHAT_KEY, state); }
+
+    function normalize(text) {
+      return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9ñ\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function firstName() {
+      var user = users.current && users.current();
+      return user && user.nombre ? user.nombre.split(' ')[0] : '';
+    }
+
+    function timeLabel(ts) {
+      return new Date(ts).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function findIntent(text) {
+      var clean = ' ' + normalize(text) + ' ';
+      var best = null, bestLen = 0;
+      INTENTS.forEach(function (intent) {
+        intent.keys.forEach(function (key) {
+          if (clean.indexOf(key) !== -1 && key.length > bestLen) { best = intent; bestLen = key.length; }
+        });
+      });
+      return best;
+    }
+
+    function renderMessage(msg, animate) {
+      var row = document.createElement('div');
+      row.className = 'vr-chat__row vr-chat__row--' + msg.from + (animate ? ' vr-chat__row--in' : '');
+      if (msg.from === 'agent') {
+        var avatar = document.createElement('span');
+        avatar.className = 'vr-chat__avatar';
+        avatar.setAttribute('aria-hidden', 'true');
+        avatar.textContent = AGENT.inicial;
+        row.appendChild(avatar);
+      }
+      var bubble = document.createElement('div');
+      bubble.className = 'vr-chat__bubble';
+      var text = document.createElement('p');
+      text.textContent = msg.text;
+      bubble.appendChild(text);
+      if (msg.actions && msg.actions.length) {
+        var actions = document.createElement('div');
+        actions.className = 'vr-chat__actions';
+        msg.actions.forEach(function (action) {
+          var link = document.createElement('a');
+          link.className = 'vr-chat__action';
+          link.href = action.href;
+          link.textContent = action.label;
+          actions.appendChild(link);
+        });
+        bubble.appendChild(actions);
+      }
+      var meta = document.createElement('span');
+      meta.className = 'vr-chat__meta';
+      meta.textContent = timeLabel(msg.ts) + (msg.from === 'user' ? ' · Leído' : '');
+      bubble.appendChild(meta);
+      row.appendChild(bubble);
+      log.appendChild(row);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function setChips(chips) {
+      chipsHost.innerHTML = '';
+      (chips || []).forEach(function (label) {
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'vr-chat__chip';
+        chip.textContent = label;
+        chip.addEventListener('click', function () { send(label); });
+        chipsHost.appendChild(chip);
+      });
+      chipsHost.hidden = !chips || !chips.length;
+    }
+
+    function push(msg) {
+      msg.ts = msg.ts || Date.now();
+      state.messages.push(msg);
+      save();
+      renderMessage(msg, true);
+    }
+
+    function showTyping() {
+      var row = document.createElement('div');
+      row.className = 'vr-chat__row vr-chat__row--agent vr-chat__row--typing';
+      row.innerHTML = '<span class="vr-chat__avatar" aria-hidden="true">' + AGENT.inicial + '</span><div class="vr-chat__bubble vr-chat__typing" aria-label="' + AGENT.nombre + ' está escribiendo"><span></span><span></span><span></span></div>';
+      log.appendChild(row);
+      log.scrollTop = log.scrollHeight;
+      host.querySelector('.vr-chat__status').textContent = 'Escribiendo…';
+      return row;
+    }
+
+    function agentSays(lines, chips, actions) {
+      busy = true;
+      setChips(null);
+      var i = 0;
+      (function next() {
+        if (i >= lines.length) {
+          busy = false;
+          host.querySelector('.vr-chat__status').textContent = 'En línea';
+          if (pending.length) { respond(pending.join(' ')); pending = []; return; }
+          setChips(chips);
+          return;
+        }
+        var line = lines[i];
+        var pause = i === 0 ? 500 : 350;
+        var typingTime = Math.min(2600, 700 + line.length * 22);
+        setTimeout(function () {
+          var typing = showTyping();
+          setTimeout(function () {
+            typing.remove();
+            var isLast = i === lines.length - 1;
+            push({ from: 'agent', text: line, actions: isLast ? actions : null });
+            i++;
+            next();
+          }, typingTime);
+        }, pause);
+      })();
+    }
+
+    function respond(text) {
+      var intent = findIntent(text);
+      if (intent) {
+        fallbackCount = 0;
+        agentSays(intent.reply, intent.chips, intent.actions);
+        return;
+      }
+      var lines = FALLBACKS[Math.min(fallbackCount, FALLBACKS.length - 1)];
+      fallbackCount++;
+      agentSays(lines, MAIN_CHIPS);
+    }
+
+    function send(text) {
+      text = (text || '').trim();
+      if (!text) return;
+      push({ from: 'user', text: text });
+      input.value = '';
+      sendBtn.disabled = true;
+      if (busy) { pending.push(text); return; }
+      respond(text);
+    }
+
+    function greet() {
+      var name = firstName();
+      var lines = [
+        (name ? '¡Hola, ' + name + '! ' : '¡Hola! ') + 'Soy ' + AGENT.nombre + ', del equipo de soporte de VeciRed.',
+        'Cuéntame con tus palabras qué necesitas, o elige uno de estos temas para empezar.'
+      ];
+      agentSays(lines, MAIN_CHIPS);
+    }
+
+    function build() {
+      host = document.createElement('section');
+      host.className = 'vr-chat';
+      host.id = 'vr-support-chat';
+      host.hidden = true;
+      host.setAttribute('role', 'dialog');
+      host.setAttribute('aria-modal', 'false');
+      host.setAttribute('aria-labelledby', 'vr-chat-title');
+      host.innerHTML =
+        '<header class="vr-chat__header">' +
+          '<span class="vr-chat__avatar vr-chat__avatar--lg" aria-hidden="true">' + AGENT.inicial + '<i class="vr-chat__online"></i></span>' +
+          '<div class="vr-chat__who"><h2 id="vr-chat-title">' + AGENT.nombre + ' · ' + AGENT.cargo + '</h2><span class="vr-chat__status">En línea</span></div>' +
+          '<button type="button" class="vr-chat__icon-btn" data-chat-restart aria-label="Reiniciar conversación" title="Nueva conversación"><span class="material-symbols-outlined" aria-hidden="true">refresh</span></button>' +
+          '<button type="button" class="vr-chat__icon-btn" data-chat-close aria-label="Cerrar chat de soporte"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>' +
+        '</header>' +
+        '<div class="vr-chat__log" role="log" aria-live="polite" aria-label="Conversación con soporte"><p class="vr-chat__day">Hoy · Respondemos en minutos</p></div>' +
+        '<div class="vr-chat__chips" hidden></div>' +
+        '<form class="vr-chat__form" autocomplete="off">' +
+          '<label class="sr-only" for="vr-chat-input">Escribe tu mensaje</label>' +
+          '<input id="vr-chat-input" class="vr-chat__input" type="text" placeholder="Escribe tu mensaje…" maxlength="400"/>' +
+          '<button type="submit" class="vr-chat__send" aria-label="Enviar mensaje" disabled><span class="material-symbols-outlined" aria-hidden="true">send</span></button>' +
+        '</form>';
+      document.body.appendChild(host);
+
+      log = host.querySelector('.vr-chat__log');
+      input = host.querySelector('.vr-chat__input');
+      sendBtn = host.querySelector('.vr-chat__send');
+      chipsHost = host.querySelector('.vr-chat__chips');
+
+      var form = host.querySelector('.vr-chat__form');
+      // Este formulario no debe pasar por el manejador global de envíos del prototipo.
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        send(input.value);
+      });
+      input.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && (event.isComposing || event.keyCode === 229)) event.preventDefault();
+      });
+      input.addEventListener('input', function () { sendBtn.disabled = !input.value.trim(); });
+      host.querySelector('[data-chat-close]').addEventListener('click', close);
+      host.querySelector('[data-chat-restart]').addEventListener('click', function () {
+        if (busy) return;
+        state.messages = [];
+        save();
+        log.querySelectorAll('.vr-chat__row').forEach(function (row) { row.remove(); });
+        fallbackCount = 0;
+        greet();
+      });
+      host.addEventListener('keydown', function (event) { if (event.key === 'Escape') close(); });
+
+      state.messages.forEach(function (msg) { renderMessage(msg, false); });
+      if (state.messages.length) setChips(MAIN_CHIPS.slice(0, 3));
+    }
+
+    function open(trigger) {
+      if (!host) build();
+      lastTrigger = trigger || document.activeElement;
+      host.hidden = false;
+      requestAnimationFrame(function () { host.classList.add('vr-chat--open'); });
+      state.open = true;
+      save();
+      if (!state.messages.length && !busy) greet();
+      log.scrollTop = log.scrollHeight;
+      input.focus();
+    }
+
+    function close() {
+      if (!host) return;
+      host.classList.remove('vr-chat--open');
+      host.hidden = true;
+      state.open = false;
+      save();
+      if (lastTrigger && lastTrigger.focus) lastTrigger.focus();
+    }
+
+    function wire() {
+      if (PAGE === 'index') return;
+      document.addEventListener('click', function (event) {
+        var trigger = event.target.closest(SUPPORT_SELECTOR);
+        if (!trigger || trigger.closest('.vr-screen-nav')) return;
+        event.preventDefault();
+        event.stopPropagation();
+        open(trigger);
+      }, true);
+      document.querySelectorAll(SUPPORT_SELECTOR).forEach(function (el) {
+        if (el.closest('.vr-screen-nav')) return;
+        el.setAttribute('aria-haspopup', 'dialog');
+        el.setAttribute('aria-controls', 'vr-support-chat');
+      });
+      if (state.open) open();
+    }
+
+    return { open: open, close: close, wire: wire };
+  })();
+
   /* API pública usada por los scripts de cada pantalla */
   window.VeciRed = {
+    support: support,
     users: users,
     locate: locate,
     toast: toast,
@@ -720,6 +1071,7 @@
     initMaps();
     updateLocationText(currentLocation);
     buildScreenNav();
+    support.wire();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
