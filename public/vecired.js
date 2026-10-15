@@ -139,6 +139,19 @@
     current: function () { return store.get('user'); },
     logout: function () { try { sessionStorage.removeItem('vecired:user'); } catch (e) { /* sin almacenamiento */ } },
     clear: function () { localStorage.removeItem(USERS_KEY); users.logout(); },
+    updateCurrent: function (patch) {
+      var current = users.current();
+      if (!current) return null;
+      var list = users.list();
+      var stored = list.find(function (u) { return u.id === current.id; });
+      if (stored) {
+        Object.assign(stored, patch);
+        users.save(list);
+      }
+      var updated = Object.assign({}, current, patch);
+      store.set('user', updated);
+      return updated;
+    },
     registerFromForm: function (form) {
       var field = function (name) {
         var el = form.elements.namedItem(name);

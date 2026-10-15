@@ -43,18 +43,18 @@
 </div>
 <div>
 <div class="flex items-center gap-space-xs">
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Paso 2 de 3</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Paso opcional</span>
 <span class="text-outline-variant font-bold">/</span>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Onboarding Profesional</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tu cuenta ya está creada</span>
 </div>
 <h1 class="font-headline-sm text-headline-sm text-primary tracking-tight">Verificación de Identidad y Arraigo Barrial</h1>
 </div>
 </div>
 <div class="flex items-center gap-space-sm">
-<div class="w-48 bg-surface-container-highest h-2 rounded-full overflow-hidden">
-<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 66%;"></div>
+<div class="w-48 bg-surface-container-highest h-2 rounded-full overflow-hidden" role="progressbar" aria-label="Documentos cargados" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" id="sello-barra">
+<div id="sello-barra-relleno" class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
 </div>
-<span class="font-label-sm text-label-sm font-bold text-primary">66% completado</span>
+<span id="sello-progreso" class="font-label-sm text-label-sm font-bold text-primary">0 de 3 documentos</span>
 </div>
 </div>
 </div>
@@ -112,27 +112,30 @@
 <h3 class="font-headline-sm text-[16px] leading-[22px] font-bold text-primary">Resumen de Tu Perfil Registrado</h3>
 </div>
 <div class="bg-surface-container-low rounded-lg p-space-md mb-space-sm">
-<div class="text-on-surface-variant font-label-sm text-label-sm uppercase">Oficio Principal</div>
-<div class="font-headline-sm text-[17px] leading-[24px] font-bold text-on-surface mt-0.5">Plomería &amp; Fontanería Residencial</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase">Especialista</div>
+<div id="resumen-nombre" class="font-headline-sm text-[17px] leading-[24px] font-bold text-on-surface mt-0.5">Sin sesión iniciada</div>
 <div class="flex flex-wrap gap-1.5 mt-2">
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-label-sm text-on-surface font-medium">Urgencias 24/7</span>
-<span class="bg-surface-container-highest px-2 py-0.5 rounded text-label-sm text-on-surface font-medium">Fugas y Calentadores</span>
+<span id="resumen-perfil" class="bg-surface-container-highest px-2 py-0.5 rounded text-label-sm text-on-surface font-medium">Perfil sin definir</span>
+<span id="resumen-estado" class="bg-surface-container-highest px-2 py-0.5 rounded text-label-sm text-on-surface font-medium">Sin sello</span>
 </div>
 </div>
 <div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant">
-<div class="flex justify-between py-1 border-b border-outline-variant/30">
-<span>Cobertura asignada:</span>
-<span class="font-semibold text-on-surface">Santiago Centro &amp; Barrio Lastarria</span>
+<div class="flex justify-between gap-space-sm py-1 border-b border-outline-variant/30">
+<span>RUT:</span>
+<span id="resumen-rut" class="font-semibold text-on-surface text-right">—</span>
 </div>
-<div class="flex justify-between py-1 border-b border-outline-variant/30">
-<span>Tipo de cuenta:</span>
-<span class="font-semibold text-on-surface">Técnico Independiente</span>
+<div class="flex justify-between gap-space-sm py-1 border-b border-outline-variant/30">
+<span>Barrio:</span>
+<span id="resumen-barrio" class="font-semibold text-on-surface text-right">—</span>
 </div>
-<div class="flex justify-between py-1">
-<span>Disponibilidad:</span>
-<span class="font-semibold text-secondary">Inmediata post-validación</span>
+<div class="flex justify-between gap-space-sm py-1">
+<span>Respaldo entregado:</span>
+<span id="resumen-respaldo" class="font-semibold text-secondary text-right">—</span>
 </div>
 </div>
+<p id="resumen-sin-sesion" class="mt-space-sm font-body-sm text-body-sm text-on-surface-variant" hidden>
+Para ver tus datos, <a class="text-secondary font-semibold underline" href="INT-03.html">crea tu cuenta</a> o <a class="text-secondary font-semibold underline" href="INT-04.html">inicia sesión</a>.
+</p>
 <div class="mt-space-md pt-space-xs">
 <a class="text-secondary hover:text-on-secondary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 transition-colors" href="INT-09.html">
 <span class="material-symbols-outlined text-[16px]">edit</span>
@@ -157,82 +160,75 @@
 <span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider uppercase">Requisitos de Seguridad Barrial</span>
 <span class="inline-flex items-center gap-1 text-label-sm text-on-secondary-fixed-variant bg-secondary-fixed px-space-xs py-0.5 rounded font-semibold">
 <span class="material-symbols-outlined text-[14px]">policy</span>
-                Norma VeciRed Valle de Aburrá
+                Ley 19.628 · Protección de la vida privada
               </span>
 </div>
-<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Carga de Documentación Obligatoria</h2>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Documentos para el Sello de Vecino Verificado</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-1">
-              Sube fotos claras o escaneos legibles. La validación se activa de forma automática tras enviar los 2 documentos.
+              Tus datos y tu respaldo profesional ya quedaron en tu registro. Aquí solo comprobamos que el RUT es tuyo, que vives en el barrio y que no tienes antecedentes. Sube fotos claras o archivos PDF.
             </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm mb-space-xl">
 <div class="bg-surface-container-low rounded-lg p-space-md relative">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-sm">1</span>
-<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
-<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
-                  Pendiente
-                </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded" data-doc-estado="cedula">Pendiente</span>
 </div>
-<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Cédula Ciudadanía</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ambas caras en buena luz</p>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Cédula de Identidad</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ambas caras, con el RUT legible</p>
 </div>
 <div class="bg-surface-container-low rounded-lg p-space-md relative">
 <div class="flex items-center justify-between mb-space-xs">
 <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-sm">2</span>
-<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
-<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
-                  Pendiente
-                </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded" data-doc-estado="domicilio">Pendiente</span>
 </div>
-<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Recibo Domicilio</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Factura EPM (&lt; 60 días)</p>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Comprobante de Domicilio</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Boleta de luz, agua o gas (&lt; 60 días)</p>
 </div>
 <div class="bg-surface-container-low rounded-lg p-space-md relative">
 <div class="flex items-center justify-between mb-space-xs">
-<span class="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-label-sm">3</span>
-<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-secondary bg-surface-container-highest px-2 py-0.5 rounded">
-                  Automático
-                </span>
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-sm">3</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded" data-doc-estado="antecedentes">Pendiente</span>
 </div>
-<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Antecedentes Judiciales</h4>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Consulta RNMC y Policía</p>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Certificado de Antecedentes</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Registro Civil, gratis en línea</p>
 </div>
 </div>
+<form id="form-sello" novalidate>
 <div class="space-y-space-xl">
 <div>
 <div class="flex items-center justify-between mb-space-xs">
 <div class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary text-[20px]">badge</span>
-<label class="font-headline-sm text-[17px] leading-[24px] font-bold text-primary">
+<h3 class="font-headline-sm text-[17px] leading-[24px] font-bold text-primary">
                     1. Cédula de Identidad (Frente y Reverso)
-                  </label>
+                  </h3>
 </div>
-<span class="font-label-sm text-label-sm text-secondary font-semibold">C.C. o C.E. Vigente</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Chilena o de extranjero, vigente</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-                Asegúrate de que el número, nombres completos y holograma sean legibles sin reflejos de flash.
+                El RUT de la cédula debe coincidir con el que ingresaste al registrarte<span id="cedula-rut-hint"></span>. Evita reflejos del flash.
               </p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
 <div class="group relative rounded-xl bg-surface-container-low hover:bg-surface-container transition-all p-space-lg flex flex-col items-center justify-center text-center cursor-pointer min-h-[160px] shadow-sm">
-<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file"/>
+<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file" name="cedulaFrente" data-doc="cedula" aria-label="Cédula de identidad, cara frontal" required/>
 <div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary mb-space-xs group-hover:scale-105 transition-transform shadow-sm">
 <span class="material-symbols-outlined text-[24px]">flip_to_front</span>
 </div>
 <span class="font-label-md text-label-md font-bold text-primary">Cara Frontal</span>
-<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Arrastra o haz clic para subir</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5" data-file-name>Con foto, nombre y RUT</span>
 <div class="mt-space-xs inline-flex items-center gap-1 text-[11px] font-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full shadow-2xs">
 <span class="material-symbols-outlined text-[13px]">add_photo_alternate</span>
                     JPG, PNG o PDF (Máx 10MB)
                   </div>
 </div>
 <div class="group relative rounded-xl bg-surface-container-low hover:bg-surface-container transition-all p-space-lg flex flex-col items-center justify-center text-center cursor-pointer min-h-[160px] shadow-sm">
-<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file"/>
+<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file" name="cedulaReverso" data-doc="cedula" aria-label="Cédula de identidad, cara posterior" required/>
 <div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary mb-space-xs group-hover:scale-105 transition-transform shadow-sm">
 <span class="material-symbols-outlined text-[24px]">flip_to_back</span>
 </div>
 <span class="font-label-md text-label-md font-bold text-primary">Cara Posterior</span>
-<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Con huella y código de barras</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5" data-file-name>Con código QR y huella</span>
 <div class="mt-space-xs inline-flex items-center gap-1 text-[11px] font-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full shadow-2xs">
 <span class="material-symbols-outlined text-[13px]">add_photo_alternate</span>
                     JPG, PNG o PDF (Máx 10MB)
@@ -244,35 +240,61 @@
 <div class="flex items-center justify-between mb-space-xs">
 <div class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
-<label class="font-headline-sm text-[17px] leading-[24px] font-bold text-primary">
-                    2. Comprobante de Arraigo Vecinal / Domicilio
-                  </label>
+<h3 class="font-headline-sm text-[17px] leading-[24px] font-bold text-primary">
+                    2. Comprobante de Domicilio
+                  </h3>
 </div>
-<span class="font-label-sm text-label-sm text-on-surface-variant">Vigencia &lt; 60 días</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Emitido hace menos de 60 días</span>
 </div>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-                Factura de servicios públicos domiciliarios (EPM energía/gas, acueducto o telefonía fija) que coincida con tu zona de atención.
+                Boleta de luz, agua o gas a tu nombre (o de alguien de tu hogar) con la dirección que registraste<span id="domicilio-direccion-hint"></span>.
               </p>
 <div class="group relative rounded-xl bg-surface-container-low hover:bg-surface-container transition-all p-space-xl flex flex-col items-center justify-center text-center cursor-pointer min-h-[170px] shadow-sm">
-<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file"/>
+<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file" name="comprobanteDomicilio" data-doc="domicilio" aria-label="Comprobante de domicilio" required/>
 <div class="w-14 h-14 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary mb-space-xs group-hover:scale-105 transition-transform shadow-sm">
 <span class="material-symbols-outlined text-[28px]">cloud_upload</span>
 </div>
-<span class="font-label-lg text-label-lg font-bold text-primary">Cargar Comprobante de Servicios</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-md">
-                  Arrastra aquí la factura en formato digital PDF o toma una foto clara donde se lea dirección y fecha de emisión
+<span class="font-label-lg text-label-lg font-bold text-primary">Cargar Boleta de Servicios</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-md" data-file-name>
+                  PDF o foto clara donde se lean la dirección y la fecha de emisión
                 </span>
-<div class="mt-space-sm flex items-center gap-space-xs text-label-sm text-[12px] text-on-surface-variant">
+<div class="mt-space-sm flex flex-wrap items-center justify-center gap-space-xs text-label-sm text-[12px] text-on-surface-variant">
 <span class="inline-flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1 rounded-md text-primary font-medium">
-<span class="material-symbols-outlined text-[14px]">check_circle</span> Factura EPM
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Luz
                   </span>
 <span class="inline-flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1 rounded-md text-primary font-medium">
-<span class="material-symbols-outlined text-[14px]">check_circle</span> Gas Natural
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Agua
                   </span>
 <span class="inline-flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1 rounded-md text-primary font-medium">
-<span class="material-symbols-outlined text-[14px]">check_circle</span> Tigo / Claro Fijo
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Gas
                   </span>
 </div>
+</div>
+</div>
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">gavel</span>
+<h3 class="font-headline-sm text-[17px] leading-[24px] font-bold text-primary">
+                    3. Certificado de Antecedentes
+                  </h3>
+</div>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-semibold underline decoration-outline-variant hover:text-on-secondary-container" href="https://www.registrocivil.cl/principal/servicios-en-linea" target="_blank" rel="noopener noreferrer">
+                  Obtenerlo en el Registro Civil
+                  <span class="material-symbols-outlined text-[14px]" aria-hidden="true">open_in_new</span>
+<span class="sr-only">(se abre en una pestaña nueva)</span>
+</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                Se descarga gratis con tu ClaveÚnica. Sirve el certificado &quot;para fines especiales&quot; o &quot;para fines particulares&quot; emitido hace menos de 30 días.
+              </p>
+<div class="group relative rounded-xl bg-surface-container-low hover:bg-surface-container transition-all p-space-lg flex flex-col items-center justify-center text-center cursor-pointer min-h-[140px] shadow-sm">
+<input accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" type="file" name="certificadoAntecedentes" data-doc="antecedentes" aria-label="Certificado de antecedentes" required/>
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary mb-space-xs group-hover:scale-105 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[24px]">description</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">Cargar Certificado</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant mt-0.5" data-file-name>PDF con código de verificación</span>
 </div>
 </div>
 <div class="bg-surface-container-low rounded-xl p-space-md">
@@ -281,31 +303,31 @@
 <span class="material-symbols-outlined text-[20px]">fact_check</span>
 </div>
 <div class="flex-1">
-<h4 class="font-label-lg text-label-lg font-bold text-primary">Autorización de Consulta de Antecedentes</h4>
+<h4 class="font-label-lg text-label-lg font-bold text-primary">Autorización de Revisión</h4>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                    Al continuar, autorizas a VeciRed para verificar en tiempo real tu historial público en la Procuraduría, Contraloría y antecedentes policiales (Policía Nacional de Chile).
+                    El equipo de VeciRed revisará estos documentos solo para otorgar el sello. Puedes pedir que se eliminen en cualquier momento, según la Ley 19.628.
                   </p>
-<label class="flex items-center gap-space-xs mt-space-sm cursor-pointer select-none">
-<input checked="" class="w-5 h-5 rounded bg-surface-container-lowest text-primary focus:ring-primary" type="checkbox"/>
+<label class="flex items-start gap-space-xs mt-space-sm cursor-pointer select-none">
+<input name="autorizacion" class="mt-0.5 w-5 h-5 rounded bg-surface-container-lowest text-primary focus:ring-primary" type="checkbox" required/>
 <span class="font-label-md text-label-md text-on-surface font-semibold">
-                      Acepto la consulta preventiva de antecedentes y política de protección de datos personales
-                    </span>
+                      Autorizo la revisión de mis documentos y acepto la <a class="text-secondary underline" href="INT-00-poldepri.html">política de privacidad</a>
+</span>
 </label>
 </div>
 </div>
 </div>
 </div>
+<p id="sello-error" class="mt-space-md font-body-sm text-body-sm text-error font-semibold" role="alert" hidden></p>
 <div class="mt-space-xl pt-space-lg border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-md">
-<button class="w-full sm:w-auto px-space-xl py-space-sm rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-[0.99]" type="button" data-go="INT-07.html" data-toast="Documentos enviados. Te avisaremos cuando estén verificados.">
+<button id="btn-enviar-sello" class="w-full sm:w-auto px-space-xl py-space-sm rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs transition-all shadow-sm active:scale-[0.99]" type="submit">
 <span>Enviar Documentos para Verificación</span>
-<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+<span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
 </button>
-<div class="flex items-center gap-space-md">
-<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-2" type="button" data-toast="Borrador guardado.">
-                Guardar borrador y continuar luego
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors py-2" type="button" data-go="INT-07.html" data-toast="Puedes conseguir el sello más tarde desde tu panel.">
+                Omitir por ahora e ir a mi panel
               </button>
 </div>
-</div>
+</form>
 <div class="mt-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-lg">
 <div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
 <span class="material-symbols-outlined text-secondary text-[20px]">support_agent</span>
@@ -321,6 +343,105 @@
 </div>
 </div>
 </div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const VR = window.VeciRed;
+  const form = document.getElementById('form-sello');
+  const errorBox = document.getElementById('sello-error');
+  const DOCS = ['cedula', 'domicilio', 'antecedentes'];
+  const PERFILES = {
+    certificado: { etiqueta: 'Titulado o con curso', respaldo: 'Título o certificado' },
+    experiencia: { etiqueta: 'Con experiencia comprobable', respaldo: 'Referencias de trabajos' }
+  };
+  const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+
+  const user = VR && VR.users.current();
+  if (user) {
+    const perfil = PERFILES[user.perfil];
+    const sello = user.sello && user.sello.estado;
+    setText('resumen-nombre', user.nombre || 'Especialista');
+    setText('resumen-perfil', perfil ? perfil.etiqueta : 'Vecino / Cliente');
+    setText('resumen-estado', sello ? 'Sello ' + sello : 'Sin sello');
+    setText('resumen-rut', (user.verificacion && user.verificacion.rut) || '—');
+    setText('resumen-barrio', user.barrio || '—');
+    setText('resumen-respaldo', perfil ? perfil.respaldo : '—');
+    if (user.verificacion && user.verificacion.rut) setText('cedula-rut-hint', ' (' + user.verificacion.rut + ')');
+    if (user.direccion) setText('domicilio-direccion-hint', ' (' + user.direccion + ')');
+  } else {
+    document.getElementById('resumen-sin-sesion').hidden = false;
+  }
+
+  const inputs = Array.from(form.querySelectorAll('input[type="file"]'));
+  inputs.forEach((input) => {
+    const label = input.parentElement.querySelector('[data-file-name]');
+    const original = label.textContent;
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      label.textContent = file ? file.name : original;
+      label.classList.toggle('text-secondary', !!file);
+      label.classList.toggle('font-semibold', !!file);
+      errorBox.hidden = true;
+      updateProgress();
+    });
+  });
+
+  function docReady(doc) {
+    return inputs.filter((i) => i.dataset.doc === doc).every((i) => i.files.length > 0);
+  }
+
+  function updateProgress() {
+    const ready = DOCS.filter(docReady).length;
+    DOCS.forEach((doc) => {
+      const badge = document.querySelector('[data-doc-estado="' + doc + '"]');
+      const ok = docReady(doc);
+      badge.textContent = ok ? 'Cargado' : 'Pendiente';
+      badge.classList.toggle('text-secondary', ok);
+      badge.classList.toggle('bg-secondary-fixed', ok);
+    });
+    document.getElementById('sello-barra').setAttribute('aria-valuenow', ready);
+    document.getElementById('sello-barra-relleno').style.width = Math.round(ready / DOCS.length * 100) + '%';
+    setText('sello-progreso', ready + ' de ' + DOCS.length + ' documentos');
+  }
+
+  form.addEventListener('submit', () => {
+    const missing = inputs.filter((i) => !i.files.length);
+    if (missing.length) {
+      errorBox.textContent = 'Falta cargar: ' + missing.map((i) => i.getAttribute('aria-label')).join(', ') + '.';
+      errorBox.hidden = false;
+      missing[0].focus();
+      return;
+    }
+    if (!form.elements.autorizacion.checked) {
+      errorBox.textContent = 'Debes autorizar la revisión de tus documentos para continuar.';
+      errorBox.hidden = false;
+      form.elements.autorizacion.focus();
+      return;
+    }
+    errorBox.hidden = true;
+
+    if (!VR.users.current()) {
+      VR.toast('Inicia sesión o crea tu cuenta para solicitar el sello.');
+      return;
+    }
+    const documentos = {};
+    inputs.forEach((i) => {
+      const f = i.files[0];
+      documentos[i.name] = { nombre: f.name, tipo: f.type, tamanoKB: Math.round(f.size / 1024) };
+    });
+    try {
+      VR.users.updateCurrent({ sello: { estado: 'en revisión', documentos, solicitadoEn: new Date().toISOString() } });
+    } catch (e) {
+      VR.toast('No se pudo guardar la solicitud en este navegador.');
+      return;
+    }
+    VR.toast('Documentos enviados. Te avisaremos cuando tengas tu sello.');
+    setTimeout(() => { location.href = 'INT-07.html'; }, 900);
+  });
+
+  updateProgress();
+});
+</script>
 
 <!-- Banner compartido (replicado desde INT-01) -->
 <style id="vecired-banner-style">
