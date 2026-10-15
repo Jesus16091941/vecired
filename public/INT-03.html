@@ -197,7 +197,7 @@
 </div>
 <!-- Primary Action & Form Footer -->
 <div class="max-w-md mx-auto text-center flex flex-col items-center">
-<button class="w-full h-12 px-space-xl rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all duration-150 flex items-center justify-center gap-space-xs font-label-lg text-label-lg shadow-sm hover:shadow active:scale-[0.99]" id="submit-role-btn" type="button" data-go="INT-02.html">
+<button class="w-full h-12 px-space-xl rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all duration-150 flex items-center justify-center gap-space-xs font-label-lg text-label-lg shadow-sm hover:shadow active:scale-[0.99]" id="submit-role-btn" type="button" data-go-role='{"client":"INT-02.html?perfil=vecino","tech":"INT-03.5.html"}'>
 <span>Continuar al Paso 2</span>
 <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
 </button>
@@ -299,6 +299,11 @@
         submitBtn.querySelector('span:first-child').innerText = 'Continuar como Especialista';
       }
     }
+
+    // Guarda el rol elegido antes de que el enrutador lea data-go-role
+    document.getElementById('submit-role-btn').addEventListener('click', () => {
+      try { sessionStorage.setItem('vecired:role', JSON.stringify(currentRole === 'client' ? 'client' : 'tech')); } catch (e) { /* sin almacenamiento */ }
+    });
   </script>
 </div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/40 py-space-xl"><div class="max-w-container-max mx-auto px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2026 VeciRed Marketplace. Conexión local confiable.</span></div><nav class="flex flex-wrap items-center justify-center gap-space-md" data-active-classes="text-on-surface font-semibold"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terminos-de-servicio" href="INT-00-teryser.html">Términos de Servicio</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="politica-de-privacidad" href="INT-00-poldepri.html">Política de Privacidad</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="proteccion-de-datos" href="INT-00-prodeda.html">Protección de Datos</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="centro-de-ayuda" href="INT-00-cendeayu.html">Centro de Ayuda</a></nav></div></footer>
 

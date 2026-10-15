@@ -14,6 +14,7 @@
     ['INT-01', 'Home / Página de inicio'],
     ['INT-02', 'Registro de usuario'],
     ['INT-03', 'Selección de tipo de usuario'],
+    ['INT-03.5', 'Tipo de especialista'],
     ['INT-04', 'Inicio de sesión'],
     ['INT-05', 'Recuperar contraseña'],
     ['INT-06', 'Verificación del técnico'],
@@ -145,10 +146,19 @@
       };
       var email = field('correo').toLowerCase();
       var password = (form.elements.namedItem('password') || {}).value || '';
+      var perfil = form.getAttribute('data-vr-perfil') || 'vecino';
+      var isPro = perfil !== 'vecino';
+      var verificacion = isPro ? collectVerification(form) : null;
       if (users.list().some(function (u) { return u.correo === email; })) {
         toast('Ya existe una cuenta registrada con ' + email + '.');
         var emailInput = form.elements.namedItem('correo');
         if (emailInput) emailInput.focus();
+        return Promise.resolve(null);
+      }
+      if (verificacion && verificacion.rut && users.list().some(function (u) { return u.verificacion && u.verificacion.rut === verificacion.rut; })) {
+        toast('Ya existe un especialista registrado con el RUT ' + verificacion.rut + '.');
+        var rutInput = form.elements.namedItem('rut');
+        if (rutInput) rutInput.focus();
         return Promise.resolve(null);
       }
       var salt = randomHex(16);
@@ -161,7 +171,9 @@
           direccion: field('direccion'),
           barrio: field('barrio'),
           depto: field('depto'),
-          rol: store.get('role') || 'client',
+          rol: isPro ? 'tech' : 'client',
+          perfil: perfil,
+          verificacion: verificacion,
           proveedor: form.getAttribute('data-vr-provider') || 'correo',
           salt: salt,
           passwordHash: hash,
@@ -183,6 +195,22 @@
       });
     }
   };
+
+  /* Datos de verificación del especialista: solo campos visibles; de los archivos se guarda la referencia, no el contenido */
+  function collectVerification(form) {
+    var data = { estado: 'pendiente de revisión' };
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || !el.closest('[data-vr-verificacion]') || el.matches(':disabled')) return;
+      if (el.type === 'file') {
+        data[el.name] = Array.prototype.map.call(el.files || [], function (f) {
+          return { nombre: f.name, tipo: f.type, tamanoKB: Math.round(f.size / 1024) };
+        });
+      } else if (el.value.trim()) {
+        data[el.name] = el.value.trim();
+      }
+    });
+    return data;
+  }
 
   function randomHex(bytes) {
     var arr = new Uint8Array(bytes);

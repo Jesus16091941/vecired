@@ -74,37 +74,17 @@
               Conecta con técnicos verificados a menos de 5 km de tu hogar o brinda tus servicios profesionales a vecinos de tu comuna con garantías de pago custodiado.
             </p>
 </div>
-<!-- Role Selection Cards -->
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-md text-label-md text-on-surface">Selecciona tu perfil en VeciRed:</span>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
-<!-- Client Role (Selected) -->
-<div class="cursor-pointer rounded-lg p-space-md transition-all relative flex flex-col justify-between bg-surface-container-low shadow-sm ring-2 ring-primary" id="role-client" onclick="selectRole('client')">
-<div class="flex items-start justify-between">
-<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-[22px]">roofing</span>
+<!-- Perfil elegido en INT-03 / INT-03.5 -->
+<div class="flex items-center gap-space-sm rounded-lg p-space-md bg-surface-container-low ring-2 ring-primary shadow-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" id="perfil-icon" aria-hidden="true">roofing</span>
 </div>
-<span class="material-symbols-outlined text-primary text-[20px]" id="check-client">check_circle</span>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Te estás registrando como</p>
+<p class="font-headline-sm text-headline-sm text-primary font-bold" id="perfil-titulo">Vecino / Cliente</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5" id="perfil-desc">Busco técnicos de confianza para gasfitería, electricidad y soluciones para mi hogar.</p>
 </div>
-<div class="mt-space-sm">
-<p class="font-headline-sm text-headline-sm text-primary font-bold">Soy Vecino / Cliente</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Busco técnicos certificados, gasfitería, electricidad y soluciones para mi hogar.</p>
-</div>
-</div>
-<!-- Worker Role -->
-<div class="cursor-pointer rounded-lg p-space-md transition-all relative flex flex-col justify-between bg-surface-container-lowest hover:bg-surface-container-low shadow-sm" id="role-tech" onclick="selectRole('tech')">
-<div class="flex items-start justify-between">
-<div class="w-10 h-10 rounded-lg bg-surface-container text-on-surface-variant flex items-center justify-center">
-<span class="material-symbols-outlined text-[22px]">handyman</span>
-</div>
-<span class="bg-secondary-container/60 text-on-secondary-container text-[11px] font-bold px-2 py-0.5 rounded-full">Gana en tu Zona</span>
-</div>
-<div class="mt-space-sm">
-<p class="font-headline-sm text-headline-sm text-on-surface font-bold">Soy Técnico / Pro</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ofrezco mis servicios con tarifas justas, cobro garantizado y cercanía inmediata.</p>
-</div>
-</div>
-</div>
+<a class="shrink-0 font-label-md text-label-md text-primary font-semibold underline decoration-secondary underline-offset-4 hover:text-secondary" href="INT-03.html">Cambiar perfil</a>
 </div>
 <!-- Input Fields Form Grid -->
 <form id="form-registro" data-vr-register class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
@@ -160,6 +140,118 @@
 <p id="pwd-hint" class="font-body-sm text-[12px] text-on-surface-variant">Usa 12+ caracteres, mayúsculas, minúsculas, números y símbolos.</p>
 </div>
 </div>
+<!-- Verificación de especialista (solo perfiles técnicos) -->
+<fieldset id="pro-verificacion" data-vr-verificacion class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md" hidden disabled>
+<legend class="sr-only">Verificación de especialista</legend>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]" aria-hidden="true">badge</span>
+<span class="font-label-md text-label-md text-primary font-bold">Verificación de especialista</span>
+<span class="ml-auto bg-secondary-container/60 text-on-secondary-container text-[11px] font-bold px-2 py-0.5 rounded-full" id="pro-sello">Sello Profesional Certificado</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-rut">RUT</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-rut" name="rut" type="text" placeholder="Ej. 12.345.678-5" inputmode="text" autocomplete="off" maxlength="12" aria-describedby="rut-hint" required/>
+<p id="rut-hint" class="font-body-sm text-[12px] text-on-surface-variant" aria-live="polite">Se valida el dígito verificador. Solo lo verá el equipo de VeciRed.</p>
+</div>
+<!-- Profesional certificado: tipo de comprobante -->
+<div class="flex flex-col gap-1" data-perfil-only="certificado">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-tipo-comprobante">Tipo de comprobante</label>
+<select class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-tipo-comprobante" name="tipo_comprobante" required>
+<option value="">Selecciona una opción</option>
+<option>Título profesional (universidad o IP)</option>
+<option>Título técnico de nivel superior (CFT o IP)</option>
+<option>Título técnico de nivel medio (liceo técnico)</option>
+<option>Licencia o autorización SEC</option>
+<option>Certificación de competencias ChileValora</option>
+<option>Curso o capacitación (SENCE, OTEC u otro)</option>
+</select>
+</div>
+<!-- Oficio por experiencia: años de experiencia -->
+<div class="flex flex-col gap-1" data-perfil-only="experiencia">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-anios">Años de experiencia en el oficio</label>
+<select class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-anios" name="anios_experiencia" required>
+<option value="">Selecciona una opción</option>
+<option>Menos de 1 año</option>
+<option>1 a 3 años</option>
+<option>3 a 5 años</option>
+<option>5 a 10 años</option>
+<option>Más de 10 años</option>
+</select>
+</div>
+</div>
+<!-- Profesional certificado -->
+<div class="flex flex-col gap-space-sm" data-perfil-only="certificado">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-institucion">Institución que lo emite</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-institucion" name="institucion" type="text" placeholder="Ej. INACAP, Duoc UC, SEC, Liceo Industrial A-22" autocomplete="off" required/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="comprobante-label">Comprobante (título, certificado o curso)</span>
+<label class="flex items-center gap-space-sm rounded-lg border-2 border-dashed border-outline-variant bg-surface-container-lowest px-space-md py-space-sm cursor-pointer hover:border-primary focus-within:ring-2 focus-within:ring-primary transition-colors" for="input-comprobante">
+<span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">upload_file</span>
+<span class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-primary">Subir archivo</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate" data-file-summary>PDF, JPG o PNG, hasta 5 MB</span>
+</span>
+<input class="sr-only" id="input-comprobante" name="comprobante" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" aria-labelledby="comprobante-label" data-max-mb="5" required/>
+</label>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-registro">Registro público donde apareces <span class="font-normal">(opcional)</span></label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-registro" name="registro_publico" type="url" placeholder="https://..." autocomplete="off" aria-describedby="registro-hint"/>
+<p id="registro-hint" class="font-body-sm text-[12px] text-on-surface-variant">Ej.: buscador de instaladores autorizados de la SEC, registro de trabajadores certificados de ChileValora o el Registro de Prestadores de la Superintendencia de Salud.</p>
+</div>
+</div>
+<!-- Oficio por experiencia -->
+<div class="flex flex-col gap-space-sm" data-perfil-only="experiencia">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface">Recomendaciones de clientes anteriores</span>
+<p class="font-body-sm text-[12px] text-on-surface-variant" id="refs-hint">Agrega al menos una recomendación <strong>o</strong> sube fotos de trabajos que hayas hecho. Podríamos llamar para confirmar.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-space-sm">
+<div class="sm:col-span-4 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref1-nombre">Nombre (recomendación 1)</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref1-nombre" name="ref1_nombre" type="text" placeholder="Ej. María González" autocomplete="off" aria-describedby="refs-hint"/>
+</div>
+<div class="sm:col-span-3 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref1-contacto">Celular</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref1-contacto" name="ref1_contacto" type="text" inputmode="numeric" placeholder="9 1234 5678" pattern="\s*9(\s*\d){8}\s*" title="Celular chileno de 9 dígitos que empieza con 9" autocomplete="off"/>
+</div>
+<div class="sm:col-span-5 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref1-trabajo">Trabajo realizado</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref1-trabajo" name="ref1_trabajo" type="text" placeholder="Ej. Cambio de calefont, 2025" autocomplete="off"/>
+</div>
+<div class="sm:col-span-4 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref2-nombre">Nombre (recomendación 2)</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref2-nombre" name="ref2_nombre" type="text" placeholder="Opcional" autocomplete="off"/>
+</div>
+<div class="sm:col-span-3 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref2-contacto">Celular</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref2-contacto" name="ref2_contacto" type="text" inputmode="numeric" placeholder="9 1234 5678" pattern="\s*9(\s*\d){8}\s*" title="Celular chileno de 9 dígitos que empieza con 9" autocomplete="off"/>
+</div>
+<div class="sm:col-span-5 flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="ref2-trabajo">Trabajo realizado</label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="ref2-trabajo" name="ref2_trabajo" type="text" placeholder="Opcional" autocomplete="off"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="fotos-label">Fotos de trabajos anteriores</span>
+<label class="flex items-center gap-space-sm rounded-lg border-2 border-dashed border-outline-variant bg-surface-container-lowest px-space-md py-space-sm cursor-pointer hover:border-primary focus-within:ring-2 focus-within:ring-primary transition-colors" for="input-fotos">
+<span class="material-symbols-outlined text-primary text-[24px]" aria-hidden="true">add_photo_alternate</span>
+<span class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-primary">Subir fotos</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant truncate" data-file-summary>Hasta 6 imágenes, 5 MB cada una</span>
+</span>
+<input class="sr-only" id="input-fotos" name="fotos_trabajos" type="file" accept="image/*" multiple aria-labelledby="fotos-label" data-max-mb="5" data-max-files="6"/>
+</label>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="input-portafolio">Enlace a tus trabajos <span class="font-normal">(opcional)</span></label>
+<input class="h-11 px-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline text-body-sm font-body-sm outline-none focus:ring-2 focus:ring-primary shadow-sm" id="input-portafolio" name="portafolio" type="url" placeholder="Ej. https://instagram.com/gasfiter.juan" autocomplete="off"/>
+</div>
+</div>
+</fieldset>
 <!-- Hyperlocal Residential Address Component -->
 <div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm mt-space-xs">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
@@ -431,22 +523,100 @@ Reajustar pin
 </div>
 <!-- Interactive JavaScript -->
 <script>
-    function selectRole(role) {
-      const clientCard = document.getElementById('role-client');
-      const techCard = document.getElementById('role-tech');
-      
-      if (role === 'client') {
-        clientCard.classList.add('ring-2', 'ring-primary', 'bg-surface-container-low');
-        clientCard.classList.remove('bg-surface-container-lowest');
-        techCard.classList.remove('ring-2', 'ring-primary', 'bg-surface-container-low');
-        techCard.classList.add('bg-surface-container-lowest');
-      } else {
-        techCard.classList.add('ring-2', 'ring-primary', 'bg-surface-container-low');
-        techCard.classList.remove('bg-surface-container-lowest');
-        clientCard.classList.remove('ring-2', 'ring-primary', 'bg-surface-container-low');
-        clientCard.classList.add('bg-surface-container-lowest');
+    (() => {
+      const PERFILES = {
+        vecino: { icon: 'roofing', titulo: 'Vecino / Cliente', desc: 'Busco técnicos de confianza para gasfitería, electricidad y soluciones para mi hogar.' },
+        certificado: { icon: 'workspace_premium', titulo: 'Especialista · Profesional certificado', desc: 'Tengo título, certificado o curso. Lo subiré para obtener el Sello Profesional Certificado.', sello: 'Sello Profesional Certificado' },
+        experiencia: { icon: 'construction', titulo: 'Especialista · Oficio por experiencia', desc: 'Aprendí trabajando. Validaré mi experiencia con recomendaciones o fotos de trabajos.', sello: 'Sello Experiencia Verificada' }
+      };
+      const readSession = (key) => { try { return JSON.parse(sessionStorage.getItem('vecired:' + key)); } catch (e) { return null; } };
+      const writeSession = (key, value) => { try { sessionStorage.setItem('vecired:' + key, JSON.stringify(value)); } catch (e) { /* sin almacenamiento */ } };
+
+      const fromUrl = new URLSearchParams(location.search).get('perfil');
+      const perfil = PERFILES[fromUrl] ? fromUrl : (PERFILES[readSession('perfil')] ? readSession('perfil') : 'vecino');
+      const info = PERFILES[perfil];
+      const isPro = perfil !== 'vecino';
+      writeSession('perfil', perfil);
+      writeSession('role', isPro ? 'tech' : 'client');
+
+      const form = document.getElementById('form-registro');
+      form.setAttribute('data-vr-perfil', perfil);
+      document.getElementById('perfil-icon').textContent = info.icon;
+      document.getElementById('perfil-titulo').textContent = info.titulo;
+      document.getElementById('perfil-desc').textContent = info.desc;
+
+      const pro = document.getElementById('pro-verificacion');
+      pro.hidden = !isPro;
+      pro.disabled = !isPro;
+      if (!isPro) return;
+      document.getElementById('pro-sello').textContent = info.sello;
+      pro.querySelectorAll('[data-perfil-only]').forEach((block) => {
+        const active = block.getAttribute('data-perfil-only') === perfil;
+        block.hidden = !active;
+        block.querySelectorAll('input, select, textarea').forEach((el) => { el.disabled = !active; });
+      });
+
+      // RUT: formato 12.345.678-5 y validación del dígito verificador (módulo 11)
+      const rutInput = document.getElementById('input-rut');
+      const rutHint = document.getElementById('rut-hint');
+      const RUT_HINT = rutHint.textContent;
+      const cleanRut = (v) => v.replace(/[^0-9kK]/g, '').toUpperCase();
+      const formatRut = (v) => {
+        const c = cleanRut(v);
+        if (c.length < 2) return c;
+        const body = c.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return body + '-' + c.slice(-1);
+      };
+      const validRut = (v) => {
+        const c = cleanRut(v);
+        if (!/^\d{7,8}[0-9K]$/.test(c)) return false;
+        let sum = 0, mul = 2;
+        for (let i = c.length - 2; i >= 0; i--) { sum += Number(c[i]) * mul; mul = mul === 7 ? 2 : mul + 1; }
+        const dv = 11 - (sum % 11);
+        return c.slice(-1) === (dv === 11 ? '0' : dv === 10 ? 'K' : String(dv));
+      };
+      const checkRut = () => {
+        rutInput.value = formatRut(rutInput.value);
+        const ok = !rutInput.value || validRut(rutInput.value);
+        rutInput.setCustomValidity(ok ? '' : 'El RUT no es válido. Revisa el dígito verificador.');
+        rutHint.textContent = ok ? RUT_HINT : 'RUT inválido: revisa los números y el dígito verificador.';
+        rutHint.classList.toggle('text-error', !ok);
+      };
+      rutInput.addEventListener('input', checkRut);
+
+      // Archivos: muestra lo elegido y limita tamaño y cantidad
+      pro.querySelectorAll('input[type="file"]').forEach((input) => {
+        const summary = input.closest('label').querySelector('[data-file-summary]');
+        const DEFAULT = summary.textContent;
+        input.addEventListener('change', () => {
+          const files = Array.from(input.files || []);
+          const maxMb = Number(input.getAttribute('data-max-mb') || 5);
+          const maxFiles = Number(input.getAttribute('data-max-files') || 1);
+          let error = '';
+          if (files.length > maxFiles) error = 'Puedes subir hasta ' + maxFiles + ' archivos.';
+          else if (files.some((f) => f.size > maxMb * 1024 * 1024)) error = 'Cada archivo debe pesar menos de ' + maxMb + ' MB.';
+          input.setCustomValidity(error);
+          summary.textContent = error || (files.length ? (files.length === 1 ? files[0].name : files.length + ' archivos seleccionados') : DEFAULT);
+          summary.classList.toggle('text-error', !!error);
+          if (perfil === 'experiencia') checkEvidence();
+        });
+      });
+
+      // Oficio por experiencia: al menos una recomendación completa o fotos
+      const ref1Name = document.getElementById('ref1-nombre');
+      const ref1Phone = document.getElementById('ref1-contacto');
+      const fotos = document.getElementById('input-fotos');
+      function checkEvidence() {
+        if (perfil !== 'experiencia') return;
+        const hasRef = ref1Name.value.trim().length >= 3 && ref1Phone.value.trim().length > 0;
+        const hasPhotos = fotos.files && fotos.files.length > 0;
+        ref1Name.setCustomValidity(hasRef || hasPhotos ? '' : 'Agrega al menos una recomendación (nombre y celular) o sube fotos de trabajos anteriores.');
+        ref1Phone.required = ref1Name.value.trim().length > 0;
       }
-    }
+      [ref1Name, ref1Phone].forEach((el) => el.addEventListener('input', checkEvidence));
+      window.addEventListener('DOMContentLoaded', () => { checkRut(); checkEvidence(); });
+      checkEvidence();
+    })();
 
     function togglePasswordVisibility() {
       const input = document.getElementById('pwd-input');

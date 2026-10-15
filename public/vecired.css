@@ -1,5 +1,8 @@
 /* VeciRed - estilos de la capa interactiva compartida */
 
+/* Las utilidades de Tailwind (flex, grid) no deben anular el atributo hidden */
+[hidden] { display: none !important; }
+
 .vr-map-host { isolation: isolate; }
 .vr-map-host > .vr-leaflet {
   position: absolute;
