@@ -14,6 +14,7 @@
     ['INT-01', 'Home / Página de inicio'],
     ['INT-02', 'Registro de usuario'],
     ['INT-03', 'Selección de tipo de usuario'],
+    ['INT-03.5', 'Tipo de especialista'],
     ['INT-04', 'Inicio de sesión'],
     ['INT-05', 'Recuperar contraseña'],
     ['INT-06', 'Verificación del técnico'],
@@ -114,10 +115,116 @@
     // Prototipo sin backend: nunca recargamos la página al enviar un formulario.
     event.preventDefault();
     var submitter = event.submitter || event.target.querySelector('[data-go], [data-go-role], [data-toast]');
-    if (submitter && (submitter.hasAttribute('data-go') || submitter.hasAttribute('data-go-role') || submitter.hasAttribute('data-toast'))) {
-      go(submitter);
+    var navigates = submitter && (submitter.hasAttribute('data-go') || submitter.hasAttribute('data-go-role') || submitter.hasAttribute('data-toast'));
+    if (event.target.hasAttribute('data-vr-register')) {
+      users.registerFromForm(event.target).then(function (user) {
+        if (!user) return;
+        if (submitter) submitter.setAttribute('data-toast', '¡Cuenta creada! Bienvenido/a a VeciRed, ' + user.nombre.split(' ')[0] + '.');
+        if (navigates) go(submitter);
+      });
+      return;
     }
+    if (navigates) go(submitter);
   }, true);
+
+  /* Registro temporal de usuarios (localStorage del navegador; sin backend en el prototipo) */
+  var USERS_KEY = 'vecired:users';
+  var users = {
+    list: function () {
+      try { return JSON.parse(localStorage.getItem(USERS_KEY)) || []; } catch (e) { return []; }
+    },
+    save: function (list) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(list));
+    },
+    current: function () { return store.get('user'); },
+    logout: function () { try { sessionStorage.removeItem('vecired:user'); } catch (e) { /* sin almacenamiento */ } },
+    clear: function () { localStorage.removeItem(USERS_KEY); users.logout(); },
+    registerFromForm: function (form) {
+      var field = function (name) {
+        var el = form.elements.namedItem(name);
+        return el && typeof el.value === 'string' ? el.value.trim() : '';
+      };
+      var email = field('correo').toLowerCase();
+      var password = (form.elements.namedItem('password') || {}).value || '';
+      var perfil = form.getAttribute('data-vr-perfil') || 'vecino';
+      var isPro = perfil !== 'vecino';
+      var verificacion = isPro ? collectVerification(form) : null;
+      if (users.list().some(function (u) { return u.correo === email; })) {
+        toast('Ya existe una cuenta registrada con ' + email + '.');
+        var emailInput = form.elements.namedItem('correo');
+        if (emailInput) emailInput.focus();
+        return Promise.resolve(null);
+      }
+      if (verificacion && verificacion.rut && users.list().some(function (u) { return u.verificacion && u.verificacion.rut === verificacion.rut; })) {
+        toast('Ya existe un especialista registrado con el RUT ' + verificacion.rut + '.');
+        var rutInput = form.elements.namedItem('rut');
+        if (rutInput) rutInput.focus();
+        return Promise.resolve(null);
+      }
+      var salt = randomHex(16);
+      return hashPassword(password, salt).then(function (hash) {
+        var user = {
+          id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'u-' + Date.now(),
+          nombre: field('nombre'),
+          correo: email,
+          telefono: '+56 ' + field('telefono').replace(/\s+/g, ' '),
+          direccion: field('direccion'),
+          barrio: field('barrio'),
+          depto: field('depto'),
+          rol: isPro ? 'tech' : 'client',
+          perfil: perfil,
+          verificacion: verificacion,
+          proveedor: form.getAttribute('data-vr-provider') || 'correo',
+          salt: salt,
+          passwordHash: hash,
+          creadoEn: new Date().toISOString()
+        };
+        var list = users.list();
+        list.push(user);
+        try {
+          users.save(list);
+        } catch (e) {
+          toast('No se pudo guardar el registro en este navegador.');
+          return null;
+        }
+        var publicUser = Object.assign({}, user);
+        delete publicUser.salt;
+        delete publicUser.passwordHash;
+        store.set('user', publicUser);
+        return publicUser;
+      });
+    }
+  };
+
+  /* Datos de verificación del especialista: solo campos visibles; de los archivos se guarda la referencia, no el contenido */
+  function collectVerification(form) {
+    var data = { estado: 'pendiente de revisión' };
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || !el.closest('[data-vr-verificacion]') || el.matches(':disabled')) return;
+      if (el.type === 'file') {
+        data[el.name] = Array.prototype.map.call(el.files || [], function (f) {
+          return { nombre: f.name, tipo: f.type, tamanoKB: Math.round(f.size / 1024) };
+        });
+      } else if (el.value.trim()) {
+        data[el.name] = el.value.trim();
+      }
+    });
+    return data;
+  }
+
+  function randomHex(bytes) {
+    var arr = new Uint8Array(bytes);
+    crypto.getRandomValues(arr);
+    return Array.prototype.map.call(arr, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  function hashPassword(password, salt) {
+    if (!(window.crypto && crypto.subtle)) return Promise.resolve(null);
+    var data = new TextEncoder().encode(salt + ':' + password);
+    return crypto.subtle.digest('SHA-256', data).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    });
+  }
 
   function wireLogo() {
     var logo = document.querySelector('header img, nav img');
@@ -400,7 +507,17 @@
     var accent = theme === 'dark' ? '#60a5fa' : '#006a61';
 
     var circle = L.circle([0, 0], { radius: radius || 1, color: accent, weight: 2, dashArray: '6 6', fillColor: accent, fillOpacity: radius ? 0.12 : 0, opacity: radius ? 0.9 : 0, interactive: false }).addTo(map);
-    var dot = L.circleMarker([0, 0], { radius: 7, color: '#ffffff', weight: 3, fillColor: '#001428', fillOpacity: 1, interactive: false }).addTo(map);
+    var draggable = interactive && host.hasAttribute('data-vr-draggable');
+    var dot = draggable
+      ? L.marker([0, 0], {
+          icon: L.divIcon({ className: 'vr-divicon', iconSize: [0, 0], html: '<div class="vr-pin vr-pin--bottom"><div class="vr-home-pin"><span class="vr-home-pin__label">' + (host.getAttribute('data-vr-draggable') || 'Tu hogar') + '</span><span class="material-symbols-outlined" aria-hidden="true">home_pin</span></div></div>' }),
+          draggable: true,
+          autoPan: true,
+          title: 'Arrastra el pin para ajustar tu ubicación',
+          zIndexOffset: 1000
+        }).addTo(map)
+      : L.circleMarker([0, 0], { radius: 7, color: '#ffffff', weight: 3, fillColor: '#001428', fillOpacity: 1, interactive: false }).addTo(map);
+    if (draggable) L.control.zoom({ position: 'topright' }).addTo(map);
     var markers = pins.map(function (p) { return { pin: p, marker: L.marker([0, 0], { icon: p.icon, keyboard: false, riseOnHover: true }).addTo(map) }; });
     var route = host.hasAttribute('data-vr-route') ? L.polyline([], { color: '#14b8a6', weight: 5, dashArray: '8 6', opacity: 0.9 }).addTo(map) : null;
 
@@ -427,8 +544,25 @@
         var origin = markers.filter(function (m) { return m.pin.km; })[0];
         if (origin) route.setLatLngs([origin.marker.getLatLng(), center]);
       }
-      fit();
+      if (loc.manual) map.panTo(center);
+      else fit();
     };
+
+    if (draggable) {
+      var moveHome = function (latlng) {
+        var loc = { lat: latlng.lat, lng: latlng.lng, label: 'Ubicación ajustada', place: 'Ubicación ajustada manualmente', fallback: false, manual: true };
+        setLocation(loc);
+        host.dispatchEvent(new CustomEvent('vr:pinmoving', { detail: loc, bubbles: true }));
+        reverseGeocode(loc).then(function (named) {
+          if (currentLocation.lat !== loc.lat || currentLocation.lng !== loc.lng) return;
+          setLocation(named);
+          host.dispatchEvent(new CustomEvent('vr:pinmoved', { detail: named, bubbles: true }));
+        });
+      };
+      dot.on('dragend', function () { moveHome(dot.getLatLng()); });
+      map.on('click', function (e) { moveHome(e.latlng); });
+      state.recenter = function () { map.setView(dot.getLatLng(), Math.max(map.getZoom(), 16)); };
+    }
 
     state.setRadius = function (meters) {
       state.radius = meters;
@@ -471,6 +605,10 @@
           });
         } else if (state && action === 'zoom-in') state.map.zoomIn();
         else if (state && action === 'zoom-out') state.map.zoomOut();
+        else if (state && action === 'recenter' && state.recenter) {
+          state.recenter();
+          toast('Arrastra el pin o haz clic en el mapa para ubicar tu hogar.');
+        }
         else if (state && action === 'layers') state.toggleLayers();
         return;
       }
@@ -526,6 +664,7 @@
 
   /* API pública usada por los scripts de cada pantalla */
   window.VeciRed = {
+    users: users,
     locate: locate,
     toast: toast,
     store: store,
