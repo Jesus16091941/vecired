@@ -146,4 +146,20 @@
 .vr-screen-nav__list a[aria-current="page"] { background: #001428; color: #fff; }
 .vr-screen-nav__list a[aria-current="page"] strong { color: #6bd8cb; }
 
+/* Barra de desplazamiento vertical que solo aparece al acercar el puntero o al desplazarse */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+html.vr-scroll-show {
+  scrollbar-color: rgba(0, 20, 40, 0.45) transparent;
+}
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar { width: 10px; background: transparent; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: transparent; border-radius: 9999px; border: 2px solid transparent; background-clip: padding-box; }
+  html.vr-scroll-show ::-webkit-scrollbar-thumb,
+  html.vr-scroll-show::-webkit-scrollbar-thumb { background-color: rgba(0, 20, 40, 0.45); }
+}
+
 @media print { .vr-screen-nav, .vr-toast-host { display: none; } }

@@ -533,7 +533,35 @@
     SANTIAGO_CENTRO: SANTIAGO_CENTRO
   };
 
+  function wireScrollbar() {
+    var root = document.documentElement;
+    var EDGE_PX = 28;
+    var hideTimer = null;
+    var nearEdge = false;
+
+    function show() {
+      clearTimeout(hideTimer);
+      root.classList.add('vr-scroll-show');
+    }
+    function hideSoon() {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        if (!nearEdge) root.classList.remove('vr-scroll-show');
+      }, 900);
+    }
+
+    document.addEventListener('mousemove', function (e) {
+      var wasNear = nearEdge;
+      nearEdge = e.clientX >= root.clientWidth - EDGE_PX;
+      if (nearEdge) show();
+      else if (wasNear) hideSoon();
+    }, { passive: true });
+    document.addEventListener('mouseleave', function () { nearEdge = false; hideSoon(); });
+    window.addEventListener('scroll', function () { show(); hideSoon(); }, { passive: true });
+  }
+
   function boot() {
+    wireScrollbar();
     wireLogo();
     wireRoles();
     persistFields();
