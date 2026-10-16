@@ -361,15 +361,15 @@
   var SEED_USERS = [
     { id: 'seed-admin', nombre: 'Administración VeciRed', correo: 'admin@vecired.cl', telefono: '+56 9 2000 0000', perfil: 'admin', direccion: 'Agustinas 1070', barrio: 'Santiago Centro', permisos: ['usuarios', 'verificaciones', 'reportes', 'contenido'] },
 
-    { id: 'seed-v-maria', nombre: 'María Fuentes', correo: 'maria.fuentes@vecired.demo', telefono: '+56 9 3111 0001', perfil: 'vecino', direccion: 'Huérfanos 1160', barrio: 'Santiago Centro' },
-    { id: 'seed-v-camila', nombre: 'Camila Restrepo', correo: 'camila.restrepo@vecired.demo', telefono: '+56 9 3111 0002', perfil: 'vecino', direccion: 'Merced 450', barrio: 'Barrio Lastarria' },
-    { id: 'seed-v-ana', nombre: 'Ana Soto', correo: 'ana.soto@vecired.demo', telefono: '+56 9 3111 0003', perfil: 'vecino', direccion: 'Compañía 2015', barrio: 'Barrio Brasil' },
-    { id: 'seed-v-rosa', nombre: 'Rosa Pérez', correo: 'rosa.perez@vecired.demo', telefono: '+56 9 3111 0004', perfil: 'vecino', direccion: 'Agustinas 2240', barrio: 'Barrio Yungay' },
-    { id: 'seed-v-felipe', nombre: 'Felipe González', correo: 'felipe.gonzalez@vecired.demo', telefono: '+56 9 3111 0005', perfil: 'vecino', direccion: 'San Antonio 385', barrio: 'Santiago Centro' },
-    { id: 'seed-v-claudia', nombre: 'Claudia Valdés', correo: 'claudia.valdes@vecired.demo', telefono: '+56 9 3111 0006', perfil: 'vecino', direccion: 'José Victorino Lastarria 90', barrio: 'Barrio Lastarria' },
-    { id: 'seed-v-beatriz', nombre: 'Beatriz Rosales', correo: 'beatriz.rosales@vecired.demo', telefono: '+56 9 3111 0007', perfil: 'vecino', direccion: 'Libertad 120', barrio: 'Barrio Yungay' },
-    { id: 'seed-v-carlos', nombre: 'Carlos Herrera', correo: 'carlos.herrera@vecired.demo', telefono: '+56 9 3111 0008', perfil: 'vecino', direccion: 'Santa Isabel 640', barrio: 'Barrio Santa Isabel' },
-    { id: 'seed-v-andres', nombre: 'Andrés Morales', correo: 'andres.morales@vecired.demo', telefono: '+56 9 3111 0009', perfil: 'vecino', direccion: 'Portugal 210', barrio: 'Barrio San Borja' },
+    { id: 'seed-v-maria', genero: 'f', nombre: 'María Fuentes', correo: 'maria.fuentes@vecired.demo', telefono: '+56 9 3111 0001', perfil: 'vecino', direccion: 'Huérfanos 1160', barrio: 'Santiago Centro' },
+    { id: 'seed-v-camila', genero: 'f', nombre: 'Camila Restrepo', correo: 'camila.restrepo@vecired.demo', telefono: '+56 9 3111 0002', perfil: 'vecino', direccion: 'Merced 450', barrio: 'Barrio Lastarria' },
+    { id: 'seed-v-ana', genero: 'f', nombre: 'Ana Soto', correo: 'ana.soto@vecired.demo', telefono: '+56 9 3111 0003', perfil: 'vecino', direccion: 'Compañía 2015', barrio: 'Barrio Brasil' },
+    { id: 'seed-v-rosa', genero: 'f', nombre: 'Rosa Pérez', correo: 'rosa.perez@vecired.demo', telefono: '+56 9 3111 0004', perfil: 'vecino', direccion: 'Agustinas 2240', barrio: 'Barrio Yungay' },
+    { id: 'seed-v-felipe', genero: 'm', nombre: 'Felipe González', correo: 'felipe.gonzalez@vecired.demo', telefono: '+56 9 3111 0005', perfil: 'vecino', direccion: 'San Antonio 385', barrio: 'Santiago Centro' },
+    { id: 'seed-v-claudia', genero: 'f', nombre: 'Claudia Valdés', correo: 'claudia.valdes@vecired.demo', telefono: '+56 9 3111 0006', perfil: 'vecino', direccion: 'José Victorino Lastarria 90', barrio: 'Barrio Lastarria' },
+    { id: 'seed-v-beatriz', genero: 'f', nombre: 'Beatriz Rosales', correo: 'beatriz.rosales@vecired.demo', telefono: '+56 9 3111 0007', perfil: 'vecino', direccion: 'Libertad 120', barrio: 'Barrio Yungay' },
+    { id: 'seed-v-carlos', genero: 'm', nombre: 'Carlos Herrera', correo: 'carlos.herrera@vecired.demo', telefono: '+56 9 3111 0008', perfil: 'vecino', direccion: 'Santa Isabel 640', barrio: 'Barrio Santa Isabel' },
+    { id: 'seed-v-andres', genero: 'm', nombre: 'Andrés Morales', correo: 'andres.morales@vecired.demo', telefono: '+56 9 3111 0009', perfil: 'vecino', direccion: 'Portugal 210', barrio: 'Barrio San Borja' },
 
     { id: 'seed-t-roberto', nombre: 'Roberto Díaz', correo: 'roberto.diaz@vecired.demo', telefono: '+56 9 4222 0001', perfil: 'certificado', direccion: 'Catedral 1850', barrio: 'Barrio Yungay', oficios: ['Gasfitería'], titulo: 'Maestro Gasfíter certificado SEC', anosExperiencia: 15, rut: '11.111.111-1' },
     { id: 'seed-t-lucia', nombre: 'Lucía Muñoz', correo: 'lucia.munoz@vecired.demo', telefono: '+56 9 4222 0002', perfil: 'certificado', direccion: 'Monjitas 520', barrio: 'Barrio Bellas Artes', oficios: ['Electricidad'], titulo: 'Ingeniera Electricista, instaladora SEC clase A', anosExperiencia: 9, rut: '12.222.222-0' },
@@ -1301,7 +1301,36 @@
     window.addEventListener('scroll', function () { show(); hideSoon(); }, { passive: true });
   }
 
+  /* Rellena los elementos [data-vr-user="campo"] con los datos de la cuenta en sesión. */
+  function bindCurrentUser() {
+    var u = users.current();
+    if (!u) return;
+    var seed = SEED_USERS.find(function (s) { return s.id === u.id; }) || {};
+    var genero = u.genero || seed.genero;
+    var partes = String(u.nombre || '').trim().split(/\s+/).filter(Boolean);
+    var pila = partes[0] || '';
+    var apellido = partes.length > 1 ? partes[partes.length - 1] : '';
+    var tipo = u.perfil === 'vecino'
+      ? (genero === 'f' ? 'Vecina Residente' : genero === 'm' ? 'Vecino Residente' : 'Vecino/a Residente')
+      : (u.tipoCuenta || TIPO_CUENTA[u.perfil] || '');
+    var valores = {
+      nombre: u.nombre || '',
+      nombrePila: pila,
+      nombreCorto: pila + (apellido ? ' ' + apellido.charAt(0) + '.' : ''),
+      iniciales: (pila.charAt(0) + apellido.charAt(0)).toUpperCase(),
+      tipo: tipo,
+      direccion: u.direccion || '',
+      barrio: u.barrio || '',
+      direccionCompleta: [u.direccion, u.barrio].filter(Boolean).join(', ')
+    };
+    document.querySelectorAll('[data-vr-user]').forEach(function (el) {
+      var valor = valores[el.getAttribute('data-vr-user')];
+      if (valor) el.textContent = valor;
+    });
+  }
+
   function boot() {
+    bindCurrentUser();
     wireScrollbar();
     wireLogo();
     wireRoles();
