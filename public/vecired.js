@@ -1323,10 +1323,34 @@
       barrio: u.barrio || '',
       direccionCompleta: [u.direccion, u.barrio].filter(Boolean).join(', ')
     };
+    var oficios = u.oficios || seed.oficios || [];
+    var anos = u.anosExperiencia || seed.anosExperiencia;
+    if (u.perfil === 'certificado' || u.perfil === 'experiencia') {
+      valores.oficio = oficios[0] || '';
+      valores.oficios = oficios.join(' y ');
+      valores.titulo = u.perfil === 'certificado'
+        ? (u.titulo || seed.titulo || TIPO_CUENTA.certificado)
+        : (oficios.join(' y ') + (anos ? ' · ' + anos + ' años de experiencia' : ''));
+      valores.sello = u.perfil === 'certificado' ? 'Técnico Certificado' : 'Profesional con Experiencia';
+      valores.alias = pila + (oficios.length ? ' - ' + oficios.join(' & ') : '');
+    }
     document.querySelectorAll('[data-vr-user]').forEach(function (el) {
       var valor = valores[el.getAttribute('data-vr-user')];
-      if (valor) el.textContent = valor;
+      if (!valor) return;
+      if ('value' in el && el.tagName === 'INPUT') el.value = valor;
+      else el.textContent = valor;
     });
+    if (u.id !== 'seed-t-roberto' && valores.iniciales) {
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><rect width="96" height="96" fill="#0f2942"/>'
+        + '<text x="50%" y="50%" dy=".35em" text-anchor="middle" font-family="Arial,sans-serif" font-size="38" font-weight="700" fill="#ffffff">'
+        + valores.iniciales + '</text></svg>';
+      var src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      document.querySelectorAll('img[data-vr-avatar]').forEach(function (img) {
+        img.removeAttribute('srcset');
+        img.src = src;
+        img.alt = 'Avatar de ' + valores.nombre;
+      });
+    }
   }
 
   function boot() {
