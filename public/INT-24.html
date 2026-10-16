@@ -51,7 +51,7 @@
       <label class="relative flex-1">
         <span class="sr-only">Buscar usuario</span>
         <span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" aria-hidden="true">search</span>
-        <input id="f-search" type="search" placeholder="Buscar por nombre, correo, teléfono, RUT u oficio" class="w-full rounded-lg border border-outline-variant bg-surface px-10 py-2 text-[15px] focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/30"/>
+        <input id="f-search" type="search" name="admin-user-search" autocomplete="off" placeholder="Buscar por nombre, correo, teléfono, RUT u oficio" class="w-full rounded-lg border border-outline-variant bg-surface px-10 py-2 text-[15px] focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/30"/>
       </label>
       <div class="flex flex-wrap gap-2">
         <label class="sr-only" for="f-tipo">Tipo de cuenta</label>
@@ -161,8 +161,11 @@
 </style>
 
 <script>
-(() => {
+// vecired.js se carga con defer: DOMContentLoaded garantiza que window.VeciRed ya existe.
+document.addEventListener('DOMContentLoaded', () => {
   const VR = window.VeciRed;
+  // Chrome autocompleta el correo guardado del login en este campo; se limpia al cargar.
+  document.getElementById('f-search').value = '';
   const $ = (id) => document.getElementById(id);
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -578,6 +581,6 @@
     });
   }
   reload();
-})();
+});
 </script>
 </body></html>

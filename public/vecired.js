@@ -336,7 +336,8 @@
       users.admin.addLog(id, 'Cuenta eliminada', target.nombre + ' (' + target.correo + ')');
       return { ok: true };
     },
-    tipoCuenta: TIPO_CUENTA
+    // Getter: TIPO_CUENTA se declara más abajo (var hoisting), así se lee ya inicializado.
+    get tipoCuenta() { return TIPO_CUENTA; }
   };
 
   /*
